@@ -110,24 +110,66 @@ a:hover {
   cursor: pointer;
 }
 
+/* gototop */
+.gototop {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.gototop.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.gototop div {
+  width: 50px;
+  height: 50px;
+  display: table;
+  background: rgba(0,0,0,.5);
+  color: #fff;
+  text-align: center;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.gototop div i {
+  height: 50px;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+#particles-js {
+  z-index: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #f5f7f9;
+}
 
 /* 布局 css grid */
 
 .container {
   display: grid;
+  align-items: start;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: 250px 60px 1fr 90px;
   grid-template-areas: ". . h h h h h h h h . ." ". . n n n n n n n n . ." ". . c c c c c c c c . ." "f f f f f f f f f f f f";
 }
 
-#particles-js {
-  z-index: -1;
-  grid-column: 1 / 13;
-  grid-row: 1 / 5;
-  background: #f5f7f9;
-}
-
 .header {
+  z-index: 1;
   grid-area: h;
   /* background-color: lightgreen; */
   margin-top: 3em;
@@ -135,6 +177,7 @@ a:hover {
 }
 
 nav {
+  z-index: 1;
   display: inline-grid;
   grid-area: n;
   text-align: center;
@@ -142,6 +185,7 @@ nav {
 }
 
 .content {
+  z-index: 1;
   grid-area: c;
   background-color: lightskyblue;
   background-color: #fff;
@@ -152,9 +196,11 @@ nav {
   -webkit-border-radius: 1em;
   border-radius: 1em;
   text-align: center;
+  align-self: start;
 }
 
 .footer {
+  z-index: 1;
   grid-area: f;
   text-align: center;
   color: #999;

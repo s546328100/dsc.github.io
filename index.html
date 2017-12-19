@@ -9,12 +9,14 @@
   <link rel="shortcut icon" href="images/gaxiao.png">
 
   <link rel="stylesheet" href="css/index.css">
+  <!-- <link href="https://cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet"> -->
+  <link rel="stylesheet" href="http://at.alicdn.com/t/font_508783_q4khwvj173z0k9.css"></link>
   <script src="https://cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
 </head>
 
 <body>
+  <div class="ss" id="particles-js"></div>
   <div class="container">
-    <div class="ss" id="particles-js"></div>
     <div class="header">
       <div class="avatar"></div>
       <p class="name">Dsc</p>
@@ -125,9 +127,36 @@
       <p>123</p>
     </div>
   </div>
+  <div class="gototop">
+    <div class="js-gotop">
+      <i class="iconfont icon-arrows-4-7"></i>
+    </div>
+  </div>
 </body>
 
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 <script>
+  (function() {
+    let goToTop = function() {
+      $('.js-gotop').on('click', function(event) {
+        event.preventDefault();
+        $('html, body').animate({
+          scrollTop: $('html').offset().top
+        }, 500);
+        return false;
+      });
+
+      $(window).scroll(function() {
+        let $win = $(window);
+        if ($win.scrollTop() > 200) {
+          $('.gototop').addClass('active');
+        } else {
+          $('.gototop').removeClass('active');
+        }
+      });
+    };
+    goToTop();
+  }());
   particlesJS("particles-js", {
     "particles": {
       "number": {
