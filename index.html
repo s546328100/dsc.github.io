@@ -9,7 +9,7 @@
   <link rel="shortcut icon" href="images/gaxiao.png">
 
   <link rel="stylesheet" href="css/index.css">
-  <!-- <link href="https://cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet"> -->
+  <link rel="stylesheet" href="css/animate.css">
   <link rel="stylesheet" href="http://at.alicdn.com/t/font_508783_q4khwvj173z0k9.css"></link>
   <script src="https://cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
 </head>
@@ -40,7 +40,7 @@
     </nav>
     <div class="content">
       <section>
-        <article>
+        <article class="animate-box">
           <header>
             <h1 class="title">
               <a class="link">
@@ -60,7 +60,7 @@
             <div class="post-eof"></div>
           </footer>
         </article>
-        <article>
+        <article class="animate-box">
           <header>
             <h1 class="title">
               <a class="link">
@@ -80,7 +80,7 @@
             <div class="post-eof"></div>
           </footer>
         </article>
-        <article>
+        <article class="animate-box">
           <header>
             <h1 class="title">
               <a class="link">
@@ -100,7 +100,7 @@
             <div class="post-eof"></div>
           </footer>
         </article>
-        <article>
+        <article class="animate-box">
           <header>
             <h1 class="title">
               <a class="link">
@@ -135,14 +135,40 @@
 </body>
 
 <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+<script src="https://cdn.bootcss.com/waypoints/4.0.1/jquery.waypoints.min.js"></script>
 <script>
   (function() {
+    let contentWayPoint = function() {
+      let i = 0;
+      $('.animate-box').waypoint(function(direction) {
+        if (direction === 'down' && !$(this.element).hasClass('animated-fast')) {
+          i++;
+          $(this.element).addClass('item-animate');
+          setTimeout(() => {
+            $('body .animate-box.item-animate').each(function(k) {
+              var el = $(this);
+              setTimeout(() => {
+                let effect = el.data('animate-effect');
+                if (effect) {
+                  console.log(effect);
+                } else {
+                  el.addClass('fadeInUp animated-fast');
+                }
+                el.removeClass('item-animate');
+              }, k * 200, 'easeInOutExpo');
+            });
+          }, 100);
+        }
+      }, {offset: '85%'});
+    };
+
     let goToTop = function() {
       $('.js-gotop').on('click', function(event) {
         event.preventDefault();
         $('html, body').animate({
           scrollTop: $('html').offset().top
-        }, 500);
+        }, 500, 'easeInOutExpo');
         return false;
       });
 
@@ -155,12 +181,16 @@
         }
       });
     };
-    goToTop();
+
+    $(function() {
+      contentWayPoint();
+      goToTop();
+    });
   }());
   particlesJS("particles-js", {
     "particles": {
       "number": {
-        "value": 80,
+        "value": 40,
         "density": {
           "enable": true,
           "value_area": 800
@@ -172,8 +202,8 @@
       "shape": {
         "type": "circle",
         "stroke": {
-          "width": 2,
-          "color": "#222222"
+          "width": 0,
+          "color": "#fff"
         },
         "polygon": {
           "nb_sides": 5
@@ -213,7 +243,7 @@
       },
       "move": {
         "enable": true,
-        "speed": 2,
+        "speed": 5,
         "direction": "none",
         "random": false,
         "straight": false,
