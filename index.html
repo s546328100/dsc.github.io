@@ -150,8 +150,12 @@
               var el = $(this);
               setTimeout(() => {
                 let effect = el.data('animate-effect');
-                if (effect) {
-                  console.log(effect);
+                if ( effect === 'fadeIn') {
+                  el.addClass('fadeIn animated-fast');
+                } else if ( effect === 'fadeInLeft') {
+                  el.addClass('fadeInLeft animated-fast');
+                } else if ( effect === 'fadeInRight') {
+                  el.addClass('fadeInRight animated-fast');
                 } else {
                   el.addClass('fadeInUp animated-fast');
                 }
