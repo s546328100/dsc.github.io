@@ -58,34 +58,37 @@
     };
 
     let sidebar = function() {
-        $('.sidebar').on('click', function() {
-            let parent = $(this).parent();
+        $('.arrow.in').on('click', function() {
+            let parent = $(this)
+                .parent()
+                .parent();
             if (parent.attr('class').includes('areas-c')) {
-                $(this)
-                    .text('》')
-                    .attr('style', 'text-align: center;');
-
-                $('.header').hide();
-                $('nav').hide();
-
                 parent.removeClass('areas-c');
                 parent.addClass('areas-s').addClass('pulse animated');
-            } else {
+
                 $(this)
-                    .text('《')
-                    .removeAttr('style');
-
-                $('.header')
-                    .show()
-                    .addClass('jello animated');
-                $('nav')
-                    .show()
-                    .addClass('jello animated');
-
-                parent.removeClass('areas-s').removeClass('pulse animated');
-                parent.addClass('areas-c');
+                    .parent()
+                    .hide();
+                $('.arrow.out').addClass('active');
             }
         });
+        $('.arrow.out').on('click', function() {
+            let next = $(this).next();
+            if (next.attr('class').includes('areas-s')) {
+                next.removeClass('areas-s');
+                next.addClass('areas-c').removeClass('pulse animated');
+
+                $(this).removeClass('active');
+                $('.sidebar').show();
+            }
+        });
+        // $('.arrow').mouseover(function() {
+        //     $(this).addClass('flash animated');
+
+        //     setTimeout(() => {
+        //         $(this).removeClass('flash animated');
+        //     }, 500);
+        // });
     };
 
     $(function() {

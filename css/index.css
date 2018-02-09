@@ -178,18 +178,18 @@ a:hover {
     grid-template-rows: 250px 60px 1fr 90px;
     grid-template-columns: 120px 120px 50px repeat(9, 1fr);
     grid-template-areas:
-        'h h s c c c c c c c c .'
-        'n n s c c c c c c c c .'
-        'n n . c c c c c c c c .'
+        '. . . c c c c c c c c .'
+        '. . . c c c c c c c c .'
+        '. . . c c c c c c c c .'
         '. . . f f f f f f f f .';
 }
 
 .areas-s {
     grid-template-rows: 250px 60px 1fr 90px;
-    grid-template-columns: 50px repeat(10, 1fr) 50px;
+    grid-template-columns: 80px repeat(10, 1fr) 80px;
     grid-template-areas:
-        's c c c c c c c c c c .'
-        's c c c c c c c c c c .'
+        '. c c c c c c c c c c .'
+        '. c c c c c c c c c c .'
         '. c c c c c c c c c c .'
         '. f f f f f f f f f f .';
 }
@@ -211,9 +211,48 @@ nav {
 
 .sidebar {
     z-index: 1;
-    grid-area: s;
+    /* grid-area: s;
     text-align: left;
-    align-self: end;
+    align-self: end; */
+    position: fixed;
+    top: 10px;
+    left: 60px;
+}
+
+@media (max-width: 1000px) {
+    .sidebar {
+        display: none;
+    }
+
+    .areas-c {
+        grid-template-rows: 250px 60px 1fr 90px;
+        grid-template-columns: 80px repeat(10, 1fr) 80px;
+        grid-template-areas:
+            '. c c c c c c c c c c .'
+            '. c c c c c c c c c c .'
+            '. c c c c c c c c c c .'
+            '. f f f f f f f f f f .';
+    }
+}
+
+.sidebar .arrow.in {
+    position: absolute;
+    top: 350px;
+    left: 160px;
+    cursor: pointer;
+}
+
+.arrow.out {
+    z-index: 2;
+    position: fixed;
+    top: 360px;
+    left: 25px;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.arrow.out.active {
+    opacity: 1;
 }
 
 .content {
@@ -403,4 +442,8 @@ nav .nav-c {
 
 .animate-box {
     opacity: 0;
+}
+
+.iconfont.arrow {
+    font-size: 30px;
 }
