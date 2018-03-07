@@ -248,11 +248,13 @@ nav {
     top: 360px;
     left: 25px;
     opacity: 0;
+    visibility: hidden;
     cursor: pointer;
 }
 
 .arrow.out.active {
     opacity: 1;
+    visibility: visible;
 }
 
 .content {
