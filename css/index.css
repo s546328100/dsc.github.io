@@ -247,14 +247,8 @@ nav {
     position: fixed;
     top: 360px;
     left: 25px;
-    opacity: 0;
-    visibility: hidden;
     cursor: pointer;
-}
-
-.arrow.out.active {
-    opacity: 1;
-    visibility: visible;
+    display: none;
 }
 
 .content {
@@ -349,6 +343,7 @@ nav .nav-c {
 .content article header .title {
     font-size: 26px;
     font-weight: 400;
+    margin: 0;
 }
 
 .content article header .title .link {
@@ -402,6 +397,16 @@ nav .nav-c {
     margin-top: 50px;
 }
 
+.content .post-meta {
+    margin: 3px 0 60px;
+    color: #999;
+    font-size: 12px;
+}
+
+.content .post-meta-divider {
+    margin: 0 .5em
+}
+
 .btn {
     display: inline-block;
     padding: 0 20px;
@@ -449,3 +454,4 @@ nav .nav-c {
 .iconfont.arrow {
     font-size: 30px;
 }
+

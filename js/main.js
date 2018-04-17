@@ -69,7 +69,7 @@
                 $(this)
                     .parent()
                     .hide();
-                $('.arrow.out').addClass('active');
+                $('.arrow.out').show();
             }
         });
         $('.arrow.out').on('click', function() {
@@ -78,7 +78,7 @@
                 next.removeClass('areas-s');
                 next.addClass('areas-c').removeClass('pulse animated');
 
-                $(this).removeClass('active');
+                $(this).hide();
                 $('.sidebar').show();
             }
         });
