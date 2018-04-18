@@ -217,11 +217,37 @@ nav {
     position: fixed;
     top: 10px;
     left: 60px;
+    display: block;
 }
 
 @media (max-width: 1000px) {
     .sidebar {
         display: none;
+    }
+
+    .adapt-sidebar {
+        display: block;
+        z-index: 100;
+        background: rgb(240, 240, 240);
+        top: 0;
+        left: 0;
+        width: 250px;
+        height: 100%;
+        -moz-box-shadow: 2px 0px 15px #333333;
+        -webkit-box-shadow: 2px 0px 15px #333333;
+        box-shadow: 2px 0px 15px #333333;
+    }
+
+    .adapt-sidebar {
+        display: none !important;
+    }
+
+    .arrow.out {
+        display: block !important;
+    }
+
+    .arrow.in {
+        left: 200px !important;
     }
 
     .areas-c {
@@ -249,6 +275,14 @@ nav {
     left: 25px;
     cursor: pointer;
     display: none;
+}
+
+.arrow.show {
+    display: block !important;
+}
+
+.arrow.hide {
+    display: none !important;
 }
 
 .content {
@@ -404,7 +438,7 @@ nav .nav-c {
 }
 
 .content .post-meta-divider {
-    margin: 0 .5em
+    margin: 0 0.5em;
 }
 
 .btn {
@@ -454,4 +488,3 @@ nav .nav-c {
 .iconfont.arrow {
     font-size: 30px;
 }
-
