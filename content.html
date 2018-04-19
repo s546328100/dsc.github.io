@@ -26,7 +26,7 @@
                 <p class="name">Dsc</p>
                 <span class="desc">Welcome to here!</span>
             </div>
-            <nav>
+            <nav style="text-align: center;">
                 <ul class="nav-c">
                     <li>
                         <a href="index.html">
@@ -68,11 +68,35 @@
                     <div class="markdown-body" id="preview">
 
                     </div>
+
                     <footer>
-                        <div class="post-eof"></div>
+                        <div class="post-tags">
+                            <a href="/tags/AngularJS/" rel="tag"># AngularJS</a>
+                            <a href="/tags/ui-router/" rel="tag"># ui-router</a>
+                            <a href="/tags/angular1-webpack-starter/" rel="tag"># angular1-webpack-starter</a>
+                            <a href="/tags/webpack/" rel="tag"># webpack</a>
+                            <a href="/tags/LazyLoad/" rel="tag"># LazyLoad</a>
+                            <a href="/tags/ocLazyLoad/" rel="tag"># ocLazyLoad</a>
+                        </div>
+
+                        <div class="post-nav">
+                            <div class="post-nav-next post-nav-item">
+                                <a href="/2016/02/27/continuous-integration-with-travis-ci/" rel="next" title="用TravisCI来做持续集成">
+                                    <i class="iconfont icon-xiangzuo1"></i> <span class="sp">用TravisCI来做持续集成</span>
+                                </a>
+                            </div>
+
+                            <span class="post-nav-divider"></span>
+
+                            <div class="post-nav-prev post-nav-item">
+                                <a href="/2017/02/21/recent-overseas-interview-experiences/" rel="prev" title="最近的海外面试（前端）经历">
+                                    最近的海外面试（前端）经历 <i class="iconfont icon-xiangyou1"></i>
+                                </a>
+                            </div>
+                        </div>
                     </footer>
 
-                    <div id="container"></div>
+                    <div id="container" style="text-align: left;"></div>
                     <textarea id="text-input" oninput="this.editor.update()" rows="6" cols="60">Type **Markdown** here.</textarea>
                 </article>
             </section>
@@ -114,12 +138,14 @@
 
 <script>
     let gitment = new Gitment({
-      owner: 's546328100',
-      repo: 'dsc.github.io',
-      oauth: {
-        client_id: '007464c4121cc1ad2c46',
-        client_secret: '0947001f59de45b8c6eb142f459b099af6814535',
-      },
+        id: window.location.pathname,
+        title: '测试',
+        owner: 's546328100',
+        repo: 'dsc.github.io',
+        oauth: {
+            client_id: '007464c4121cc1ad2c46',
+            client_secret: '0947001f59de45b8c6eb142f459b099af6814535',
+        },
     })
     gitment.render('container')
 </script>
