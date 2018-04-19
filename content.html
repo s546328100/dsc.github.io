@@ -12,13 +12,14 @@
     <link rel="stylesheet" href="css/animate.css">
     <link rel="stylesheet" href="http://at.alicdn.com/t/font_508783_ktw1kqv5bb21emi.css"></link>
     <link href="css/markdown.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
 </head>
 
 <body>
     <div class="ss" id="particles-js"></div>
     <div class="arrow out fadeInLeft animated"><i class="iconfont icon-enterinto_fill arrow"></i></div>
     <div class="container areas-c">
-        <div class="sidebar fadeInLeft animated">
+        <div id="sidebar" class="sidebar fadeInLeft animated">
             <div class="arrow in"><i class="iconfont icon-delete_fill arrow"></i></div>
             <div class="header">
                 <div class="avatar"></div>
@@ -67,6 +68,11 @@
                     <div class="markdown-body" id="preview">
 
                     </div>
+                    <footer>
+                        <div class="post-eof"></div>
+                    </footer>
+
+                    <div id="container"></div>
                     <textarea id="text-input" oninput="this.editor.update()" rows="6" cols="60">Type **Markdown** here.</textarea>
                 </article>
             </section>
@@ -88,6 +94,7 @@
 <script src="https://cdn.bootcss.com/waypoints/4.0.1/jquery.waypoints.min.js"></script>
 <script src="https://cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
 
 <script src="js/main.js"></script>
 <script src="js/particles.js"></script>
@@ -103,6 +110,18 @@
     }
 
     new Editor(document.getElementById("text-input"), document.getElementById("preview"));
+</script>
+
+<script>
+    let gitment = new Gitment({
+      owner: 's546328100',
+      repo: 'dsc.github.io',
+      oauth: {
+        client_id: '007464c4121cc1ad2c46',
+        client_secret: '0947001f59de45b8c6eb142f459b099af6814535',
+      },
+    })
+    gitment.render('container')
 </script>
 
 </html>

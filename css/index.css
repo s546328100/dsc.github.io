@@ -176,22 +176,22 @@ a:hover {
 
 .areas-c {
     grid-template-rows: 250px 60px 1fr 90px;
-    grid-template-columns: 120px 120px 50px repeat(9, 1fr);
-    grid-template-areas:
-        '. . . c c c c c c c c .'
-        '. . . c c c c c c c c .'
-        '. . . c c c c c c c c .'
-        '. . . f f f f f f f f .';
-}
-
-.areas-s {
-    grid-template-rows: 250px 60px 1fr 90px;
     grid-template-columns: 80px repeat(10, 1fr) 80px;
     grid-template-areas:
         '. c c c c c c c c c c .'
         '. c c c c c c c c c c .'
         '. c c c c c c c c c c .'
         '. f f f f f f f f f f .';
+}
+
+.areas-s {
+    grid-template-rows: 250px 60px 1fr 90px;
+    grid-template-columns: 120px 120px 50px repeat(9, 1fr);
+    grid-template-areas:
+        '. . . c c c c c c c c .'
+        '. . . c c c c c c c c .'
+        '. . . c c c c c c c c .'
+        '. . . f f f f f f f f .';
 }
 
 .header {
@@ -217,16 +217,11 @@ nav {
     position: fixed;
     top: 10px;
     left: 60px;
-    display: block;
+    display: none;
 }
 
 @media (max-width: 1000px) {
     .sidebar {
-        display: none;
-    }
-
-    .adapt-sidebar {
-        display: block;
         z-index: 100;
         background: rgb(240, 240, 240);
         top: 0;
@@ -238,19 +233,7 @@ nav {
         box-shadow: 2px 0px 15px #333333;
     }
 
-    .adapt-sidebar {
-        display: none !important;
-    }
-
-    .arrow.out {
-        display: block !important;
-    }
-
-    .arrow.in {
-        left: 200px !important;
-    }
-
-    .areas-c {
+    .areas-s {
         grid-template-rows: 250px 60px 1fr 90px;
         grid-template-columns: 80px repeat(10, 1fr) 80px;
         grid-template-areas:
@@ -259,6 +242,10 @@ nav {
             '. c c c c c c c c c c .'
             '. f f f f f f f f f f .';
     }
+}
+
+.sidebar.show {
+    display: block;
 }
 
 .sidebar .arrow.in {
@@ -274,16 +261,15 @@ nav {
     top: 360px;
     left: 25px;
     cursor: pointer;
-    display: none;
+    display: block;
 }
 
-.arrow.show {
-    display: block !important;
+@media (max-width: 1000px) {
+    .sidebar .arrow.in {
+        left: 200px;
+    }
 }
 
-.arrow.hide {
-    display: none !important;
-}
 
 .content {
     z-index: 1;

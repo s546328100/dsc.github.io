@@ -62,24 +62,24 @@
             let parent = $(this)
                 .parent()
                 .parent();
-            if (parent.attr('class').includes('areas-c')) {
-                parent.removeClass('areas-c');
-                parent.addClass('areas-s').addClass('pulse animated');
+            if (parent.attr('class').includes('areas-s')) {
+                parent.removeClass('areas-s');
+                parent.addClass('areas-c').addClass('pulse animated');
 
                 $(this)
                     .parent()
-                    .hide().removeClass('adapt-sidebar');
-                $('.arrow.out').removeClass('hide').addClass('show');
+                    .removeClass('show');
+                $('.arrow.out').removeAttr('style');
             }
         });
         $('.arrow.out').on('click', function() {
             let next = $(this).next();
-            if (next.attr('class').includes('areas-s')) {
-                next.removeClass('areas-s');
-                next.addClass('areas-c').removeClass('pulse animated');
+            if (next.attr('class').includes('areas-c')) {
+                next.removeClass('areas-c');
+                next.addClass('areas-s').removeClass('pulse animated');
             }
-            $(this).removeClass('show').addClass('hide');
-            $('.sidebar').show().addClass('adapt-sidebar');
+            $(this).hide();
+            $('.sidebar').addClass('show');
         });
         // $('.arrow').mouseover(function() {
         //     $(this).addClass('flash animated');
