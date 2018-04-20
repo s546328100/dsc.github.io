@@ -58,8 +58,8 @@
                             <span>发表于 2018-01-30</span>
                             <span class="post-meta-divider">|</span>
                             <span><i class="iconfont icon-chat"></i></span>
-                            <a href="/chrome-devtools-performance-monitor.html#SOHUCS" itemprop="discussionUrl">
-                                <span>2</span>
+                            <a href="#container" itemprop="discussionUrl">
+                                <span id="comments">0</span>
                             </a>
                             <span class="post-meta-divider">|</span>
                             <span>阅读次数 205</span>
@@ -96,8 +96,7 @@
                         </div>
                     </footer>
 
-                    <div id="container" style="text-align: left;"></div>
-                    <textarea id="text-input" oninput="this.editor.update()" rows="6" cols="60">Type **Markdown** here.</textarea>
+                    <div id="container" style="text-align: left; margin-top: 50px;"></div>
                 </article>
             </section>
         </div>
@@ -123,22 +122,23 @@
 <script src="js/main.js"></script>
 <script src="js/particles.js"></script>
 
-<script>
-    function Editor(input, preview) {
-        this.update = function() {
-            preview.innerHTML = marked(input.value);
-        };
-        input.editor = this;
-        this.update();
-    }
-
-    new Editor(document.getElementById("text-input"), document.getElementById("preview"));
-</script>
+<script src="md/catalogue.js"></script>
 
 <script>
+    let data = new JsonDate();
+
+    let info = data.getCatalogueInfo(GetRequest());
+
+    $.get(`http://dusuchao.xin/md/${info}.md`, val => {
+        $('#preview')[0].innerHTML = marked(val);
+    })
+
+    let comments = $('.gitment-header-like-btn').next().children().text();
+    if (!comments) $('#comments').innerHTML = comments;
+
     let gitment = new Gitment({
         id: window.location.pathname,
-        title: '测试',
+        title: info,
         owner: 's546328100',
         repo: 'dsc.github.io',
         oauth: {
@@ -147,12 +147,15 @@
         },
     })
     gitment.render('container')
-</script>
 
-<script>
-    $.get('http://dusuchao.xin/md/异步编程.md', val => {
-        $('#preview')[0].innerHTML = marked(val);
-    })
+    function GetRequest() {
+        var url = location.search;
+        if (url.indexOf("?") != -1) {
+            var str = url.substr(1);
+            strs = str.split("#");
+            return strs[0];
+        }
+    }
 </script>
 
 </html>

@@ -39,7 +39,7 @@
     </nav>
     <div class="content radius">
       <section>
-        <article class="animate-box">
+        <!-- <article class="animate-box">
           <header>
             <h1 class="title">
               <a class="link" href="content.html">
@@ -69,67 +69,7 @@
           <footer>
             <div class="post-eof"></div>
           </footer>
-        </article>
-        <article class="animate-box">
-          <header>
-            <h1 class="title">
-              <a class="link">
-                哈哈哈哈44哈哈哈哈哈哈啊哈哈哈哈哈22哈哈哈哈哈哈啊哈学习
-              </a>
-            </h1>
-          </header>
-          <div class="post-body">
-            456
-            <div class="post-button">
-              <a class="btn">
-                阅读全文 »
-              </a>
-            </div>
-          </div>
-          <footer>
-            <div class="post-eof"></div>
-          </footer>
-        </article>
-        <article class="animate-box">
-          <header>
-            <h1 class="title">
-              <a class="link">
-                哈哈哈哈44哈哈哈哈哈哈啊哈哈哈哈哈22哈哈哈哈哈哈啊哈学习
-              </a>
-            </h1>
-          </header>
-          <div class="post-body">
-            456
-            <div class="post-button">
-              <a class="btn">
-                阅读全文 »
-              </a>
-            </div>
-          </div>
-          <footer>
-            <div class="post-eof"></div>
-          </footer>
-        </article>
-        <article class="animate-box">
-          <header>
-            <h1 class="title">
-              <a class="link">
-                哈哈哈哈44哈哈哈哈哈哈啊哈哈哈哈哈22哈哈哈哈哈哈啊哈学习
-              </a>
-            </h1>
-          </header>
-          <div class="post-body">
-            456
-            <div class="post-button">
-              <a class="btn">
-                阅读全文 »
-              </a>
-            </div>
-          </div>
-          <footer>
-            <div class="post-eof"></div>
-          </footer>
-        </article>
+        </article> -->
       </section>
     </div>
     <div class="footer">
@@ -151,5 +91,45 @@
 
 <script src="js/main.js"></script>
 <script src="js/particles.js"></script>
+
+<script src="md/catalogue.js"></script>
+
+<script>
+  let data = new JsonDate();
+  let catalogues = '';
+  $.each(data.getCatalogues(), (i, item) => {
+    catalogues += `<article class="animate-box">
+          <header>
+            <h1 class="title">
+              <a class="link" href="content.html?${i}">
+                ${item.title}
+              </a>
+            </h1>
+            <div class="post-meta">
+                <span>发表于 ${item.createTime}</span>
+                <span class="post-meta-divider">|</span>
+                <span><i class="iconfont icon-chat"></i></span>
+                <a href="content.html?${i}#container" itemprop="discussionUrl">
+                    <span>2</span>
+                </a>
+                <span class="post-meta-divider">|</span>
+                <span>阅读次数 205</span>
+            </div>
+          </header>
+          <div class="post-body">
+            ${item.abstract}
+            <div class="post-button">
+              <a class="btn" href="content.html?${i}">
+                阅读全文 »
+              </a>
+            </div>
+          </div>
+          <footer>
+            <div class="post-eof"></div>
+          </footer>
+        </article>`;
+  });
+  $("section").html(catalogues);
+</script>
 
 </html>
