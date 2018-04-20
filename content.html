@@ -158,12 +158,6 @@
     if (info.next) $('.post-nav-prev').html(`<a href="content.html?${index + 1}" rel="prev" title="${info.next}"><span class="sp">${info.next}</span><i class="iconfont icon-xiangyou1"></i></a>`);
     if (info.prev) $('.post-nav-next').html(`<a href="content.html?${index - 1}" rel="next" title="${info.prev}"><i class="iconfont icon-xiangzuo1"></i> <span class="sp">${info.prev}</span></a>`);
 
-    let comments = $('.gitment-header-like-btn').next().children().text();
-    console.log($('.gitment-header-like-btn').next());
-    console.log($('.gitment-header-like-btn').next().children());
-    console.log(comments);
-    if (!comments) $('#comments').innerHTML = comments;
-
     let gitment = new Gitment({
         id: info.id,
         title: info.title,
@@ -175,6 +169,12 @@
         },
     })
     gitment.render('container')
+
+    let comments = $('.gitment-header-like-btn').next().children().text();
+    console.log($('.gitment-header-like-btn').next());
+    console.log($('.gitment-header-like-btn').next().children());
+    console.log(comments);
+    if (!comments) $('#comments').innerHTML = comments;
 
     function GetRequest() {
         var url = location.search;
