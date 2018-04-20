@@ -403,6 +403,7 @@ nav .nav-c {
 
 .content .post-body {
     font-family: 'Lato', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    text-align: justify;
 }
 
 @media (max-width: 767px) {
@@ -413,6 +414,7 @@ nav .nav-c {
 
 .content .post-body .post-button {
     margin-top: 50px;
+    text-align: center;
 }
 
 .content .post-meta {

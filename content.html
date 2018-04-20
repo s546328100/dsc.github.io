@@ -51,7 +51,7 @@
             <section>
                 <article class="animate-box">
                     <header>
-                        <h1 class="title">
+                        <!-- <h1 class="title">
                             哈哈哈哈44哈哈哈哈哈哈啊哈哈哈哈哈22哈哈哈哈哈哈啊哈学习
                         </h1>
                         <div class="post-meta">
@@ -63,7 +63,7 @@
                             </a>
                             <span class="post-meta-divider">|</span>
                             <span>阅读次数 205</span>
-                        </div>
+                        </div> -->
                     </header>
                     <div class="markdown-body" id="preview">
 
@@ -81,17 +81,17 @@
 
                         <div class="post-nav">
                             <div class="post-nav-next post-nav-item">
-                                <a href="/2016/02/27/continuous-integration-with-travis-ci/" rel="next" title="用TravisCI来做持续集成">
+                                <!-- <a href="/2016/02/27/continuous-integration-with-travis-ci/" rel="next" title="用TravisCI来做持续集成">
                                     <i class="iconfont icon-xiangzuo1"></i> <span class="sp">用TravisCI来做持续集成</span>
-                                </a>
+                                </a> -->
                             </div>
 
                             <span class="post-nav-divider"></span>
 
                             <div class="post-nav-prev post-nav-item">
-                                <a href="/2017/02/21/recent-overseas-interview-experiences/" rel="prev" title="最近的海外面试（前端）经历">
+                                <!-- <a href="/2017/02/21/recent-overseas-interview-experiences/" rel="prev" title="最近的海外面试（前端）经历">
                                     最近的海外面试（前端）经历 <i class="iconfont icon-xiangyou1"></i>
-                                </a>
+                                </a> -->
                             </div>
                         </div>
                     </footer>
@@ -127,18 +127,36 @@
 <script>
     let data = new JsonDate();
 
-    let info = data.getCatalogueInfo(GetRequest());
+    let index = GetRequest();
 
-    $.get(`http://dusuchao.xin/md/${info}.md`, val => {
+    let info = data.getCatalogueInfo(index);
+
+    $.get(`http://dusuchao.xin/md/${info.title}.md`, val => {
         $('#preview')[0].innerHTML = marked(val);
     })
+
+    $('header').html(`  <h1 class="title">
+                            ${info.title}
+                        </h1>
+                        <div class="post-meta">
+                            <span>发表于 ${info.createTime}</span>
+                            <span class="post-meta-divider">|</span>
+                            <span><i class="iconfont icon-chat"></i></span>
+                            <a href="#container" itemprop="discussionUrl">
+                                <span id="comments">0</span>
+                            </a>
+                            <span class="post-meta-divider">|</span>
+                            <span>阅读次数 205</span>
+                        </div>`);
+    if (info.next) $('.post-nav-prev').html(`<a href="content.html?${index + 1}" rel="prev" title="${info.next}"><span class="sp">${info.next}</span><i class="iconfont icon-xiangyou1"></i></a>`);
+    if (info.prev) $('.post-nav-next').html(`<a href="content.html?${index - 1}" rel="next" title="${info.prev}"><i class="iconfont icon-xiangzuo1"></i> <span class="sp">${info.prev}</span></a>`);
 
     let comments = $('.gitment-header-like-btn').next().children().text();
     if (!comments) $('#comments').innerHTML = comments;
 
     let gitment = new Gitment({
         id: window.location.pathname,
-        title: info,
+        title: info.title,
         owner: 's546328100',
         repo: 'dsc.github.io',
         oauth: {
@@ -153,7 +171,7 @@
         if (url.indexOf("?") != -1) {
             var str = url.substr(1);
             strs = str.split("#");
-            return strs[0];
+            return parseInt(strs[0]);
         }
     }
 </script>
