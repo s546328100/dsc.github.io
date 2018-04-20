@@ -127,7 +127,6 @@
     function Editor(input, preview) {
         this.update = function() {
             preview.innerHTML = marked(input.value);
-            console.log(preview.innerHTML);
         };
         input.editor = this;
         this.update();
@@ -148,6 +147,12 @@
         },
     })
     gitment.render('container')
+</script>
+
+<script>
+    $.get('http://dusuchao.xin/md/异步编程.md', val => {
+        $('#preview')[0].innerHTML = marked(val);
+    })
 </script>
 
 </html>
