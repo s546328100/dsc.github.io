@@ -130,9 +130,16 @@
     let index = GetRequest();
 
     let info = data.getCatalogueInfo(index);
+    
+    if (!info) window.location.href = '404.html';
 
-    $.get(`http://dusuchao.xin/md/${info.title}.md`, val => {
-        $('#preview')[0].innerHTML = marked(val);
+    $.ajax({
+        type: 'get',
+        url: `http://dusuchao.xin/md/${info.title}.md`,
+        success: data => $('#preview')[0].innerHTML = marked(data),
+        error: data => {
+            if (data.status !== 200) window.location.href = '404.html';
+        }
     })
 
     $('header').html(`  <h1 class="title">
@@ -152,10 +159,13 @@
     if (info.prev) $('.post-nav-next').html(`<a href="content.html?${index - 1}" rel="next" title="${info.prev}"><i class="iconfont icon-xiangzuo1"></i> <span class="sp">${info.prev}</span></a>`);
 
     let comments = $('.gitment-header-like-btn').next().children().text();
+    console.log($('.gitment-header-like-btn').next());
+    console.log($('.gitment-header-like-btn').next().children());
+    console.log(comments);
     if (!comments) $('#comments').innerHTML = comments;
 
     let gitment = new Gitment({
-        id: window.location.pathname,
+        id: info.id,
         title: info.title,
         owner: 's546328100',
         repo: 'dsc.github.io',

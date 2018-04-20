@@ -1,0 +1,116 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>dsc's Blog</title>
+    <link rel="shortcut icon" href="images/gaxiao.png">
+
+    <link rel="stylesheet" href="css/index.css">
+    <style>
+        html,
+        body,
+        p {
+            padding: 0;
+            margin: 0;
+        }
+
+        html,
+        body {
+            height: 90%;
+        }
+
+        body {
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-align-items: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-justify-content: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+        }
+
+        p {
+            font-size: 15em;
+            font-family: "microsoft yahei";
+            color: #FFFFFF;
+            font-weight: bold;
+        }
+
+        p>span {
+            position: relative;
+            display: inline-block;
+            -webkit-transform-style: preserve-3d;
+            -moz-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+            -webkit-perspective: 500;
+            -moz-perspective: 500;
+            -ms-perspective: 500;
+            perspective: 500;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        span:before,
+        span:after {
+            position: absolute;
+            top: 0;
+            left: -1px;
+            content: attr(data-text);
+            -webkit-transform-origin: left top;
+            -moz-transform-origin: left top;
+            -ms-transform-origin: left top;
+            transform-origin: left top;
+            -webkit-transition: all ease-out 0.3s;
+            -moz-transition: all ease-out 0.3s;
+            -ms-transition: all ease-out 0.3s;
+            transition: all ease-out 0.3s;
+        }
+
+        span:before {
+            color: rgba(0, 0, 0, 0.3);
+            -webkit-transform: scale(1.1, 1) skew(0, 20deg);
+            -moz-transform: scale(1.1, 1) skew(0, 20deg);
+            -ms-transform: scale(1.1, 1) skew(0, 20deg);
+            transform: scale(1.1, 1) skew(0, 20deg);
+        }
+
+        span:after {
+            color: #000000;
+            -webkit-transform: rotateY(-40deg);
+            -moz-transform: rotateY(-40deg);
+            -ms-transform: rotateY(-40deg);
+            transform: rotateY(-40deg);
+            text-shadow: -1px 0 1px #000000, 1px 0 1px rgba(0, 0, 0, 0.8);
+        }
+
+        .zy {
+            z-index: 100;
+            position: relative;
+            top: 180px;
+            left: -300px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="ss" id="particles-js"></div>
+    <p>
+        <span data-text="4">4</span>
+        <span data-text="0">0</span>
+        <span data-text="4">4</span>
+    </p>
+    <div class="zy">
+        <a href="index.html">返回主页</a>
+    </div>
+
+</body>
+
+<script src="https://cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+<script src="js/particles.js"></script>
+
+</html>
