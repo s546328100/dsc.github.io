@@ -133,6 +133,10 @@
     
     if (!info) window.location.href = '404.html';
 
+    $.get(`https://api.github.com/repos/s546328100/dsc.github.io/issues?creator=s546328100&labels=${info.id}`, val => {
+        $('#comments')[0].innerHTML = val[0].comments;
+    })
+
     $.ajax({
         type: 'get',
         url: `http://dusuchao.xin/md/${info.title}.md`,
@@ -169,12 +173,6 @@
         },
     })
     gitment.render('container')
-
-    let comments = $('.gitment-header-like-btn').next().children().text();
-    console.log($('.gitment-header-like-btn').next());
-    console.log($('.gitment-header-like-btn').next().children());
-    console.log(comments);
-    if (!comments) $('#comments').innerHTML = comments;
 
     function GetRequest() {
         var url = location.search;
