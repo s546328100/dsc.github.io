@@ -94,6 +94,7 @@
 
 <script src="js/main.js"></script>
 <script src="js/particles.js"></script>
+<script src="js/util.js"></script>
 
 <script src="md/catalogue.js"></script>
 
@@ -111,7 +112,7 @@
               </a>
             </h1>
             <div class="post-meta">
-                <span>发表于 ${item.createTime}</span>
+                <span>发表于 ${dateFormat(item.createTime)}</span>
                 <span class="post-meta-divider">|</span>
                 <span><i class="iconfont icon-chat"></i></span>
                 <a href="content.html?${i}#container" itemprop="discussionUrl">
