@@ -2,44 +2,44 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>dsc's Blog</title>
-  <link rel="shortcut icon" href="images/gaxiao.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>dsc's Blog</title>
+    <link rel="shortcut icon" href="images/gaxiao.png">
 
-  <link rel="stylesheet" href="css/index.css">
-  <link rel="stylesheet" href="css/animate.css">
-  <link rel="stylesheet" href="http://at.alicdn.com/t/font_508783_uu3m9v5uy95jc3di.css"></link>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_508783_uu3m9v5uy95jc3di.css"></link>
 </head>
 
 <body>
-  <div class="ss" id="particles-js"></div>
-  <div class="container areas-i">
-    <div class="header animate-box">
-      <div class="avatar"></div>
-      <p class="name animate-box">Dsc</p>
-      <span class="desc animate-box">Welcome to here!</span>
-    </div>
-    <nav style="text-align: center;">
-      <ul class="nav-i animate-box">
-        <li>
-          <a href="#"><i class="iconfont icon-homepage_fill"></i>首页</a>
-        </li>
-        <li>
-          <a href="#"><i class="iconfont icon-activity_fill"></i>归档</a>
-        </li>
-        <li>
-          <a href="#"><i class="iconfont icon-emoji_fill"></i>趣图</a>
-        </li>
-        <li>
-          <a href="#"><i class="iconfont icon-people_fill"></i>关于</a>
-        </li>
-      </ul>
-    </nav>
-    <div class="content radius">
-      <section>
-        <!-- <article class="animate-box">
+    <div class="ss" id="particles-js"></div>
+    <div class="container areas-i">
+        <div class="header animate-box">
+            <div class="avatar"></div>
+            <p class="name animate-box">Dsc</p>
+            <span class="desc animate-box">Welcome to here!</span>
+        </div>
+        <nav style="text-align: center;">
+            <ul class="nav-i animate-box">
+                <li>
+                    <a href="#"><i class="iconfont icon-homepage_fill"></i>首页</a>
+                </li>
+                <li>
+                    <a href="#"><i class="iconfont icon-activity_fill"></i>归档</a>
+                </li>
+                <li>
+                    <a href="#"><i class="iconfont icon-emoji_fill"></i>趣图</a>
+                </li>
+                <li>
+                    <a href="#"><i class="iconfont icon-people_fill"></i>关于</a>
+                </li>
+            </ul>
+        </nav>
+        <div class="content radius">
+            <section>
+                <!-- <article class="animate-box">
           <header>
             <h1 class="title">
               <a class="link" href="content.html">
@@ -73,18 +73,18 @@
             <div class="post-eof"></div>
           </footer>
         </article> -->
-      </section>
+            </section>
+        </div>
+        <div class="footer">
+            <p>2017 dsc's Blog - Hosted by gitHub</p>
+            <p>123</p>
+        </div>
     </div>
-    <div class="footer">
-      <p>2017 dsc's Blog - Hosted by gitHub</p>
-      <p>123</p>
+    <div class="gototop">
+        <div class="js-gotop">
+            <i class="iconfont icon-arrows-4-7"></i>
+        </div>
     </div>
-  </div>
-  <div class="gototop">
-    <div class="js-gotop">
-      <i class="iconfont icon-arrows-4-7"></i>
-    </div>
-  </div>
 </body>
 
 <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
@@ -96,13 +96,14 @@
 <script src="js/particles.js"></script>
 
 <script src="md/catalogue.js"></script>
-<script type="text/javascript" src="//js.users.51.la/19458113.js"></script>
 
 <script>
-  let data = new JsonDate();
-  let catalogues = '';
-  $.each(data.getCatalogues(), (i, item) => {
-    catalogues += `<article class="animate-box">
+    let jsonDate = new JsonDate();
+    let catalogues = jsonDate.getCatalogues();
+
+    let html = '';
+    $.each(catalogues, (i, item) => {
+        html += `<article class="animate-box">
           <header>
             <h1 class="title">
               <a class="link" href="content.html?${i}">
@@ -114,10 +115,10 @@
                 <span class="post-meta-divider">|</span>
                 <span><i class="iconfont icon-chat"></i></span>
                 <a href="content.html?${i}#container" itemprop="discussionUrl">
-                    <span>2</span>
+                    <span id="comments${i}">0</span>
                 </a>
                 <span class="post-meta-divider">|</span>
-                <span>阅读次数 205</span>
+                <span>阅读次数 0</span>
             </div>
           </header>
           <div class="post-body">
@@ -132,8 +133,23 @@
             <div class="post-eof"></div>
           </footer>
         </article>`;
-  });
-  $("section").html(catalogues);
+    });
+    $("section").html(html);
+
+    $.get(`https://api.github.com/repos/s546328100/dsc.github.io/issues?creator=s546328100`, data => {
+        let comments = data.map(m => {
+            return {
+                title: m.title,
+                comments: m.comments
+            };
+        });
+
+        comments.forEach(comment => {
+            catalogues.forEach((catalogue, i) => {
+                if (comment.title === catalogue.title) $(`#comments${i}`).text(comment.comments);
+            })
+        });
+    })
 </script>
 
 </html>
