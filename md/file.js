@@ -4,26 +4,77 @@ const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
 
-load_list('md', (err, data) => {
-    if (err) throw err;
+const readline = require('readline');
 
-    let catalogues = JSON.stringify(data);
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
 
-    fs.readFile('md/catalogue.js', (err, data) => {
-        if (err) throw err;
-        let reg = /\[((\n\s*)*{[^]*}(\n\s*)*)?]/g;
-        data = data.toString('utf8').replace(reg, catalogues);
+// path.resolve(__dirname, '..');
+let _folder = process.argv[2];
+let _file = process.argv[3];
 
-        fs.writeFile('md/catalogue.js', data, err => {
-            if (err) throw err;
-            console.log('文章添加完毕！');
+if (_folder && _folder === '-d') {
+    _folder = path.resolve(__dirname);
+    _file = path.resolve(__dirname, 'catalogue.js');
+    load(rl, () => {
+        process.stdout.write('请输入正确的格式 (文章所在文件夹名 要写入的文件名)： \n');
+        process.stdout.write('> ');
+    });
+} else if (!_folder || !_file) {
+    process.stdout.write('请输入 -文章所在文件夹名 -要写入的文件名： \n');
+    process.stdout.write('-d （默认文件夹md，默认文件catalogue.js）\n');
+    process.stdout.write('      or\n');
+    process.stdout.write('md catalogue.js\n');
+    process.stdout.write('> ');
+
+    rl.on('line', line => {
+        let parts = line.split(new RegExp('[ ]+'));
+        if (parts.length <= 1) {
+            if (parts[0] === '-d') {
+                _folder = path.resolve(__dirname);
+                _file = path.resolve(__dirname, 'catalogue.js');
+                load(rl, () => {
+                    process.stdout.write('请输入正确的格式 (文章所在文件夹名 要写入的文件名)： \n');
+                    process.stdout.write('> ');
+                });
+            } else {
+                process.stdout.write('请输入正确的格式 (文章所在文件夹名 要写入的文件名)： \n');
+                process.stdout.write('> ');
+            }
+        } else {
+            load(rl, () => {
+                process.stdout.write('请输入正确的格式 (文章所在文件夹名 要写入的文件名)： \n');
+                process.stdout.write('> ');
+            });
+        }
+    })
+}
+
+function load(rl, callback) {
+    load_list(_folder, (err, data) => {
+        if (err) return callback();
+
+        let catalogues = JSON.stringify(data);
+
+        fs.readFile(_file, (err, data) => {
+            if (err) return callback();
+            let reg = /\[((\n\s*)*{[^]*}(\n\s*)*)?]/g;
+            data = data.toString('utf8').replace(reg, catalogues);
+
+            fs.writeFile(_file, data, err => {
+                if (err) return callback();
+                rl.close();
+                console.log('文章添加完毕！');
+            });
         });
     });
-});
+}
 
 function load_list(dir, callback) {
     fs.readdir(dir, (err, files) => {
-        if (err) throw err;
+        if (err) return callback();
 
         files = files.filter(fileName => path.extname(fileName) === '.md');
         if (files.length === 0) return;
@@ -46,10 +97,10 @@ function load_list(dir, callback) {
             }
 
             fs.stat(dir + '/' + files[index], (err, stats) => {
-                if (err) throw err;
+                if (err) return callback();
 
                 fs.readFile(dir + '/' + files[index], (err, data) => {
-                    if (err) throw err;
+                    if (err) return callback();
 
                     data = data
                         .toString('utf8')
