@@ -21,7 +21,13 @@ const rl = readline.createInterface({
 let _folder = process.argv[2];
 let _file = process.argv[3];
 
-if (_folder && _folder === '-d') {
+if (!_folder && !_file) {
+    process.stdout.write('请输入 -文章所在文件夹名 -要写入的文件名： \n');
+    process.stdout.write('-d （当前文件夹，默认文件catalogue.js）\n');
+    process.stdout.write('      or\n');
+    process.stdout.write('./ catalogue.js\n');
+    process.stdout.write('> ');
+} else {
     load(_folder, _file)
         .then(data => {
             console.log(data);
@@ -33,34 +39,13 @@ if (_folder && _folder === '-d') {
             process.stdout.write('请输入正确的路径名： \n');
             process.stdout.write('> ');
         });
-} else if (!_folder || !_file) {
-    process.stdout.write('请输入 -文章所在文件夹名 -要写入的文件名： \n');
-    process.stdout.write('-d （当前文件夹，默认文件catalogue.js）\n');
-    process.stdout.write('      or\n');
-    process.stdout.write('./ catalogue.js\n');
-    process.stdout.write('> ');
+}
 
-    rl.on('line', line => {
-        let parts = line.split(new RegExp('[ ]+'));
-        if (parts.length <= 1) {
-            if (parts[0] === '-d') {
-                load(_folder, _file)
-                    .then(data => {
-                        console.log(data);
-                        rl.close();
-                    })
-                    .catch(err => {
-                        process.stdout.write('文件夹：' + err.folder + '\n');
-                        process.stdout.write('文件：' + err.file + '\n');
-                        process.stdout.write('请输入正确的路径名： \n');
-                        process.stdout.write('> ');
-                    });
-            } else {
-                process.stdout.write('请输入正确的格式 (文章所在文件夹名 要写入的文件名)： \n');
-                process.stdout.write('> ');
-            }
-        } else {
-            load(parts[0], parts[1])
+rl.on('line', line => {
+    let parts = line.split(new RegExp('[ ]+'));
+    if (parts.length <= 1) {
+        if (parts[0] === '-d') {
+            load(_folder, _file)
                 .then(data => {
                     console.log(data);
                     rl.close();
@@ -71,11 +56,27 @@ if (_folder && _folder === '-d') {
                     process.stdout.write('请输入正确的路径名： \n');
                     process.stdout.write('> ');
                 });
+        } else {
+            process.stdout.write('请输入正确的格式 (文章所在文件夹名 要写入的文件名)： \n');
+            process.stdout.write('> ');
         }
-    });
-}
+    } else {
+        load(parts[0], parts[1])
+            .then(data => {
+                console.log(data);
+                rl.close();
+            })
+            .catch(err => {
+                process.stdout.write('文件夹：' + err.folder + '\n');
+                process.stdout.write('文件：' + err.file + '\n');
+                process.stdout.write('请输入正确的路径名： \n');
+                process.stdout.write('> ');
+            });
+    }
+});
 
 function load(_folder = './', _file = 'catalogue.js') {
+    if (_folder === '-d') _folder = './';
     _folder = path.resolve(__dirname, _folder);
     _file = path.resolve(__dirname, _file);
     return new Promise((resolve, reject) => {
