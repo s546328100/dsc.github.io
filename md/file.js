@@ -34,6 +34,7 @@ if (!_folder && !_file) {
             rl.close();
         })
         .catch(err => {
+            err.msg && process.stdout.write('error：' + err.msg + '\n');
             process.stdout.write('文件夹：' + err.folder + '\n');
             process.stdout.write('文件：' + err.file + '\n');
             process.stdout.write('请输入正确的路径名： \n');
@@ -51,6 +52,7 @@ rl.on('line', line => {
                     rl.close();
                 })
                 .catch(err => {
+                    err.msg && process.stdout.write('error：' + err.msg + '\n');
                     process.stdout.write('文件夹：' + err.folder + '\n');
                     process.stdout.write('文件：' + err.file + '\n');
                     process.stdout.write('请输入正确的路径名： \n');
@@ -67,6 +69,7 @@ rl.on('line', line => {
                 rl.close();
             })
             .catch(err => {
+                err.msg && process.stdout.write('error：' + err.msg + '\n');
                 process.stdout.write('文件夹：' + err.folder + '\n');
                 process.stdout.write('文件：' + err.file + '\n');
                 process.stdout.write('请输入正确的路径名： \n');
@@ -79,7 +82,7 @@ function load(_folder, _file) {
     if (_folder === '-d' && !_file) {
         _folder = './';
         _file = 'catalogue.js';
-    };
+    }
     _folder = path.resolve(__dirname, _folder);
     _file = path.resolve(__dirname, _file);
     return new Promise((resolve, reject) => {
@@ -87,9 +90,11 @@ function load(_folder, _file) {
             try {
                 let catalogues = await loadMd(_folder);
                 let file = await readFile(_file);
-                let reg = /\[((\n\s*)*{[^]*}(\n\s*)*)?]/g;
-                file = file.toString('utf8').replace(reg, JSON.stringify(catalogues));
-                await writeFile(_file, file);
+                let catalogues_reg = /\[((\n\s*)*({([^]+?)})?(\n\s*)*)?]/;
+                file = file.toString('utf8');
+                if (!catalogues_reg.test(file)) throw {msg: '没找到可替换内容位置，请确保catalogues = []'};
+                let f = file.replace(catalogues_reg, JSON.stringify(catalogues));
+                await writeFile(_file, f);
                 resolve('文章添加完毕！');
             } catch (err) {
                 err.folder = _folder;
@@ -104,8 +109,8 @@ async function load_md(dir, callback) {
     try {
         let files = await readdir(dir);
 
-        files = files.filter(fileName => (path.extname(fileName) === '.md' && path.basename(fileName, '.md') !== '关于我'));
-        if (files.length === 0) callback({});
+        files = files.filter(fileName => path.extname(fileName) === '.md' && path.basename(fileName, '.md') !== '关于我');
+        if (files.length === 0) callback({msg: '当前文件夹下没有md文件'});
 
         let catalogues = [];
 
@@ -124,10 +129,12 @@ async function load_md(dir, callback) {
             md5.update(fileName, 'uft8');
             let id = md5.digest('hex');
 
+            let ctime = new Date(status.ctime);
             catalogues.push({
                 id,
                 title: fileName,
-                createTime: new Date(status.ctime).getTime(),
+                year: ctime.getFullYear(),
+                createTime: ctime.getTime(),
                 abstract: file.length > 200 ? file + '...' : file
             });
         }

@@ -14,3 +14,12 @@ function dateFormat(date, fmt) {
     for (let k in o) if (new RegExp('(' + k + ')').test(fmt)) fmt = fmt.replace(RegExp.$1, RegExp.$1.length == 1 ? o[k] : ('00' + o[k]).substr(('' + o[k]).length));
     return fmt;
 }
+
+function groupArray(arr, props) {
+    let result = {};
+    arr.forEach(e => {
+        if (!result[e[props]]) result[e[props]] = [];
+        result[e[props]].push(e);
+    });
+    return result;
+}
