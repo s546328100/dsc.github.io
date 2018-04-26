@@ -45,7 +45,7 @@ rl.on('line', line => {
     let parts = line.split(new RegExp('[ ]+'));
     if (parts.length <= 1) {
         if (parts[0] === '-d') {
-            load(_folder, _file)
+            load(parts[0], '')
                 .then(data => {
                     console.log(data);
                     rl.close();
@@ -75,8 +75,11 @@ rl.on('line', line => {
     }
 });
 
-function load(_folder = './', _file = 'catalogue.js') {
-    if (_folder === '-d') _folder = './';
+function load(_folder, _file) {
+    if (_folder === '-d' && !_file) {
+        _folder = './';
+        _file = 'catalogue.js';
+    };
     _folder = path.resolve(__dirname, _folder);
     _file = path.resolve(__dirname, _file);
     return new Promise((resolve, reject) => {
@@ -101,8 +104,8 @@ async function load_md(dir, callback) {
     try {
         let files = await readdir(dir);
 
-        files = files.filter(fileName => path.extname(fileName) === '.md');
-        if (files.length === 0) return;
+        files = files.filter(fileName => (path.extname(fileName) === '.md' && path.basename(fileName, '.md') !== '关于我'));
+        if (files.length === 0) callback({});
 
         let catalogues = [];
 

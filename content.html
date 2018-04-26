@@ -41,15 +41,15 @@
                             <i class="iconfont icon-emoji_fill"></i>趣图</a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="about.html">
                             <i class="iconfont icon-people_fill"></i>关于</a>
                     </li>
                 </ul>
             </nav>
         </div>
-        <div class="content" style="margin-top: 20px">
+        <div class="content zoomIn animated" style="margin-top: 20px; display: none;">
             <section>
-                <article class="animate-box">
+                <article>
                     <header>
                         <!-- <h1 class="title">
                             哈哈哈哈44哈哈哈哈哈哈啊哈哈哈哈哈22哈哈哈哈哈哈啊哈学习
@@ -98,7 +98,7 @@
                 </article>
             </section>
         </div>
-        <div class="footer">
+        <div class="footer fadeInUpBig animated">
             <p>2017 dsc's Blog - Hosted by gitHub</p>
             <p>123</p>
         </div>
@@ -129,7 +129,7 @@
     let index = GetRequest();
 
     let info = data.getCatalogueInfo(index);
-    
+
     if (!info) window.location.href = '404.html';
 
     $.get(`https://api.github.com/repos/s546328100/dsc.github.io/issues?creator=s546328100&labels=${info.id}`, val => {
@@ -144,6 +144,7 @@
             if (data.status !== 200) window.location.href = '404.html';
         }
     })
+
 
     $('header').html(`  <h1 class="title">
                             ${info.title}
@@ -160,6 +161,7 @@
                         </div>`);
     if (info.next) $('.post-nav-prev').html(`<a href="content.html?${index + 1}" rel="prev" title="${info.next}"><span class="sp">${info.next}</span><i class="iconfont icon-xiangyou1"></i></a>`);
     if (info.prev) $('.post-nav-next').html(`<a href="content.html?${index - 1}" rel="next" title="${info.prev}"><i class="iconfont icon-xiangzuo1"></i> <span class="sp">${info.prev}</span></a>`);
+    $('.content').show();
 
     let gitment = new Gitment({
         id: info.id,
@@ -172,6 +174,8 @@
         },
     })
     gitment.render('container')
+
+
 
     function GetRequest() {
         var url = location.search;
