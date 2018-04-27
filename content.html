@@ -36,10 +36,10 @@
                         <a href="archives.html">
                             <i class="iconfont icon-activity_fill"></i>归档</a>
                     </li>
-                    <li>
+                    <!-- <li>
                         <a href="#">
                             <i class="iconfont icon-emoji_fill"></i>趣图</a>
-                    </li>
+                    </li> -->
                     <li>
                         <a href="about.html">
                             <i class="iconfont icon-people_fill"></i>关于</a>
@@ -156,29 +156,28 @@
                             <a href="#container" itemprop="discussionUrl">
                                 <span id="comments">0</span>
                             </a>
-                            <span class="post-meta-divider">|</span>
-                            <span>阅读次数 205</span>
                         </div>`);
     if (info.next) $('.post-nav-prev').html(`<a href="content.html?${index + 1}" rel="prev" title="${info.next}"><span class="sp">${info.next}</span><i class="iconfont icon-xiangyou1"></i></a>`);
     if (info.prev) $('.post-nav-next').html(`<a href="content.html?${index - 1}" rel="next" title="${info.prev}"><i class="iconfont icon-xiangzuo1"></i> <span class="sp">${info.prev}</span></a>`);
     
-    let gitment = new Gitment({
-        id: info.id,
-        title: info.title,
-        owner: 's546328100',
-        repo: 'dsc.github.io',
-        oauth: {
-            client_id: '007464c4121cc1ad2c46',
-            client_secret: '0947001f59de45b8c6eb142f459b099af6814535',
-        },
-    })
     
     setTimeout(() => {
         $('.content').show();
-        gitment.render('container');
     }, 150);
-
-
+    
+    setTimeout(() => {
+        let gitment = new Gitment({
+            id: info.id,
+            title: info.title,
+            owner: 's546328100',
+            repo: 'dsc.github.io',
+            oauth: {
+                client_id: '007464c4121cc1ad2c46',
+                client_secret: '0947001f59de45b8c6eb142f459b099af6814535',
+            },
+        })
+        gitment.render('container');
+    }, 350);
 
     function GetRequest() {
         var url = location.search;

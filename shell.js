@@ -80,8 +80,8 @@ rl.on('line', line => {
 
 function load(_folder, _file) {
     if (_folder === '-d' && !_file) {
-        _folder = './';
-        _file = 'catalogue.js';
+        _folder = 'md';
+        _file = 'md/catalogue.js';
     }
     _folder = path.resolve(__dirname, _folder);
     _file = path.resolve(__dirname, _file);
@@ -118,10 +118,9 @@ async function load_md(dir, callback) {
             let status = await stat(dir + '/' + files[i]);
             let file = await readFile(dir + '/' + files[i]);
 
-            file = file
-                .toString('utf8')
-                .replace(/\s/g, '')
-                .substr(0, 210);
+            file = file.toString('utf8');
+
+            file = file.match(/[^\x00-\xff]/g).join('').substr(0, 210);
 
             let fileName = files[i].split('.')[0];
 
