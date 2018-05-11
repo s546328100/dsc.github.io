@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="http://at.alicdn.com/t/font_508783_ktw1kqv5bb21emi.css"></link>
     <link href="css/markdown.css" rel="stylesheet">
     <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+    <link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/atom-one-light.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -115,6 +116,7 @@
 <script src="https://cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 <script src="js/main.js"></script>
 <script src="js/particles.js"></script>
@@ -138,7 +140,10 @@
     $.ajax({
         type: 'get',
         url: `http://dusuchao.xin/md/${info.title}.md`,
-        success: data => $('#preview')[0].innerHTML = marked(data),
+        success: data => {
+            $('#preview')[0].innerHTML = marked(data);
+            hljs.initHighlightingOnLoad();
+        },
         error: data => {
             if (data.status !== 200) window.location.href = '404.html';
         }
