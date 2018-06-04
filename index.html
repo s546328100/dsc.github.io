@@ -1,152 +1,86 @@
-<!DOCTYPE HTML>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>dsc's Blog</title>
+    <link rel="shortcut icon" href="images/gaxiao.png">
 
     <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="css/animate.css">
-    <link rel="stylesheet" href="http://at.alicdn.com/t/font_508783_1ntsr507tffde7b9.css"></link>
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_508783_2rzp06y41zvt2o6r.css"></link>
 </head>
 
 <body>
-    <div class="ss" id="particles-js"></div>
-    <div class="container areas-i">
-        <div class="header animate-box">
+    <ul class="cb-slideshow">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+
+    <div class="profile">
+        <div class="header">
             <div class="avatar"></div>
-            <p class="name animate-box">Dsc</p>
-            <span class="desc animate-box">Welcome to here!</span>
-        </div>
-        <nav style="text-align: center;">
-            <ul class="nav-i animate-box">
-                <li>
-                    <a href="#"><i class="iconfont icon-homepage_fill"></i>首页</a>
-                </li>
-                <li>
-                    <a href="archives.html"><i class="iconfont icon-activity_fill"></i>归档</a>
-                </li>
-                <!-- <li>
-                    <a href="#"><i class="iconfont icon-emoji_fill"></i>趣图</a>
-                </li> -->
-                <li>
-                    <a href="about.html"><i class="iconfont icon-people_fill"></i>关于</a>
-                </li>
-            </ul>
-        </nav>
-        <div class="content radius animate-box">
-            <section>
-                <!-- <article class="animate-box">
-          <header>
-            <h1 class="title">
-              <a class="link" href="content.html">
-                哈哈哈哈44哈哈哈哈哈哈啊哈哈哈哈哈22哈哈哈哈哈哈啊哈学习
-              </a>
-            </h1>
-            <div class="post-meta">
-                <span>发表于 2018-01-30</span>
-                <span class="post-meta-divider">|</span>
-                <span><i class="iconfont icon-chat"></i></span>
-                <a href="/chrome-devtools-performance-monitor.html#SOHUCS" itemprop="discussionUrl">
-                    <span>2</span>
-                </a>
-                <span class="post-meta-divider">|</span>
-                <span>阅读次数 205</span>
-            </div>
-          </header>
-          <div class="post-body">
-            <span style="text-align: justify;">
-                前言：之前的文章有讲过微服务的权限系列和网关实现，都是孤立存在，本文将整合后端服务与网关、权限系统。安全权限部分的实现还讲解了基于前置验证的方式实现，但是由于与业务联系比较紧密，没有具体的示例。业务权限与业务联系非常密切，本次的整合项目将会把这部分的操作权限校验实现基于具体的业务服务。
-                1. 前文回顾与整合设计在认证鉴权与API权限控制在微服务架构中的设计与实现系列文章中，讲解了在微服务架构中Au ...
-            </span>
-            
-            <div class="post-button">
-              <a class="btn">
-                阅读全文 »
-              </a>
-            </div>
-          </div>
-          <footer>
-            <div class="post-eof"></div>
-          </footer>
-        </article> -->
-            </section>
-        </div>
-        <div class="footer fadeInUpBig animated">
-            <p>2017 dsc's Blog - Hosted by gitHub</p>
-        </div>
-    </div>
-    <div class="gototop">
-        <div class="js-gotop">
-            <i class="iconfont icon-arrows-4-7"></i>
+            <p class="name">Dsc</p>
+            <hr class="divider long">
+            <span class="desc">Welcome to the dsc’s blog！我是dsc，nodeJs开发者，前端小白。</span>
+            <hr class="divider short">
+
+            <nav class="navigation left">
+                <ul class="links">
+                    <li class="expanded">
+                        <a href="blog.html">Blog</a>
+                    </li>
+                    <li class="expanded">
+                        <a href="https://about.bestswifter.com/">关于</a>
+                    </li>
+                    <li class="expanded">
+                        <a href="https://wx.xiaomiquan.com/mweb/views/joingroup/join_group.html?group_id=8481441222&amp;amp;secret=2guotf5fnqa9ovxxt7mac6rafzwczkw2&amp;amp;extra=d962a3de2e1f1a701f109c50f79e5acd61f26831192d1d7e419e500e5b0832be">联系我</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <nav class="navigation right">
+                <ul class="social expanded">
+                    <li class="social item hvr-grow-rotate">
+                        <a href="https://juejin.im/user/5ad964626fb9a07ab4582b21" title="@dsc 的掘金" target="_blank">
+                            <i class="social iconfont icon-juejin"></i>
+                            <span class="label">掘金</span>
+                        </a>
+                    </li>
+
+                    <!-- Github -->
+                    <li class="social item hvr-grow-rotate">
+                        <a href="https://github.com/s546328100" title="@dsc 的 Github" target="_blank">
+                            <i class="social iconfont icon-github"></i>
+                            <span class="label">Github</span>
+                        </a>
+                    </li>
+
+                    <!-- Weibo -->
+                    <li class="social item hvr-grow-rotate">
+                        <a href="https://weibo.com/zhumusu" title="@zhumusu" target="_blank">
+                            <i class="social iconfont icon-weibo"></i>
+                            <span class="label">weibo</span>
+                        </a>
+                    </li>
+
+                    <!-- Email -->
+                    <li class="social item hvr-grow-rotate">
+                        <a href="mailto:546328100@qq.com" title="邮件联系我">
+                            <i class="social iconfont icon-weibiaoti103"></i>
+                            <span class="label">Email</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
         </div>
     </div>
 </body>
-
-<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://cdn.bootcss.com/jquery-easing/1.4.1/jquery.easing.min.js"></script>
-<script src="https://cdn.bootcss.com/waypoints/4.0.1/jquery.waypoints.min.js"></script>
-<script src="https://cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
-
-<script src="js/main.js"></script>
-<script src="js/particles.js"></script>
-<script src="js/util.js"></script>
-
-<script src="md/catalogue.js"></script>
-
-<script>
-    let jsonDate = new JsonDate();
-    let catalogues = jsonDate.getCatalogues();
-
-    let html = '';
-    $.each(catalogues, (i, item) => {
-        html += `<article class="animate-box">
-          <header>
-            <h1 class="title">
-              <a class="link" href="content.html?${i}">
-                ${item.title}
-              </a>
-            </h1>
-            <div class="post-meta">
-                <span>发表于 ${dateFormat(item.createTime)}</span>
-                <span class="post-meta-divider">|</span>
-                <span><i class="iconfont icon-chat"></i></span>
-                <a href="content.html?${i}#container" itemprop="discussionUrl">
-                    <span id="comments${i}">0</span>
-                </a>
-            </div>
-          </header>
-          <div class="post-body">
-            ${item.abstract}
-            <div class="post-button">
-              <a class="btn" href="content.html?${i}">
-                阅读全文 »
-              </a>
-            </div>
-          </div>
-          <footer>
-            <div class="post-eof"></div>
-          </footer>
-        </article>`;
-    });
-    $("section").html(html);
-
-    $.get(`https://api.github.com/repos/s546328100/dsc.github.io/issues?creator=s546328100`, data => {
-        let comments = data.map(m => {
-            return {
-                title: m.title,
-                comments: m.comments
-            };
-        });
-
-        comments.forEach(comment => {
-            catalogues.forEach((catalogue, i) => {
-                if (comment.title === catalogue.title) $(`#comments${i}`).text(comment.comments);
-            })
-        });
-    })
-</script>
 
 </html>

@@ -1,0 +1,72 @@
+a {
+    border: none;
+}
+
+nav a {
+    border-bottom: 1px solid #999;
+}
+
+.areas-i {
+    grid-template-columns: 80px repeat(13, 1fr);
+    grid-template-areas:
+        '. . c c c c c c c c c c . .'
+        'n . c c c c c c c c c c . .'
+        '. . c c c c c c c c c c . .'
+        'f f f f f f f f f f f f f f';
+}
+
+@media (max-width: 900px) {
+    .areas-i {
+        grid-template-columns: 80px repeat(13, 1fr);
+        grid-template-areas:
+            '. c c c c c c c c c c c c .'
+            'n c c c c c c c c c c c c .'
+            '. c c c c c c c c c c c c .'
+            'f f f f f f f f f f f f f f';
+    }
+}
+
+.post-nav {
+    display: table;
+    margin-top: 15px;
+    width: 100%;
+    border-top: 1px solid #eee;
+}
+
+.post-nav-divider {
+    display: table-cell;
+    width: 10%;
+}
+
+.post-nav-item {
+    display: table-cell;
+    padding: 10px 0 0 0;
+    width: 45%;
+    vertical-align: top;
+}
+
+.post-nav-item a {
+    position: relative;
+    display: block;
+    line-height: 25px;
+    font-size: 14px;
+    color: #555;
+    border-bottom: none;
+}
+
+.post-nav-item a:hover {
+    color: #222;
+    border-bottom: none;
+}
+
+.post-nav-item a:active {
+    top: 2px;
+}
+
+.post-nav-next {
+    text-align: left;
+}
+
+.post-nav-prev {
+    text-align: right;
+}

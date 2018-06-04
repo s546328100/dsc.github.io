@@ -2,6 +2,7 @@
     let contentWayPoint = function() {
         let i = 0;
         $('.animate-box').waypoint(
+            //第1个参数为waypoints事件响应时所执行的代码，是一个匿名函数即可
             function(direction) {
                 if (direction === 'down' && !$(this.element).hasClass('animated-fast')) {
                     i++;
@@ -11,16 +12,8 @@
                             var el = $(this);
                             setTimeout(
                                 () => {
-                                    let effect = el.data('animate-effect');
-                                    if (effect === 'fadeIn') {
-                                        el.addClass('fadeIn animated-fast');
-                                    } else if (effect === 'fadeInLeft') {
-                                        el.addClass('fadeInLeft animated-fast');
-                                    } else if (effect === 'fadeInRight') {
-                                        el.addClass('fadeInRight animated-fast');
-                                    } else {
-                                        el.addClass('fadeInUp animated-fast');
-                                    }
+                                    el.addClass('fadeInUp animated-fast');
+
                                     el.removeClass('item-animate');
                                 },
                                 k * 200,
@@ -30,20 +23,25 @@
                     }, 100);
                 }
             },
-            {offset: '85%'}
+            //第2个参数为偏移量,本例即该div到窗口高度90%时触发
+            {offset: '90%'}
         );
     };
 
     let goToTop = function() {
+        $('html, body').animate(
+            {
+                scrollTop: $('html').offset().top
+            },
+            500,
+            'easeInOutExpo'
+        );
+    };
+
+    let clickToTop = function() {
         $('.js-gotop').on('click', function(event) {
             event.preventDefault();
-            $('html, body').animate(
-                {
-                    scrollTop: $('html').offset().top
-                },
-                500,
-                'easeInOutExpo'
-            );
+            goToTop();
             return false;
         });
 
@@ -53,46 +51,13 @@
                 $('.gototop').addClass('active');
             } else {
                 $('.gototop').removeClass('active');
-            } 
-        });
-    };
-
-    let sidebar = function() {
-        $('.arrow.in').on('click', function() {
-            let parent = $(this)
-                .parent()
-                .parent();
-            if (parent.attr('class').includes('areas-s')) {
-                parent.removeClass('areas-s');
-                parent.addClass('areas-c').addClass('pulse animated');
-
-                $(this)
-                    .parent()
-                    .removeClass('show');
-                $('.arrow.out').removeAttr('style');
             }
         });
-        $('.arrow.out').on('click', function() {
-            let next = $(this).next();
-            if (next.attr('class').includes('areas-c')) {
-                next.removeClass('areas-c');
-                next.addClass('areas-s').removeClass('pulse animated');
-            }
-            $(this).hide();
-            $('.sidebar').addClass('show');
-        });
-        // $('.arrow').mouseover(function() {
-        //     $(this).addClass('flash animated');
-
-        //     setTimeout(() => {
-        //         $(this).removeClass('flash animated');
-        //     }, 500);
-        // });
     };
 
     $(function() {
         contentWayPoint();
+        clickToTop();
         goToTop();
-        sidebar();
     });
 })();
