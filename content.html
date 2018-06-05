@@ -16,6 +16,15 @@
 </head>
 
 <body>
+    <div class="sp">
+        <div class="spinner">
+            <div class="rect1"></div>
+            <div class="rect2"></div>
+            <div class="rect3"></div>
+            <div class="rect4"></div>
+            <div class="rect5"></div>
+        </div>
+    </div>
     <div class="container areas-i">
         <nav class="animate-box">
             <ul class="nav-i">
@@ -88,7 +97,7 @@
     </div>
 </body>
 
-<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://cdn.bootcss.com/jquery-easing/1.4.1/jquery.easing.min.js"></script>
 <script src="https://cdn.bootcss.com/waypoints/4.0.1/jquery.waypoints.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
@@ -118,6 +127,7 @@
             hljs.initHighlightingOnLoad();
             showImage();
             blank();
+            $('.sp').hide('slow');
         },
         error: data => {
             if (data.status !== 200) window.location.href = '404.html';
@@ -138,20 +148,18 @@
     if (info.next) $('.post-nav-prev').append(`<a href="content.html?${index + 1}" rel="prev" title="${info.next}"><span class="sp">${info.next}</span><i class="iconfont icon-xiangyou1"></i></a>`);
     if (info.prev) $('.post-nav-next').append(`<a href="content.html?${index - 1}" rel="next" title="${info.prev}"><i class="iconfont icon-xiangzuo1"></i> <span class="sp">${info.prev}</span></a>`);
 
-    setTimeout(() => {
-        let gitment = new Gitment({
-            id: info.id,
-            title: info.title,
-            owner: 's546328100',
-            repo: 'dsc.github.io',
-            oauth: {
-                client_id: '007464c4121cc1ad2c46',
-                client_secret: '0947001f59de45b8c6eb142f459b099af6814535',
-            },
-        })
-        // gitment.loadMeta()
-        gitment.render('container');
-    }, 350);
+    let gitment = new Gitment({
+        id: info.id,
+        title: info.title,
+        owner: 's546328100',
+        repo: 'dsc.github.io',
+        oauth: {
+            client_id: '007464c4121cc1ad2c46',
+            client_secret: '0947001f59de45b8c6eb142f459b099af6814535',
+        },
+    })
+    // gitment.loadMeta()
+    gitment.render('container');
 
     function GetRequest() {
         var url = location.search;

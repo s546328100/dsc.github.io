@@ -94,7 +94,6 @@ function showImage() {
             img = new Image();
             img.src = src;
             img.style.cssText = `
-                margin: 0 auto;
                 position:fixed;
                 left:0; 
                 right:0; 

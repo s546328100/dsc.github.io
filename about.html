@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>dsc's Blog</title>
+    <link rel="shortcut icon" href="images/gaxiao.png">
+
+    <link rel="stylesheet" href="css/blog.css">
+    <link rel="stylesheet" href="css/content.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_508783_1ntsr507tffde7b9.css"></link>
+    <link href="css/markdown.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="sp">
+        <div class="spinner">
+            <div class="rect1"></div>
+            <div class="rect2"></div>
+            <div class="rect3"></div>
+            <div class="rect4"></div>
+            <div class="rect5"></div>
+        </div>
+    </div>
+    <div class="container areas-i">
+        <nav class="animate-box">
+            <ul class="nav-i">
+                <li>
+                    <a href="blog.html">
+                        <i class="iconfont icon-homepage_fill"></i>主页</a>
+                </li>
+                <li>
+                    <a href="archives.html">
+                        <i class="iconfont icon-activity_fill"></i>归档</a>
+                </li>
+                <li>
+                    <a href="about.html">
+                        <i class="iconfont icon-people_fill"></i>关于</a>
+                </li>
+            </ul>
+        </nav>
+        <div class="content radius animate-box">
+            <section>
+                <article class="animate-box">
+                    <header class="animate-box">
+                        <h1 style="margin: -20px 0 20px 0">关于我</h1>
+                    </header>
+                    <div class="markdown-body" id="preview" class="animate-box"></div>
+                    <footer>
+                        <div class="post-nav">
+                        </div>
+                    </footer>
+
+                    <div id="container" style="text-align: left; margin-top: 50px;"></div>
+                </article>
+            </section>
+        </div>
+        <div class="footer animate-box">
+            <p>2017 dsc's Blog - Hosted by gitHub</p>
+        </div>
+        <div class="gototop">
+            <div class="js-gotop">
+                <i class="iconfont icon-arrows-4-7"></i>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+<script src="https://cdn.bootcss.com/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+<script src="js/main.js"></script>
+
+<script>
+    $.ajax({
+        type: 'get',
+        url: `http://dusuchao.xin/md/关于我.md`,
+        success: data => {
+            $('#preview')[0].innerHTML = marked(data);
+            $('.sp').hide('slow');
+        },
+        error: data => {
+            if (data.status !== 200) window.location.href = '404.html';
+        }
+    })
+</script>
+
+<script>
+
+</script>
+
+</html>
