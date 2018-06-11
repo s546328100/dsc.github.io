@@ -141,12 +141,12 @@ a:hover {
 
 .areas-i {
     grid-template-rows: 260px 60px 1fr 90px;
-    grid-template-columns: 260px 1px repeat(10, 1fr);
+    grid-template-columns: 260px 1px 20px repeat(10, 1fr);
     grid-template-areas:
-        'h s c c c c c c c c . .'
-        'n s c c c c c c c c . .'
-        '. s c c c c c c c c . .'
-        'f f f f f f f f f f f f';
+        'h s . c c c c c c c c c .'
+        'n s . c c c c c c c c c .'
+        '. s . c c c c c c c c c .'
+        'f f f f f f f f f f f f f';
 }
 
 @media (max-width: 767px) {

@@ -9,14 +9,14 @@
     <link rel="stylesheet" href="css/blog.css">
     <link rel="stylesheet" href="css/content.css">
     <link rel="stylesheet" href="css/animate.css">
-    <link rel="stylesheet" href="http://at.alicdn.com/t/font_508783_1ntsr507tffde7b9.css"></link>
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_508783_5m957m5lc9i6yldi.css"></link>
     <link href="css/markdown.css" rel="stylesheet">
     <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
     <link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/atom-one-light.min.css" rel="stylesheet">
 </head>
 
 <body>
-    <div class="sp">
+    <div class="spinners">
         <div class="spinner">
             <div class="rect1"></div>
             <div class="rect2"></div>
@@ -127,7 +127,7 @@
             hljs.initHighlightingOnLoad();
             showImage();
             blank();
-            $('.sp').hide('slow');
+            $('.spinners').hide('slow');
         },
         error: data => {
             if (data.status !== 200) window.location.href = '404.html';

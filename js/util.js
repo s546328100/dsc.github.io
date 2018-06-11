@@ -65,60 +65,71 @@ function showImage() {
         closeFade();
     });
     document.querySelectorAll('img').forEach(v => {
-        v.addEventListener('click', function(e) {
-            // 注册事件
-            src = e.target.src;
-            w = e.target.naturalWidth;
-            h = e.target.naturalHeight;
+        console.log(v);
+        w = v.naturalWidth;
+        h = v.naturalHeight;
+        tw = v.offsetWidth;
+        th = v.offsetHeight;
 
-            // 创建遮罩层
-            div = document.createElement('div');
-            div.style.cssText = `
-                position:fixed;
-                left:0;
-                top:0;
-                bottom:0;
-                right:0;
-                background-color:#fff;
-                transition:opacity .3s;
-                opacity:0;
-                z-index: 998;
+        if (w > tw || h > th) {
+            v.style.cssText = `
+                cursor: zoom-in;
             `;
-            document.body.appendChild(div);
-            setTimeout(function() {
-                div.style.opacity = 1;
-            }, 0);
-            // (此处可以加loading)
+            v.addEventListener('click', function(e) {
+                // 注册事件
+                src = e.target.src;
 
-            // 创建副本
-            img = new Image();
-            img.src = src;
-            img.style.cssText = `
-                position:fixed;
-                left:0; 
-                right:0; 
-                top:0; 
-                bottom:0; 
-                margin: auto;
-                transition:opacity .8s;
-                opacity:0;
-                z-index: 999;
-            `;
-            img.onload = function() {
-                document.body.appendChild(img);
-
-                wh = window.innerHeight;
-                ww = window.innerWidth;
-
-                // 延迟写入否则不会有动画
+                // 创建遮罩层
+                div = document.createElement('div');
+                div.style.cssText = `
+                    position:fixed;
+                    left:0;
+                    top:0;
+                    bottom:0;
+                    right:0;
+                    background-color:#fff;
+                    transition:opacity .3s;
+                    opacity:0;
+                    z-index: 998;
+                `;
+                document.body.appendChild(div);
                 setTimeout(function() {
-                    img.style.opacity = 1;
-                    if (w > ww) img.style.width = ww + 'px';
-                    if (h > wh) img.style.height = wh + 'px';
-                    // 点击隐藏
-                    div.onclick = img.onclick = closeMove;
+                    div.style.opacity = 1;
                 }, 0);
-            };
-        }); //end event
+                // (此处可以加loading)
+
+                // 创建副本
+                img = new Image();
+                img.src = src;
+                img.style.cssText = `
+                    cursor: zoom-out;
+                    position:fixed;
+                    left:0; 
+                    right:0; 
+                    top:0; 
+                    bottom:0; 
+                    margin: auto;
+                    transition:opacity .8s;
+                    opacity:0;
+                    z-index: 999;
+                `;
+                img.onload = function() {
+                    document.body.appendChild(img);
+
+                    // 延迟写入否则不会有动画
+                    setTimeout(function() {
+                        img.style.opacity = 1;
+
+                        wh = window.innerHeight;
+                        ww = window.innerWidth;
+
+                        if (w > ww) img.style.width = ww + 'px';
+                        if (h > wh) img.style.height = wh + 'px';
+                        // 点击隐藏
+                        div.onclick = img.onclick = closeMove;
+                    }, 0);
+                };
+            }); //end event
+        }
     }); //end forEach
 }
