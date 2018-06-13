@@ -2,15 +2,11 @@ a {
     border: none;
 }
 
-nav a {
-    border-bottom: 1px solid #999;
-}
-
 .areas-i {
     grid-template-columns: 80px repeat(13, 1fr);
     grid-template-areas:
         '. . c c c c c c c c c c . .'
-        'n . c c c c c c c c c c . .'
+        '. . c c c c c c c c c c . .'
         '. . c c c c c c c c c c . .'
         'f f f f f f f f f f f f f f';
 }
@@ -20,12 +16,13 @@ nav a {
         grid-template-columns: 80px repeat(13, 1fr);
         grid-template-areas:
             '. c c c c c c c c c c c c .'
-            'n c c c c c c c c c c c c .'
+            '. c c c c c c c c c c c c .'
             '. c c c c c c c c c c c c .'
             'f f f f f f f f f f f f f f';
     }
 }
 
+/* 文章底部导航 */
 .post-nav {
     display: table;
     margin-top: 15px;
@@ -71,6 +68,7 @@ nav a {
     text-align: right;
 }
 
+/* 加载 */
 .spinners {
     position: fixed;
     width: 100%;
@@ -145,4 +143,79 @@ nav a {
         transform: scaleY(1);
         -webkit-transform: scaleY(1);
     }
+}
+
+/* 导航栏 */
+.card-holder {
+    position: fixed;
+    top: -100px;
+    bottom: 0px;
+    width: 0px;
+    height: 100px;
+    margin-top:auto;
+    margin-bottom:auto;
+    overflow: visible;
+}
+
+.card-wrapper {
+    display: inline-block;
+    float: right;
+    clear: both;
+}
+
+.card {
+    position: relative;
+    left: 42px;
+    padding: 5px 42px 5px 32px;
+    margin: 6px;
+    x-box-shadow: 0 0 8px 0px rgba(0, 0, 0, 0.5);
+    box-shadow: 9px 0 9px -8px rgba(0, 0, 0, 0.5);
+    background: #fff;
+    transition: all 0.3s ease-in-out 0.1s;
+}
+
+.card:hover {
+    position: relative;
+    left: 100%;
+    margin-left: -12px;
+    box-shadow: 0 -6px 9px -6px rgba(0, 0, 0, 0.5), 0 9px 9px -6px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease-in-out;
+}
+
+.card-content {
+    display: inline-block;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.card-icon {
+    position: absolute;
+    left: 73px;
+    top: -3.8px;
+}
+
+.card-icon .iconfont::before {
+    font-size: 25px;
+    color: #fff;
+}
+
+.bg-01 {
+    background: #539770;
+}
+.bg-02 {
+    background: #4b7d74;
+}
+.bg-03 {
+    background: #8dc2bc;
+}
+.bg-04 {
+    background: #edd6b4;
+}
+.bg-05 {
+    background: #be7467;
+}
+.bg-06 {
+    background: #e2ae63;
 }
