@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="css/blog.css">
     <link rel="stylesheet" href="css/content.css">
     <link rel="stylesheet" href="css/animate.css">
-    <link rel="stylesheet" href="http://at.alicdn.com/t/font_508783_5m957m5lc9i6yldi.css"></link>
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_508783_kxudw0jynq.css"></link>
     <link href="css/markdown.css" rel="stylesheet">
     <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
     <link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/atom-one-light.min.css" rel="stylesheet">
@@ -30,7 +30,9 @@
             <a href='blog.html'>
                 <div class='card bg-01'>
                     <span class='card-content'>首页</span>
-                    <span class="card-icon"><i class="iconfont icon-homepage_fill"></i></span>
+                    <span class="card-icon">
+                        <i class="iconfont icon-homepage_fill"></i>
+                    </span>
                 </div>
             </a>
         </div>
@@ -38,7 +40,9 @@
             <a href='#'>
                 <div class='card bg-02'>
                     <span class='card-content'>归档</span>
-                    <span class="card-icon"><i class="iconfont icon-activity_fill"></i></span>
+                    <span class="card-icon">
+                        <i class="iconfont icon-activity_fill"></i>
+                    </span>
                 </div>
             </a>
         </div>
@@ -46,9 +50,18 @@
             <a href='about.html'>
                 <div class='card bg-03'>
                     <span class='card-content'>关于</span>
-                    <span class="card-icon"><i class="iconfont icon-people_fill"></i></span>
+                    <span class="card-icon">
+                        <i class="iconfont icon-people_fill"></i>
+                    </span>
                 </div>
             </a>
+        </div>
+        <div class='card-wrapper animate-box'>
+            <div class='card bg-04' id="sidebar-inner">
+                <span class="card-icon">
+                    <i class="iconfont icon-mulu"></i>
+                </span>
+            </div>
         </div>
     </div>
     <div class="container areas-i">
@@ -135,9 +148,25 @@
         success: data => {
             $('#preview')[0].innerHTML = marked(data);
             hljs.initHighlightingOnLoad();
-            showImage();
-            blank();
             $('.spinners').hide('slow');
+
+            window.onload = () => {
+                showImage();
+                blank();
+
+                let html = '';
+                $(":header").each(function (i) {
+                    $(this).attr({ id: `anchor${i}` })
+
+                    html += `<div class="anchor card-content" style="display:block;">
+                            <a href="#anchor${i}">${$(this).text()}</a>
+                        </div>
+                    `;
+                });
+                $('#sidebar-inner').append(html);
+
+                goToAnchor();
+            }
         },
         error: data => {
             if (data.status !== 200) window.location.href = '404.html';
@@ -179,10 +208,6 @@
             return parseInt(strs[0]);
         }
     }
-</script>
-
-<script>
-
 </script>
 
 </html>

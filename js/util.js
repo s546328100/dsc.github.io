@@ -30,6 +30,25 @@ function blank() {
     });
 }
 
+function goToAnchor() {
+    $('a[href*=\\#]').click(function() {
+        if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+            var $target = $(this.hash);
+            $target = ($target.length && $target) || $('[name=' + this.hash.slice(1) + ']');
+            if ($target.length) {
+                var targetOffset = $target.offset().top;
+                $('html,body').animate(
+                    {
+                        scrollTop: targetOffset
+                    },
+                    500
+                );
+                return false;
+            }
+        }
+    });
+};
+
 function showImage() {
     let container = document.documentElement || document.body;
     let img, div, src;
@@ -65,13 +84,14 @@ function showImage() {
         closeFade();
     });
     document.querySelectorAll('img').forEach(v => {
-        console.log(v);
         w = v.naturalWidth;
         h = v.naturalHeight;
         tw = v.offsetWidth;
         th = v.offsetHeight;
-
+        // console.log(w);
+        // console.log(tw);
         if (w > tw || h > th) {
+            // console.log(v);
             v.style.cssText = `
                 cursor: zoom-in;
             `;

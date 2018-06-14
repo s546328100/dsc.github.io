@@ -46,12 +46,23 @@
         });
 
         $(window).scroll(function() {
-            let $win = $(window);
-            if ($win.scrollTop() > 200) {
-                $('.gototop').addClass('active');
-            } else {
-                $('.gototop').removeClass('active');
-            }
+            let currentScroll = $(window).scrollTop();
+            if (currentScroll > 200) $('.gototop').addClass('active');
+            else $('.gototop').removeClass('active');
+
+            let currentSection;
+            $(':header').each(function(i) {
+                let divPosition = $(this).offset().top;
+                if (divPosition - 1 < currentScroll) {
+                    $currentSection = $(this);
+                }
+
+                if (currentScroll > 100) {
+                    let id = $currentSection.attr('id');
+                    $('a[href*=\\#]').removeClass('card-activate');
+                    $('a[href=\\#' + id).addClass('card-activate');
+                }
+            });
         });
     };
 

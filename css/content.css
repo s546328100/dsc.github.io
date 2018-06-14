@@ -148,13 +148,14 @@ a {
 /* 导航栏 */
 .card-holder {
     position: fixed;
-    top: -100px;
+    width: 0;
+    /* top: -100px;
     bottom: 0px;
-    width: 0px;
     height: 100px;
     margin-top:auto;
-    margin-bottom:auto;
+    margin-bottom:auto; */
     overflow: visible;
+    z-index: 888;
 }
 
 .card-wrapper {
@@ -180,6 +181,11 @@ a {
     margin-left: -12px;
     box-shadow: 0 -6px 9px -6px rgba(0, 0, 0, 0.5), 0 9px 9px -6px rgba(0, 0, 0, 0.5);
     transition: all 0.3s ease-in-out;
+    max-height: 1000px;
+}
+
+.card-activate {
+    color: #000;
 }
 
 .card-content {
@@ -192,8 +198,12 @@ a {
 
 .card-icon {
     position: absolute;
-    left: 73px;
-    top: -3.8px;
+    right: 6px;
+    bottom: 0;
+    top: -18px;
+    height: 32px;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 .card-icon .iconfont::before {
@@ -212,6 +222,8 @@ a {
 }
 .bg-04 {
     background: #edd6b4;
+    max-height: 32px;
+    transition: all 0.8s ease-in-out;
 }
 .bg-05 {
     background: #be7467;
