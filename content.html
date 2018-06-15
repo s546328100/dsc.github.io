@@ -57,10 +57,14 @@
             </a>
         </div>
         <div class='card-wrapper animate-box'>
-            <div class='card bg-04' id="sidebar-inner">
+            <div class='card bg-04'>
                 <span class="card-icon">
                     <i class="iconfont icon-mulu"></i>
                 </span>
+                <div id="sidebar-inner"></div>
+                <div class="anchor card-content" style="display:block;">
+                    <a href="#comment">留言</a>
+                </div>
             </div>
         </div>
     </div>
@@ -105,7 +109,7 @@
                         </div>
                     </footer>
 
-                    <div id="container" style="text-align: left; margin-top: 50px;"></div>
+                    <div id="comment" style="text-align: left; margin-top: 50px;"></div>
                 </article>
             </section>
         </div>
@@ -149,7 +153,6 @@
             $('#preview')[0].innerHTML = marked(data);
             hljs.initHighlightingOnLoad();
             $('.spinners').hide('slow');
-
             window.onload = () => {
                 showImage();
                 blank();
@@ -198,7 +201,7 @@
         },
     })
     // gitment.loadMeta()
-    gitment.render('container');
+    gitment.render('comment');
 
     function GetRequest() {
         var url = location.search;

@@ -58,6 +58,7 @@ function showImage() {
             return false;
         }
         div.style.opacity = 0;
+        document.body.style.overflow = '';
 
         // 延迟移除dom
         setTimeout(function() {
@@ -70,8 +71,11 @@ function showImage() {
         if (div == undefined) {
             return false;
         }
+
         div.style.opacity = 0;
         img.style.opacity = 0;
+        document.body.style.overflow = '';
+
         // 延迟移除dom
         setTimeout(function() {
             div.remove();
@@ -83,6 +87,7 @@ function showImage() {
     document.addEventListener('scroll', function() {
         closeFade();
     });
+
     document.querySelectorAll('img').forEach(v => {
         w = v.naturalWidth;
         h = v.naturalHeight;
@@ -110,9 +115,33 @@ function showImage() {
                     background-color:#fff;
                     transition:opacity .3s;
                     opacity:0;
-                    z-index: 998;
+                    z-index: 2999;
+                    width: 100%;
+                    heigth: 100%;
+                    margin: auto;
+                    overflow: auto;
+                    display: -webkit-box;
+                    -webkit-box-align: center;
+                    -webkit-box-pack: center;
+                    display: -moz-box;
+                    -moz-box-align: center;
+                    -moz-box-pack: center;
+                    display: -o-box;
+                    -o-box-align: center;
+                    -o-box-pack: center;
+                    display: -ms-box;
+                    -ms-box-align: center;
+                    -ms-box-pack: center;
+                    display: box;
+                    box-align: center;
+                    box-pack: center;
                 `;
                 document.body.appendChild(div);
+
+                wh = window.innerHeight;
+                ww = window.innerWidth;
+                if (h > wh) document.body.style.overflow = 'hidden';
+
                 setTimeout(function() {
                     div.style.opacity = 1;
                 }, 0);
@@ -123,28 +152,16 @@ function showImage() {
                 img.src = src;
                 img.style.cssText = `
                     cursor: zoom-out;
-                    position:fixed;
-                    left:0; 
-                    right:0; 
-                    top:0; 
-                    bottom:0; 
-                    margin: auto;
                     transition:opacity .8s;
                     opacity:0;
-                    z-index: 999;
                 `;
                 img.onload = function() {
-                    document.body.appendChild(img);
+                    div.appendChild(img);
 
                     // 延迟写入否则不会有动画
                     setTimeout(function() {
                         img.style.opacity = 1;
 
-                        wh = window.innerHeight;
-                        ww = window.innerWidth;
-
-                        if (w > ww) img.style.width = ww + 'px';
-                        if (h > wh) img.style.height = wh + 'px';
                         // 点击隐藏
                         div.onclick = img.onclick = closeMove;
                     }, 0);
