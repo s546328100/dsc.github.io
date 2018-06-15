@@ -183,8 +183,8 @@
                             <span>发表于 ${dateFormat(info.createTime)}</span>
                             <span class="post-meta-divider">|</span>
                             <span><i class="iconfont icon-chat"></i></span>
-                            <a href="#container" itemprop="discussionUrl">
-                                <span id="comments">0</span>
+                            <a href="#comment" itemprop="discussionUrl">
+                                <span id="comments"></span>
                             </a>
                         </div>`);
     if (info.next) $('.post-nav-prev').append(`<a href="content.html?${index + 1}" rel="prev" title="${info.next}"><span class="sp">${info.next}</span><i class="iconfont icon-xiangyou1"></i></a>`);
