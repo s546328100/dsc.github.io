@@ -4,6 +4,13 @@
     margin-left: 55px;
     text-align: left;
 }
+
+@media (max-width: 767px) {
+    .posts-collapse {
+        margin-left: 0;
+    }
+}
+
 .posts-collapse::after {
     content: ' ';
     position: absolute;

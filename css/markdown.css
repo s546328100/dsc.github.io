@@ -7,11 +7,10 @@
 .markdown-body {
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
-    line-height: 1.5;
     color: #24292e;
     font-family: Exo, '-apple-system', 'Open Sans', HelveticaNeue-Light, 'Helvetica Neue Light', 'Helvetica Neue', 'Hiragino Sans GB', 'Microsoft YaHei', Helvetica, Arial, sans-serif;
     font-size: 16px;
-    line-height: 1.5;
+    line-height: 2em;
     word-wrap: break-word;
     text-align: left;
     letter-spacing: 0.1em;
@@ -589,8 +588,8 @@
 }
 
 .markdown-body img {
-    border: 1px solid #aaa;
-    box-shadow: 0px 0px 10px 2px #aaa;
+    /* border: 1px solid #aaa; */
+    /* box-shadow: 0px 0px 10px 2px #aaa; */
     max-width: 100%;
     box-sizing: content-box;
     background-color: #fff;
@@ -617,12 +616,10 @@
 }
 
 .markdown-body pre > code {
-    padding: 0;
-    margin: 0;
+    padding: 15px 10px 10px;
     font-size: 100%;
     word-break: normal;
     white-space: pre;
-    background: transparent;
     border: 0;
 }
 
@@ -637,24 +634,10 @@
 
 .markdown-body .highlight pre,
 .markdown-body pre {
-    padding: 16px;
     overflow: auto;
     font-size: 85%;
     line-height: 1.45;
-    background-color: #f6f8fa;
     border-radius: 3px;
-}
-
-.markdown-body pre code {
-    display: inline;
-    max-width: auto;
-    padding: 0;
-    margin: 0;
-    overflow: visible;
-    line-height: inherit;
-    word-wrap: normal;
-    background-color: transparent;
-    border: 0;
 }
 
 .markdown-body .full-commit .btn-outline:not(:disabled):hover {

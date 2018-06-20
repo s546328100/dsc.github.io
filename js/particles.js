@@ -1,20 +1,20 @@
 particlesJS('particles-js', {
     particles: {
         number: {
-            value: 30,
+            value: 40,
             density: {
                 enable: true,
-                value_area: 800
+                value_area: 2000
             }
         },
         color: {
-            value: '#ffffff'
+            value: '#000'
         },
         shape: {
-            type: 'circle',
+            type: 'star',
             stroke: {
                 width: 0,
-                color: '#fff'
+                color: '#000'
             },
             polygon: {
                 nb_sides: 5
@@ -46,15 +46,15 @@ particlesJS('particles-js', {
             }
         },
         line_linked: {
-            enable: true,
-            distance: 150,
-            color: '#555',
+            enable: false,
+            distance: 50,
+            color: '#000',
             opacity: 0.4,
             width: 1
         },
         move: {
             enable: true,
-            speed: 5,
+            speed: 1,
             direction: 'none',
             random: false,
             straight: false,
@@ -84,7 +84,7 @@ particlesJS('particles-js', {
             grab: {
                 distance: 140,
                 line_linked: {
-                    opacity: 1
+                    opacity: 0
                 }
             },
             bubble: {
