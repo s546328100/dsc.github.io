@@ -57,9 +57,22 @@
         // 处理函数
         function handle() {
             let currentScroll = $(window).scrollTop();
+
+            // 回顶部
+            top(currentScroll);
+
+            // 文章目录
+            section(currentScroll);
+
+            lazyload();
+        }
+
+        function top(currentScroll) {
             if (currentScroll > 200) $('.gototop').addClass('active');
             else $('.gototop').removeClass('active');
+        }
 
+        function section(currentScroll) {
             let currentSection;
             $(':header').each(function(i, v) {
                 let divPosition = $(this).offset().top;
@@ -84,9 +97,30 @@
         }
     };
 
+    let lazyload = function() {
+        let currentScroll = $(window).scrollTop();
+
+        let lazyImgs = $.map($('img[data-src]').get(), function(i) {
+            return $(i);
+        });
+
+        console.log(lazyImgs);
+        if (lazyImgs.length <= 0) return;
+
+        let wheight = $(window).height();
+        $.each(lazyImgs, function(index, $i) {
+            if ($i.offset().top - currentScroll - 300 < wheight) {
+                $i.attr('src', $i.attr('data-src'));
+                $i.addClass('lazy-show');
+                $i.removeAttr('data-src');
+            }
+        });
+    }
+
     $(function() {
         contentWayPoint();
         clickToTop();
         goToTop();
+        lazyload();
     });
 })();

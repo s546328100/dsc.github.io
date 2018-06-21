@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="css/animate.css">
     <link rel="stylesheet" href="http://at.alicdn.com/t/font_508783_kxudw0jynq.css"></link>
     <link href="css/markdown.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+    <link rel="stylesheet" href="css/gitment.css">
     <link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/atom-one-light.min.css" rel="stylesheet">
 </head>
 
@@ -127,8 +127,8 @@
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://cdn.bootcss.com/jquery-easing/1.4.1/jquery.easing.min.js"></script>
 <script src="https://cdn.bootcss.com/waypoints/4.0.1/jquery.waypoints.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script src="js/marked.js"></script>
+<script src="js/gitment.js"></script>
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 <script src="js/main.js"></script>
@@ -169,6 +169,7 @@
                 $('#sidebar-inner').append(html);
 
                 goToAnchor();
+
             }
         },
         error: data => {
