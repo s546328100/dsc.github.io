@@ -106,7 +106,7 @@
         html += `<article class="animate-box">
           <header>
             <h1 class="title">
-              <a class="link" href="content.html?${i}">
+              <a class="link" href="content.html?${item.id}">
                 ${item.title}
               </a>
             </h1>
@@ -114,15 +114,15 @@
                 <span>发表于 ${dateFormat(item.createTime)}</span>
                 <span class="post-meta-divider">|</span>
                 <span><i class="iconfont icon-chat"></i></span>
-                <a href="content.html?${i}#container" itemprop="discussionUrl">
-                    <span id="comments${i}"></span>
+                <a href="content.html?${item.id}#container" itemprop="discussionUrl">
+                    <span id="comments${item.id}"></span>
                 </a>
             </div>
           </header>
           <div class="post-body">
             ${item.abstract}
             <div class="post-button">
-              <a class="btn" href="content.html?${i}">
+              <a class="btn" href="content.html?${item.id}">
                 阅读全文 »
               </a>
             </div>

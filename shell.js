@@ -144,8 +144,8 @@ async function load_md(dir, callback) {
             catalogues.forEach((catalogue, i) => {
                 if (catalogues.length <= 1) return;
 
-                if (i !== catalogues.length - 1) catalogue.next = catalogues[i + 1].title;
-                if (i !== 0) catalogue.prev = catalogues[i - 1].title;
+                if (i !== catalogues.length - 1) catalogue.next = { id: catalogues[i + 1].id, title: catalogues[i + 1].title};
+                if (i !== 0) catalogue.prev = { id: catalogues[i - 1].id, title: catalogues[i - 1].title };
             });
 
             callback(null, catalogues);

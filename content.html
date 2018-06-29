@@ -139,9 +139,9 @@
 <script>
     let data = new JsonDate();
 
-    let index = GetRequest();
+    let id = GetRequest();
 
-    let info = data.getCatalogueInfo(index);
+    let info = data.getCatalogueInfo(id);
 
     if (!info) window.location.href = '404.html';
 
@@ -188,8 +188,8 @@
                                 <span id="comments"></span>
                             </a>
                         </div>`);
-    if (info.next) $('.post-nav-prev').append(`<a href="content.html?${index + 1}" rel="prev" title="${info.next}"><span class="sp">${info.next}</span><i class="iconfont icon-xiangyou1"></i></a>`);
-    if (info.prev) $('.post-nav-next').append(`<a href="content.html?${index - 1}" rel="next" title="${info.prev}"><i class="iconfont icon-xiangzuo1"></i> <span class="sp">${info.prev}</span></a>`);
+    if (info.next) $('.post-nav-prev').append(`<a href="content.html?${info.next.id}" rel="prev" title="${info.next.title}"><span class="sp">${info.next.title}</span><i class="iconfont icon-xiangyou1"></i></a>`);
+    if (info.prev) $('.post-nav-next').append(`<a href="content.html?${info.prev.id}" rel="next" title="${info.prev.title}"><i class="iconfont icon-xiangzuo1"></i> <span class="sp">${info.prev.title}</span></a>`);
 
     let gitment = new Gitment({
         id: info.id,
@@ -207,9 +207,9 @@
     function GetRequest() {
         var url = location.search;
         if (url.indexOf("?") != -1) {
-            var str = url.substr(1);
+            var str = url.substr(1, 32);
             strs = str.split("#");
-            return parseInt(strs[0]);
+            return strs[0];
         }
     }
 </script>
