@@ -45,7 +45,76 @@ define({ "api": [
     "groupTitle": "order",
     "sampleRequest": [
       {
-        "url": "http://192.168.31.248:7001/bs/v1/order"
+        "url": "http://kyun.dusuchao.xin:7001/bs/v1/order"
+      }
+    ]
+  },
+  {
+    "type": "post",
+    "url": "/table/types",
+    "title": "创建餐桌类型",
+    "name": "postType",
+    "group": "tableType",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>令牌 {header}</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "name",
+            "description": "<p>餐桌类型 {form}</p>"
+          }
+        ]
+      }
+    },
+    "filename": "app/controller/bs/table.js",
+    "groupTitle": "tableType",
+    "sampleRequest": [
+      {
+        "url": "http://kyun.dusuchao.xin:7001/bs/v1/table/types"
+      }
+    ]
+  },
+  {
+    "type": "get",
+    "url": "/table/types",
+    "title": "获取餐桌类型",
+    "name": "typeList",
+    "group": "tableType",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>令牌 {header}</p>"
+          }
+        ]
+      }
+    },
+    "filename": "app/controller/bs/table.js",
+    "groupTitle": "tableType",
+    "sampleRequest": [
+      {
+        "url": "http://kyun.dusuchao.xin:7001/bs/v1/table/types"
       }
     ]
   },
@@ -95,7 +164,7 @@ define({ "api": [
     "groupTitle": "table",
     "sampleRequest": [
       {
-        "url": "http://192.168.31.248:7001/bs/v1/tables"
+        "url": "http://kyun.dusuchao.xin:7001/bs/v1/tables"
       }
     ]
   },
@@ -152,7 +221,7 @@ define({ "api": [
     "groupTitle": "table",
     "sampleRequest": [
       {
-        "url": "http://192.168.31.248:7001/bs/v1/table/:id"
+        "url": "http://kyun.dusuchao.xin:7001/bs/v1/table/:id"
       }
     ]
   },
@@ -202,7 +271,7 @@ define({ "api": [
     "groupTitle": "table",
     "sampleRequest": [
       {
-        "url": "http://192.168.31.248:7001/bs/v1/table/pay/status"
+        "url": "http://kyun.dusuchao.xin:7001/bs/v1/table/pay/status"
       }
     ]
   },
@@ -260,7 +329,241 @@ define({ "api": [
     "groupTitle": "table",
     "sampleRequest": [
       {
-        "url": "http://192.168.31.248:7001/bs/v1/table/status"
+        "url": "http://kyun.dusuchao.xin:7001/bs/v1/table/status"
+      }
+    ]
+  },
+  {
+    "type": "delete",
+    "url": "/template/:id",
+    "title": "删除模板",
+    "name": "delete",
+    "group": "template",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>令牌 {header}</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>模板id {path}</p>"
+          }
+        ]
+      }
+    },
+    "filename": "app/controller/bs/template.js",
+    "groupTitle": "template",
+    "sampleRequest": [
+      {
+        "url": "http://kyun.dusuchao.xin:7001/bs/v1/template/:id"
+      }
+    ]
+  },
+  {
+    "type": "delete",
+    "url": "/templates",
+    "title": "删除全部模板",
+    "name": "deletes",
+    "group": "template",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>令牌 {header}</p>"
+          }
+        ]
+      }
+    },
+    "filename": "app/controller/bs/template.js",
+    "groupTitle": "template",
+    "sampleRequest": [
+      {
+        "url": "http://kyun.dusuchao.xin:7001/bs/v1/templates"
+      }
+    ]
+  },
+  {
+    "type": "get",
+    "url": "/templates",
+    "title": "模板列表",
+    "name": "list",
+    "group": "template",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>令牌 {header}</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "type",
+            "description": "<p>类型 1订单反馈 {query}</p>"
+          }
+        ]
+      }
+    },
+    "filename": "app/controller/bs/template.js",
+    "groupTitle": "template",
+    "sampleRequest": [
+      {
+        "url": "http://kyun.dusuchao.xin:7001/bs/v1/templates"
+      }
+    ]
+  },
+  {
+    "type": "patch",
+    "url": "/template/:id",
+    "title": "修改模板",
+    "name": "patch",
+    "group": "template",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>令牌 {header}</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>模板id {path}</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "name",
+            "description": "<p>模板名称 {form}</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "content",
+            "description": "<p>模板内容 {form}</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "default",
+            "description": "<p>1为默认 {form}</p>"
+          }
+        ]
+      }
+    },
+    "filename": "app/controller/bs/template.js",
+    "groupTitle": "template",
+    "sampleRequest": [
+      {
+        "url": "http://kyun.dusuchao.xin:7001/bs/v1/template/:id"
+      }
+    ]
+  },
+  {
+    "type": "post",
+    "url": "/template",
+    "title": "创建模板",
+    "name": "post",
+    "group": "template",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>令牌 {header}</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "name",
+            "description": "<p>模板名称 {form}</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "content",
+            "description": "<p>模板内容 {form}</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "type",
+            "description": "<p>类型 1订单反馈 {form}</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "default",
+            "description": "<p>1为默认 {form}</p>"
+          }
+        ]
+      }
+    },
+    "filename": "app/controller/bs/template.js",
+    "groupTitle": "template",
+    "sampleRequest": [
+      {
+        "url": "http://kyun.dusuchao.xin:7001/bs/v1/template"
       }
     ]
   },
@@ -288,7 +591,7 @@ define({ "api": [
     "groupTitle": "test",
     "sampleRequest": [
       {
-        "url": "http://192.168.31.248:7001/bs/v1/test"
+        "url": "http://kyun.dusuchao.xin:7001/bs/v1/test"
       }
     ]
   },
@@ -346,7 +649,7 @@ define({ "api": [
     "groupTitle": "user",
     "sampleRequest": [
       {
-        "url": "http://192.168.31.248:7001/bs/v1/user/login"
+        "url": "http://kyun.dusuchao.xin:7001/bs/v1/user/login"
       }
     ]
   },
@@ -404,7 +707,7 @@ define({ "api": [
     "groupTitle": "user",
     "sampleRequest": [
       {
-        "url": "http://192.168.31.248:7001/bs/v1/user/password"
+        "url": "http://kyun.dusuchao.xin:7001/bs/v1/user/password"
       }
     ]
   },
@@ -468,7 +771,7 @@ define({ "api": [
     "groupTitle": "user",
     "sampleRequest": [
       {
-        "url": "http://192.168.31.248:7001/bs/v1/user"
+        "url": "http://kyun.dusuchao.xin:7001/bs/v1/user"
       }
     ]
   },
@@ -519,7 +822,7 @@ define({ "api": [
     "groupTitle": "user",
     "sampleRequest": [
       {
-        "url": "http://192.168.31.248:7001/bs/v1/user/phone/login"
+        "url": "http://kyun.dusuchao.xin:7001/bs/v1/user/phone/login"
       }
     ]
   }
