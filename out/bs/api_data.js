@@ -1,6 +1,56 @@
 define({ "api": [
   {
     "type": "get",
+    "url": "/order",
+    "title": "获取桌号订单信息",
+    "name": "info",
+    "group": "order",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>令牌 {header}</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "tableId",
+            "description": "<p>桌号ID {query}</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n  \"code\": 0,\n  \"result\": {},\n  \"success\": true\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "app/controller/bs/order.js",
+    "groupTitle": "order",
+    "sampleRequest": [
+      {
+        "url": "http://192.168.31.248:7001/bs/v1/order"
+      }
+    ]
+  },
+  {
+    "type": "get",
     "url": "/tables",
     "title": "获取餐厅桌号列表",
     "name": "list",
@@ -42,12 +92,124 @@ define({ "api": [
       ]
     },
     "filename": "app/controller/bs/table.js",
-    "groupTitle": "table"
+    "groupTitle": "table",
+    "sampleRequest": [
+      {
+        "url": "http://192.168.31.248:7001/bs/v1/tables"
+      }
+    ]
+  },
+  {
+    "type": "patch",
+    "url": "/table/:id",
+    "title": "修改桌号信息",
+    "name": "patch",
+    "group": "table",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>令牌 {header}</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>桌号ID {path}</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "status",
+            "description": "<p>桌号状态 1 就餐 2 空闲 {form}</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n  \"code\": 0,\n  \"result\": \"5b9a2dd5199d300f70377bd1\", // 桌号ID\n  \"success\": true\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "app/controller/bs/table.js",
+    "groupTitle": "table",
+    "sampleRequest": [
+      {
+        "url": "http://192.168.31.248:7001/bs/v1/table/:id"
+      }
+    ]
+  },
+  {
+    "type": "get",
+    "url": "/table/pay/status",
+    "title": "获取桌号支付状态",
+    "name": "payStatus",
+    "group": "table",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>令牌 {header}</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>桌号ID {query}</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n  \"code\": 0,\n  \"result\": true,\n  \"success\": true\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "app/controller/bs/table.js",
+    "groupTitle": "table",
+    "sampleRequest": [
+      {
+        "url": "http://192.168.31.248:7001/bs/v1/table/pay/status"
+      }
+    ]
   },
   {
     "type": "patch",
     "url": "/table/status",
-    "title": "修改桌号状态",
+    "title": "修改桌号当前状态",
     "name": "status",
     "group": "table",
     "version": "1.0.0",
@@ -71,30 +233,36 @@ define({ "api": [
             "group": "Parameter",
             "type": "String",
             "optional": false,
-            "field": "bId",
-            "description": "<p>餐厅ID {form}</p>"
+            "field": "id",
+            "description": "<p>桌号ID {form}</p>"
           },
           {
             "group": "Parameter",
             "type": "String",
             "optional": false,
-            "field": "status",
-            "description": "<p>状态 {form}</p>"
+            "field": "currentStatus",
+            "description": "<p>当前状态 {form}</p>"
           }
         ]
       }
     },
+    "description": "<p>成功后会进行消息推送 table_current_status</p>",
     "success": {
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n  \"code\": 0,\n  \"result\": \"5b9a2dd5199d300f70377bd1\", // userId\n  \"success\": true\n}",
+          "content": "HTTP/1.1 200 OK\n{\n  \"code\": 0,\n  \"result\": \"5b9a2dd5199d300f70377bd1\", // 桌号Id\n  \"success\": true\n}",
           "type": "json"
         }
       ]
     },
     "filename": "app/controller/bs/table.js",
-    "groupTitle": "table"
+    "groupTitle": "table",
+    "sampleRequest": [
+      {
+        "url": "http://192.168.31.248:7001/bs/v1/table/status"
+      }
+    ]
   },
   {
     "type": "get",
@@ -117,7 +285,12 @@ define({ "api": [
       }
     },
     "filename": "app/controller/bs/test.js",
-    "groupTitle": "test"
+    "groupTitle": "test",
+    "sampleRequest": [
+      {
+        "url": "http://192.168.31.248:7001/bs/v1/test"
+      }
+    ]
   },
   {
     "type": "post",
@@ -170,7 +343,12 @@ define({ "api": [
       ]
     },
     "filename": "app/controller/bs/user.js",
-    "groupTitle": "user"
+    "groupTitle": "user",
+    "sampleRequest": [
+      {
+        "url": "http://192.168.31.248:7001/bs/v1/user/login"
+      }
+    ]
   },
   {
     "type": "patch",
@@ -223,7 +401,12 @@ define({ "api": [
       ]
     },
     "filename": "app/controller/bs/user.js",
-    "groupTitle": "user"
+    "groupTitle": "user",
+    "sampleRequest": [
+      {
+        "url": "http://192.168.31.248:7001/bs/v1/user/password"
+      }
+    ]
   },
   {
     "type": "patch",
@@ -282,7 +465,12 @@ define({ "api": [
       ]
     },
     "filename": "app/controller/bs/user.js",
-    "groupTitle": "user"
+    "groupTitle": "user",
+    "sampleRequest": [
+      {
+        "url": "http://192.168.31.248:7001/bs/v1/user"
+      }
+    ]
   },
   {
     "type": "post",
@@ -328,6 +516,11 @@ define({ "api": [
       ]
     },
     "filename": "app/controller/bs/user.js",
-    "groupTitle": "user"
+    "groupTitle": "user",
+    "sampleRequest": [
+      {
+        "url": "http://192.168.31.248:7001/bs/v1/user/phone/login"
+      }
+    ]
   }
 ] });

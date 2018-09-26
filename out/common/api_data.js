@@ -29,7 +29,12 @@ define({ "api": [
       ]
     },
     "filename": "app/controller/common/captcha.js",
-    "groupTitle": "captcha"
+    "groupTitle": "captcha",
+    "sampleRequest": [
+      {
+        "url": "http://192.168.31.248:7001/common/v1/captcha/email"
+      }
+    ]
   },
   {
     "type": "get",
@@ -48,7 +53,12 @@ define({ "api": [
       ]
     },
     "filename": "app/controller/common/captcha.js",
-    "groupTitle": "captcha"
+    "groupTitle": "captcha",
+    "sampleRequest": [
+      {
+        "url": "http://192.168.31.248:7001/common/v1/captcha/graph"
+      }
+    ]
   },
   {
     "type": "post",
@@ -80,7 +90,12 @@ define({ "api": [
       ]
     },
     "filename": "app/controller/common/captcha.js",
-    "groupTitle": "captcha"
+    "groupTitle": "captcha",
+    "sampleRequest": [
+      {
+        "url": "http://192.168.31.248:7001/common/v1/captcha/phone"
+      }
+    ]
   },
   {
     "type": "post",
@@ -119,6 +134,11 @@ define({ "api": [
       ]
     },
     "filename": "app/controller/common/captcha.js",
-    "groupTitle": "captcha"
+    "groupTitle": "captcha",
+    "sampleRequest": [
+      {
+        "url": "http://192.168.31.248:7001/common/v1/captcha/verify"
+      }
+    ]
   }
 ] });
