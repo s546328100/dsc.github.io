@@ -1,5 +1,400 @@
 [
   {
+    "type": "delete",
+    "url": "/appointment/:id",
+    "title": "删除预约",
+    "name": "delete",
+    "group": "appointment",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>令牌 {header}</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>预约id {path}</p>"
+          }
+        ]
+      }
+    },
+    "filename": "app/controller/bs/appointment.js",
+    "groupTitle": "appointment",
+    "sampleRequest": [
+      {
+        "url": "http://kyun.dusuchao.xin:7001/bs/v1/appointment/:id"
+      }
+    ]
+  },
+  {
+    "type": "patch",
+    "url": "/appointment/:id",
+    "title": "修改预约",
+    "name": "patch",
+    "group": "appointment",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>令牌 {header}</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "population",
+            "description": "<p>人数 {form}</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "tableType",
+            "description": "<p>桌号类型ID {form}</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "name",
+            "description": "<p>称呼 {form}</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "phone",
+            "description": "<p>手机号 {form}</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "appointmentTime",
+            "description": "<p>预约时间戳 {form}</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "remark",
+            "description": "<p>备注 {form}</p>"
+          }
+        ]
+      }
+    },
+    "filename": "app/controller/bs/appointment.js",
+    "groupTitle": "appointment",
+    "sampleRequest": [
+      {
+        "url": "http://kyun.dusuchao.xin:7001/bs/v1/appointment/:id"
+      }
+    ]
+  },
+  {
+    "type": "post",
+    "url": "/appointment",
+    "title": "创建预约",
+    "name": "post",
+    "group": "appointment",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>令牌 {header}</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "population",
+            "description": "<p>人数 {form}</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "tableType",
+            "description": "<p>桌号类型ID {form}</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "name",
+            "description": "<p>称呼 {form}</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "phone",
+            "description": "<p>手机号 {form}</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "appointmentTime",
+            "description": "<p>预约时间戳 {form}</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "remark",
+            "description": "<p>备注 {form}</p>"
+          }
+        ]
+      }
+    },
+    "filename": "app/controller/bs/appointment.js",
+    "groupTitle": "appointment",
+    "sampleRequest": [
+      {
+        "url": "http://kyun.dusuchao.xin:7001/bs/v1/appointment"
+      }
+    ]
+  },
+  {
+    "type": "get",
+    "url": "/enqueues",
+    "title": "排队列表",
+    "name": "list",
+    "group": "enqueue",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>令牌 {header}</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "tableType",
+            "description": "<p>桌号类型ID {query}</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "search",
+            "description": "<p>排号or手机号模糊查询 {query}</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "status",
+            "description": "<p>状态 {query}</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "page",
+            "description": "<p>当前页 {query}</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "pageSize",
+            "description": "<p>条数 {query}</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "isDelay",
+            "description": "<p>0 全部（没有延迟和延迟的） 1 只显示没有延迟和延迟到时的 默认为0 {query}</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n   \"code\": 0,\n   \"success\": true,\n   \"result\": [],\n   \"pageNumber\": 1, // 当前页数\n   \"pageCount\": 2,  // 总页数\n   \"next\": true,  // 是否有下一页\n   \"prev\": false  // 是否有上一页\n }",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "app/controller/bs/enqueue.js",
+    "groupTitle": "enqueue",
+    "sampleRequest": [
+      {
+        "url": "http://kyun.dusuchao.xin:7001/bs/v1/enqueues"
+      }
+    ]
+  },
+  {
+    "type": "patch",
+    "url": "/enqueue/:id",
+    "title": "修改排队",
+    "name": "patch",
+    "group": "enqueue",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>令牌 {header}</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>排队ID {path}</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "status",
+            "description": "<p>状态 0 过号 2 完成 {form}</p>"
+          }
+        ]
+      }
+    },
+    "filename": "app/controller/bs/enqueue.js",
+    "groupTitle": "enqueue",
+    "sampleRequest": [
+      {
+        "url": "http://kyun.dusuchao.xin:7001/bs/v1/enqueue/:id"
+      }
+    ]
+  },
+  {
+    "type": "post",
+    "url": "/enqueue",
+    "title": "创建排队（取号）",
+    "name": "post",
+    "group": "enqueue",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>令牌 {header}</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "population",
+            "description": "<p>人数 {form}</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "tableType",
+            "description": "<p>桌号类型ID {form}</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "name",
+            "description": "<p>称呼 {form}</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "phone",
+            "description": "<p>手机号 {form}</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "delayTime",
+            "description": "<p>延迟时间 两种情况都转换成Date格式的时间戳 {form}</p>"
+          }
+        ]
+      }
+    },
+    "filename": "app/controller/bs/enqueue.js",
+    "groupTitle": "enqueue",
+    "sampleRequest": [
+      {
+        "url": "http://kyun.dusuchao.xin:7001/bs/v1/enqueue"
+      }
+    ]
+  },
+  {
     "type": "get",
     "url": "/order",
     "title": "获取桌号订单信息",
