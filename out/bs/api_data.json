@@ -41,6 +41,75 @@
     ]
   },
   {
+    "type": "get",
+    "url": "/appointments",
+    "title": "预约列表",
+    "name": "list",
+    "group": "appointment",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>令牌 {header}</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "search",
+            "description": "<p>排号or手机号模糊查询 {query}</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "oc",
+            "description": "<p>运算符 -1 &lt;= 1 &gt;= {query}</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "day",
+            "description": "<p>天数 {query}</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "page",
+            "description": "<p>当前页 {query}</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "pageSize",
+            "description": "<p>条数 {query}</p>"
+          }
+        ]
+      }
+    },
+    "filename": "app/controller/bs/appointment.js",
+    "groupTitle": "appointment",
+    "sampleRequest": [
+      {
+        "url": "http://kyun.dusuchao.xin:7001/bs/v1/appointments"
+      }
+    ]
+  },
+  {
     "type": "patch",
     "url": "/appointment/:id",
     "title": "修改预约",
@@ -150,8 +219,8 @@
             "group": "Parameter",
             "type": "String",
             "optional": false,
-            "field": "tableType",
-            "description": "<p>桌号类型ID {form}</p>"
+            "field": "table",
+            "description": "<p>桌号ID {form}</p>"
           },
           {
             "group": "Parameter",
@@ -991,6 +1060,21 @@
     ]
   },
   {
+    "type": "get",
+    "url": "/user/login/image/verify",
+    "title": "用户登录是否开启图形校验",
+    "name": "isImageVerify",
+    "group": "user",
+    "version": "1.0.0",
+    "filename": "app/controller/bs/user.js",
+    "groupTitle": "user",
+    "sampleRequest": [
+      {
+        "url": "http://kyun.dusuchao.xin:7001/bs/v1/user/login/image/verify"
+      }
+    ]
+  },
+  {
     "type": "post",
     "url": "/user/login",
     "title": "用户登录",
@@ -1004,29 +1088,15 @@
             "group": "Parameter",
             "type": "String",
             "optional": false,
-            "field": "account",
-            "description": "<p>账号 {form}</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
             "field": "password",
             "description": "<p>密码 {form}</p>"
           },
           {
             "group": "Parameter",
             "type": "String",
-            "optional": false,
-            "field": "code",
-            "description": "<p>图形验证码 {form}</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "Number",
             "optional": true,
-            "field": "remember",
-            "description": "<p>1为7天缓存 {form}</p>"
+            "field": "imageCode",
+            "description": "<p>图形验证码 {form}</p>"
           }
         ]
       }
@@ -1051,7 +1121,7 @@
   {
     "type": "patch",
     "url": "/user/password",
-    "title": "修改密码",
+    "title": "修改密码，并登陆",
     "name": "password",
     "group": "user",
     "version": "1.0.0",
@@ -1063,14 +1133,14 @@
             "type": "Number",
             "optional": false,
             "field": "type",
-            "description": "<p>类型 1 手机 2 邮箱 {form}</p>"
+            "description": "<p>类型 1 邮箱 {form}</p>"
           },
           {
             "group": "Parameter",
             "type": "String",
             "optional": false,
             "field": "code",
-            "description": "<p>当type为 1 短信验证码 2 邮件key {form}</p>"
+            "description": "<p>当type为 1 邮件验证码 {form}</p>"
           },
           {
             "group": "Parameter",
@@ -1083,8 +1153,8 @@
             "group": "Parameter",
             "type": "String",
             "optional": true,
-            "field": "email",
-            "description": "<p>type为2时，必传 {form}</p>"
+            "field": "imageCode",
+            "description": "<p>图像验证码 {form}</p>"
           }
         ]
       }
@@ -1184,22 +1254,15 @@
             "group": "Parameter",
             "type": "String",
             "optional": false,
-            "field": "phone",
-            "description": "<p>账号 {form}</p>"
+            "field": "code",
+            "description": "<p>验证码 {form}</p>"
           },
           {
             "group": "Parameter",
             "type": "String",
-            "optional": false,
-            "field": "code",
-            "description": "<p>图形验证码 {form}</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "Number",
             "optional": true,
-            "field": "remember",
-            "description": "<p>1为7天缓存 {form}</p>"
+            "field": "imageCode",
+            "description": "<p>图像验证码 {form}</p>"
           }
         ]
       }
@@ -1218,6 +1281,34 @@
     "sampleRequest": [
       {
         "url": "http://kyun.dusuchao.xin:7001/bs/v1/user/phone/login"
+      }
+    ]
+  },
+  {
+    "type": "post",
+    "url": "/user/verify/account",
+    "title": "校验账号是否存在",
+    "name": "verifyAccount",
+    "group": "user",
+    "version": "1.0.0",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "account",
+            "description": "<p>账号 {form}</p>"
+          }
+        ]
+      }
+    },
+    "filename": "app/controller/bs/user.js",
+    "groupTitle": "user",
+    "sampleRequest": [
+      {
+        "url": "http://kyun.dusuchao.xin:7001/bs/v1/user/verify/account"
       }
     ]
   }

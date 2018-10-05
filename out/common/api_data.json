@@ -23,7 +23,7 @@
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n  \"code\": 0,\n  \"result\": \"发送成功\",\n  \"success\": true\n}",
+          "content": "HTTP/1.1 200 OK\n{\n  \"code\": 0,\n  \"result\": {\n     \"isImageVerify\": true, // 是否开启图形验证码\n  },\n  \"success\": true\n}",
           "type": "json"
         }
       ]
@@ -33,6 +33,50 @@
     "sampleRequest": [
       {
         "url": "http://kyun.dusuchao.xin:7001/common/v1/captcha/email"
+      }
+    ]
+  },
+  {
+    "type": "post",
+    "url": "/captcha/email/verify",
+    "title": "校验邮箱验证码",
+    "name": "emailVerify",
+    "group": "captcha",
+    "version": "1.0.0",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "code",
+            "description": "<p>验证码 {form}</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "imageCode",
+            "description": "<p>图像验证码 {form}</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n  \"code\": 0,\n  \"result\": true,\n  \"success\": true\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "app/controller/common/captcha.js",
+    "groupTitle": "captcha",
+    "sampleRequest": [
+      {
+        "url": "http://kyun.dusuchao.xin:7001/common/v1/captcha/email/verify"
       }
     ]
   },
@@ -84,7 +128,7 @@
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n  \"code\": 0,\n  \"result\": \"发送成功\",\n  \"success\": true\n}",
+          "content": "HTTP/1.1 200 OK\n{\n  \"code\": 0,\n  \"result\": {\n     \"isImageVerify\": true, // 是否开启图形验证码\n  },\n  \"success\": true\n}",
           "type": "json"
         }
       ]
@@ -112,7 +156,7 @@
             "type": "Number",
             "optional": false,
             "field": "type",
-            "description": "<p>类型 0 图形验证 1 手机验证 {form}</p>"
+            "description": "<p>类型 0 图形验证 {form}</p>"
           },
           {
             "group": "Parameter",
