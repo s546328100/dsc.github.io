@@ -1311,5 +1311,46 @@
         "url": "http://kyun.dusuchao.xin:7001/bs/v1/user/verify/account"
       }
     ]
+  },
+  {
+    "type": "post",
+    "url": "/user/verify/password",
+    "title": "校验密码",
+    "name": "verifyPassword",
+    "group": "user",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>令牌 {header}</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "password",
+            "description": "<p>密码 {form}</p>"
+          }
+        ]
+      }
+    },
+    "filename": "app/controller/bs/user.js",
+    "groupTitle": "user",
+    "sampleRequest": [
+      {
+        "url": "http://kyun.dusuchao.xin:7001/bs/v1/user/verify/password"
+      }
+    ]
   }
 ]
