@@ -75,7 +75,7 @@ define({ "api": [
             "type": "Number",
             "optional": true,
             "field": "oc",
-            "description": "<p>运算符 -1 &lt;= 1 &gt;= {query}</p>"
+            "description": "<p>运算符 -1 &lt;= 2 &gt; {query}</p>"
           },
           {
             "group": "Parameter",
@@ -136,34 +136,41 @@ define({ "api": [
             "group": "Parameter",
             "type": "String",
             "optional": false,
+            "field": "id",
+            "description": "<p>预约id {path}</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
             "field": "population",
             "description": "<p>人数 {form}</p>"
           },
           {
             "group": "Parameter",
             "type": "String",
-            "optional": false,
-            "field": "tableType",
-            "description": "<p>桌号类型ID {form}</p>"
+            "optional": true,
+            "field": "table",
+            "description": "<p>桌号ID {form}</p>"
           },
           {
             "group": "Parameter",
             "type": "String",
-            "optional": false,
+            "optional": true,
             "field": "name",
             "description": "<p>称呼 {form}</p>"
           },
           {
             "group": "Parameter",
             "type": "String",
-            "optional": false,
+            "optional": true,
             "field": "phone",
             "description": "<p>手机号 {form}</p>"
           },
           {
             "group": "Parameter",
             "type": "String",
-            "optional": false,
+            "optional": true,
             "field": "appointmentTime",
             "description": "<p>预约时间戳 {form}</p>"
           },
@@ -496,20 +503,94 @@ define({ "api": [
         ]
       }
     },
-    "success": {
-      "examples": [
-        {
-          "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n  \"code\": 0,\n  \"result\": {},\n  \"success\": true\n}",
-          "type": "json"
-        }
-      ]
-    },
     "filename": "app/controller/bs/order.js",
     "groupTitle": "order",
     "sampleRequest": [
       {
         "url": "http://kyun.dusuchao.xin:7001/bs/v1/order"
+      }
+    ]
+  },
+  {
+    "type": "get",
+    "url": "/orders",
+    "title": "订单列表",
+    "name": "list",
+    "group": "order",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>令牌 {header}</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "type",
+            "description": "<p>0 店内 1 自取 {query}</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "status",
+            "description": "<p>0 未支付 1 待确定 2 就餐中 3 已完成 {query}</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "search",
+            "description": "<p>订单号or手机号模糊查询 {query}</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "oc",
+            "description": "<p>运算符 -1 &lt;= -2 &lt; {query}</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "day",
+            "description": "<p>天数 如 &lt;=1 今天内 &lt;=3 3天内 &lt;30 1月之前 {query}</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "page",
+            "description": "<p>当前页 {query}</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "pageSize",
+            "description": "<p>条数 {query}</p>"
+          }
+        ]
+      }
+    },
+    "filename": "app/controller/bs/order.js",
+    "groupTitle": "order",
+    "sampleRequest": [
+      {
+        "url": "http://kyun.dusuchao.xin:7001/bs/v1/orders"
       }
     ]
   },
@@ -602,28 +683,6 @@ define({ "api": [
         ]
       }
     },
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "bId",
-            "description": "<p>餐厅ID {query}</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "examples": [
-        {
-          "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n  \"code\": 0,\n  \"result\": \"5b9a2dd5199d300f70377bd1\", // userId\n  \"success\": true\n}",
-          "type": "json"
-        }
-      ]
-    },
     "filename": "app/controller/bs/table.js",
     "groupTitle": "table",
     "sampleRequest": [
@@ -690,9 +749,9 @@ define({ "api": [
     ]
   },
   {
-    "type": "get",
+    "type": "patch",
     "url": "/table/pay/status",
-    "title": "获取桌号支付状态",
+    "title": "修改桌号为空闲并获取桌号支付状态",
     "name": "payStatus",
     "group": "table",
     "version": "1.0.0",
@@ -717,7 +776,7 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "id",
-            "description": "<p>桌号ID {query}</p>"
+            "description": "<p>桌号ID {form}</p>"
           }
         ]
       }
@@ -726,7 +785,7 @@ define({ "api": [
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n  \"code\": 0,\n  \"result\": true,\n  \"success\": true\n}",
+          "content": "HTTP/1.1 200 OK\n{\n  \"code\": 0,\n  \"result\": true, // 桌号支付状态 false为未支付\n  \"success\": true\n}",
           "type": "json"
         }
       ]
@@ -1028,6 +1087,21 @@ define({ "api": [
     "sampleRequest": [
       {
         "url": "http://kyun.dusuchao.xin:7001/bs/v1/template"
+      }
+    ]
+  },
+  {
+    "type": "get",
+    "url": "/test/create",
+    "title": "测试创建",
+    "name": "create",
+    "group": "test",
+    "version": "1.0.0",
+    "filename": "app/controller/bs/test.js",
+    "groupTitle": "test",
+    "sampleRequest": [
+      {
+        "url": "http://kyun.dusuchao.xin:7001/bs/v1/test/create"
       }
     ]
   },
