@@ -471,9 +471,98 @@
     ]
   },
   {
+    "type": "patch",
+    "url": "/order/change/price/:id",
+    "title": "改价",
+    "name": "changePrice",
+    "group": "order",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>令牌 {header}</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>订单ID {path}</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Array",
+            "optional": false,
+            "field": "menu",
+            "description": "<p>id菜品ID，discount优惠百分比，discountPrice优惠后价格。[{id: '5bb9d8ca90ca042f1897fb4a', discount: 20, discountPrice: 6}] {form}</p>"
+          }
+        ]
+      }
+    },
+    "filename": "app/controller/bs/order.js",
+    "groupTitle": "order",
+    "sampleRequest": [
+      {
+        "url": "http://kyun.dusuchao.xin:7001/bs/v1/order/change/price/:id"
+      }
+    ]
+  },
+  {
+    "type": "patch",
+    "url": "/order/free/:id",
+    "title": "免单",
+    "name": "free",
+    "group": "order",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>令牌 {header}</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>订单ID {path}</p>"
+          }
+        ]
+      }
+    },
+    "filename": "app/controller/bs/order.js",
+    "groupTitle": "order",
+    "sampleRequest": [
+      {
+        "url": "http://kyun.dusuchao.xin:7001/bs/v1/order/free/:id"
+      }
+    ]
+  },
+  {
     "type": "get",
-    "url": "/order",
-    "title": "获取桌号订单信息",
+    "url": "/order/:id",
+    "title": "获取订单信息",
     "name": "info",
     "group": "order",
     "version": "1.0.0",
@@ -497,8 +586,8 @@
             "group": "Parameter",
             "type": "String",
             "optional": false,
-            "field": "tableId",
-            "description": "<p>桌号ID {query}</p>"
+            "field": "id",
+            "description": "<p>订单ID {path}</p>"
           }
         ]
       }
@@ -507,7 +596,7 @@
     "groupTitle": "order",
     "sampleRequest": [
       {
-        "url": "http://kyun.dusuchao.xin:7001/bs/v1/order"
+        "url": "http://kyun.dusuchao.xin:7001/bs/v1/order/:id"
       }
     ]
   },
@@ -546,7 +635,14 @@
             "type": "Number",
             "optional": true,
             "field": "status",
-            "description": "<p>0 未支付 1 待确定 2 就餐中 3 已完成 {query}</p>"
+            "description": "<p>0 待确定 1 就餐中 2 已完成 {query}</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "payStatus",
+            "description": "<p>0 未支付 1 已支付 {query}</p>"
           },
           {
             "group": "Parameter",
@@ -595,6 +691,109 @@
     ]
   },
   {
+    "type": "patch",
+    "url": "/order/menu/status",
+    "title": "加菜确认反馈",
+    "name": "orderMenuStatus",
+    "group": "order",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>令牌 {header}</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "orderId",
+            "description": "<p>订单ID {form}</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "status",
+            "description": "<p>2 异常 3 完成 {form}</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "exceMessage",
+            "description": "<p>异常反馈 {form}</p>"
+          }
+        ]
+      }
+    },
+    "filename": "app/controller/bs/order.js",
+    "groupTitle": "order",
+    "sampleRequest": [
+      {
+        "url": "http://kyun.dusuchao.xin:7001/bs/v1/order/menu/status"
+      }
+    ]
+  },
+  {
+    "type": "patch",
+    "url": "/order/:id",
+    "title": "修改订单信息",
+    "name": "patch",
+    "group": "order",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>令牌 {header}</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>订单ID {path}</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "remark",
+            "description": "<p>备注 {form}</p>"
+          }
+        ]
+      }
+    },
+    "filename": "app/controller/bs/order.js",
+    "groupTitle": "order",
+    "sampleRequest": [
+      {
+        "url": "http://kyun.dusuchao.xin:7001/bs/v1/order/:id"
+      }
+    ]
+  },
+  {
     "type": "post",
     "url": "/table/types",
     "title": "创建餐桌类型",
@@ -623,6 +822,20 @@
             "optional": false,
             "field": "name",
             "description": "<p>餐桌类型 {form}</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "min",
+            "description": "<p>最小座位数 {form}</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "max",
+            "description": "<p>最大座位数 {form}</p>"
           }
         ]
       }
@@ -800,7 +1013,7 @@
   },
   {
     "type": "patch",
-    "url": "/table/status",
+    "url": "/table/status/:id",
     "title": "修改桌号当前状态",
     "name": "status",
     "group": "table",
@@ -826,7 +1039,7 @@
             "type": "String",
             "optional": false,
             "field": "id",
-            "description": "<p>桌号ID {form}</p>"
+            "description": "<p>桌号ID {path}</p>"
           },
           {
             "group": "Parameter",
@@ -852,7 +1065,62 @@
     "groupTitle": "table",
     "sampleRequest": [
       {
-        "url": "http://kyun.dusuchao.xin:7001/bs/v1/table/status"
+        "url": "http://kyun.dusuchao.xin:7001/bs/v1/table/status/:id"
+      }
+    ]
+  },
+  {
+    "type": "get",
+    "url": "/table/orders",
+    "title": "桌号订单列表",
+    "name": "tableOrders",
+    "group": "table",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>令牌 {header}</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "table",
+            "description": "<p>桌号ID {query}</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "page",
+            "description": "<p>当前页 {query}</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "pageSize",
+            "description": "<p>条数 {query}</p>"
+          }
+        ]
+      }
+    },
+    "filename": "app/controller/bs/table.js",
+    "groupTitle": "table",
+    "sampleRequest": [
+      {
+        "url": "http://kyun.dusuchao.xin:7001/bs/v1/table/orders"
       }
     ]
   },
@@ -917,6 +1185,19 @@
         ]
       }
     },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "type",
+            "description": "<p>模板类型 {form}</p>"
+          }
+        ]
+      }
+    },
     "filename": "app/controller/bs/template.js",
     "groupTitle": "template",
     "sampleRequest": [
@@ -953,7 +1234,7 @@
             "type": "Number",
             "optional": false,
             "field": "type",
-            "description": "<p>类型 1订单反馈 {query}</p>"
+            "description": "<p>类型 1订单反馈，2免单原因 {query}</p>"
           }
         ]
       }
@@ -1070,7 +1351,7 @@
             "type": "Number",
             "optional": false,
             "field": "type",
-            "description": "<p>类型 1订单反馈 {form}</p>"
+            "description": "<p>类型 1订单反馈，2免单原因 {form}</p>"
           },
           {
             "group": "Parameter",
@@ -1189,6 +1470,34 @@
     "sampleRequest": [
       {
         "url": "http://kyun.dusuchao.xin:7001/bs/v1/user/login"
+      }
+    ]
+  },
+  {
+    "type": "post",
+    "url": "/user/logout",
+    "title": "用户登出",
+    "name": "logout",
+    "group": "user",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>令牌 {header}</p>"
+          }
+        ]
+      }
+    },
+    "filename": "app/controller/bs/user.js",
+    "groupTitle": "user",
+    "sampleRequest": [
+      {
+        "url": "http://kyun.dusuchao.xin:7001/bs/v1/user/logout"
       }
     ]
   },
