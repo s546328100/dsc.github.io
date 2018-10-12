@@ -472,7 +472,7 @@
   },
   {
     "type": "patch",
-    "url": "/order/change/price/:id",
+    "url": "/order/menu/price/:id",
     "title": "改价",
     "name": "changePrice",
     "group": "order",
@@ -514,7 +514,7 @@
     "groupTitle": "order",
     "sampleRequest": [
       {
-        "url": "http://kyun.dusuchao.xin:7001/bs/v1/order/change/price/:id"
+        "url": "http://kyun.dusuchao.xin:7001/bs/v1/order/menu/price/:id"
       }
     ]
   },
@@ -722,7 +722,7 @@
           },
           {
             "group": "Parameter",
-            "type": "String",
+            "type": "Number",
             "optional": false,
             "field": "status",
             "description": "<p>2 异常 3 完成 {form}</p>"
@@ -742,6 +742,68 @@
     "sampleRequest": [
       {
         "url": "http://kyun.dusuchao.xin:7001/bs/v1/order/menu/status"
+      }
+    ]
+  },
+  {
+    "type": "patch",
+    "url": "/order/pay/:id",
+    "title": "订单支付",
+    "name": "orderPay",
+    "group": "order",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>令牌 {header}</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>订单ID {path}</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "tip",
+            "description": "<p>小费 {form}</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "discountPrice",
+            "description": "<p>优惠价格 {form}</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "method",
+            "description": "<p>支付方式 0现金，1VIP {form}</p>"
+          }
+        ]
+      }
+    },
+    "filename": "app/controller/bs/order.js",
+    "groupTitle": "order",
+    "sampleRequest": [
+      {
+        "url": "http://kyun.dusuchao.xin:7001/bs/v1/order/pay/:id"
       }
     ]
   },
@@ -794,6 +856,109 @@
     ]
   },
   {
+    "type": "patch",
+    "url": "/order/price/:id",
+    "title": "修改订单金额",
+    "name": "patchPrice",
+    "group": "order",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>令牌 {header}</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>订单ID {path}</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "tip",
+            "description": "<p>小费 {form}</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "discountPrice",
+            "description": "<p>优惠价格 {form}</p>"
+          }
+        ]
+      }
+    },
+    "filename": "app/controller/bs/order.js",
+    "groupTitle": "order",
+    "sampleRequest": [
+      {
+        "url": "http://kyun.dusuchao.xin:7001/bs/v1/order/price/:id"
+      }
+    ]
+  },
+  {
+    "type": "patch",
+    "url": "/order/status/:id",
+    "title": "修改订单状态",
+    "name": "patchStatus",
+    "group": "order",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>令牌 {header}</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>订单ID {path}</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "status",
+            "description": "<p>1就餐中，2已完成 {form}</p>"
+          }
+        ]
+      }
+    },
+    "filename": "app/controller/bs/order.js",
+    "groupTitle": "order",
+    "sampleRequest": [
+      {
+        "url": "http://kyun.dusuchao.xin:7001/bs/v1/order/status/:id"
+      }
+    ]
+  },
+  {
     "type": "post",
     "url": "/table/types",
     "title": "创建餐桌类型",
@@ -825,14 +990,14 @@
           },
           {
             "group": "Parameter",
-            "type": "String",
+            "type": "Number",
             "optional": false,
             "field": "min",
             "description": "<p>最小座位数 {form}</p>"
           },
           {
             "group": "Parameter",
-            "type": "String",
+            "type": "Number",
             "optional": false,
             "field": "max",
             "description": "<p>最大座位数 {form}</p>"
@@ -936,10 +1101,10 @@
           },
           {
             "group": "Parameter",
-            "type": "String",
+            "type": "Number",
             "optional": true,
-            "field": "status",
-            "description": "<p>桌号状态 1 就餐 2 空闲 {form}</p>"
+            "field": "currentStatus",
+            "description": "<p>当前状态 0 无状态 {form}</p>"
           }
         ]
       }
@@ -958,114 +1123,6 @@
     "sampleRequest": [
       {
         "url": "http://kyun.dusuchao.xin:7001/bs/v1/table/:id"
-      }
-    ]
-  },
-  {
-    "type": "patch",
-    "url": "/table/pay/status",
-    "title": "修改桌号为空闲并获取桌号支付状态",
-    "name": "payStatus",
-    "group": "table",
-    "version": "1.0.0",
-    "header": {
-      "fields": {
-        "Header": [
-          {
-            "group": "Header",
-            "type": "String",
-            "optional": false,
-            "field": "token",
-            "description": "<p>令牌 {header}</p>"
-          }
-        ]
-      }
-    },
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "id",
-            "description": "<p>桌号ID {form}</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "examples": [
-        {
-          "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n  \"code\": 0,\n  \"result\": true, // 桌号支付状态 false为未支付\n  \"success\": true\n}",
-          "type": "json"
-        }
-      ]
-    },
-    "filename": "app/controller/bs/table.js",
-    "groupTitle": "table",
-    "sampleRequest": [
-      {
-        "url": "http://kyun.dusuchao.xin:7001/bs/v1/table/pay/status"
-      }
-    ]
-  },
-  {
-    "type": "patch",
-    "url": "/table/status/:id",
-    "title": "修改桌号当前状态",
-    "name": "status",
-    "group": "table",
-    "version": "1.0.0",
-    "header": {
-      "fields": {
-        "Header": [
-          {
-            "group": "Header",
-            "type": "String",
-            "optional": false,
-            "field": "token",
-            "description": "<p>令牌 {header}</p>"
-          }
-        ]
-      }
-    },
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "id",
-            "description": "<p>桌号ID {path}</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "currentStatus",
-            "description": "<p>当前状态 {form}</p>"
-          }
-        ]
-      }
-    },
-    "description": "<p>成功后会进行消息推送 table_current_status</p>",
-    "success": {
-      "examples": [
-        {
-          "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n  \"code\": 0,\n  \"result\": \"5b9a2dd5199d300f70377bd1\", // 桌号Id\n  \"success\": true\n}",
-          "type": "json"
-        }
-      ]
-    },
-    "filename": "app/controller/bs/table.js",
-    "groupTitle": "table",
-    "sampleRequest": [
-      {
-        "url": "http://kyun.dusuchao.xin:7001/bs/v1/table/status/:id"
       }
     ]
   },
