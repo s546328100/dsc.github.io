@@ -53,7 +53,7 @@ define({ "api": [
     "groupTitle": "table",
     "sampleRequest": [
       {
-        "url": "http://192.168.31.87:7001/cs/v1/table/status/:id"
+        "url": "http://kyun.dusuchao.xin:7001/cs/v1/table/status/:id"
       }
     ]
   }

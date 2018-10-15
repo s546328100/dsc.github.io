@@ -653,10 +653,17 @@ define({ "api": [
           },
           {
             "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "timeStr",
+            "description": "<p>自取时间takesTime，下单时间createAt {query}</p>"
+          },
+          {
+            "group": "Parameter",
             "type": "Number",
             "optional": true,
             "field": "oc",
-            "description": "<p>运算符 -1 &lt;= -2 &lt; {query}</p>"
+            "description": "<p>运算符 -1 &lt;= -2 &lt; 2 &gt; {query}</p>"
           },
           {
             "group": "Parameter",
@@ -748,7 +755,7 @@ define({ "api": [
   {
     "type": "patch",
     "url": "/order/pay/:id",
-    "title": "订单支付",
+    "title": "订单支付-处理下单人",
     "name": "orderPay",
     "group": "order",
     "version": "1.0.0",
@@ -959,6 +966,54 @@ define({ "api": [
     ]
   },
   {
+    "type": "patch",
+    "url": "/order/table/:id",
+    "title": "换桌",
+    "name": "patchTable",
+    "group": "order",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>令牌 {header}</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>订单ID {path}</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "table",
+            "description": "<p>桌号 {form}</p>"
+          }
+        ]
+      }
+    },
+    "filename": "app/controller/bs/order.js",
+    "groupTitle": "order",
+    "sampleRequest": [
+      {
+        "url": "http://kyun.dusuchao.xin:7001/bs/v1/order/table/:id"
+      }
+    ]
+  },
+  {
     "type": "post",
     "url": "/table/types",
     "title": "创建餐桌类型",
@@ -1057,6 +1112,33 @@ define({ "api": [
             "optional": false,
             "field": "token",
             "description": "<p>令牌 {header}</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "search",
+            "description": "<p>桌号模糊查询 {query}</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "adjust",
+            "description": "<p>调剂 1开启，0不开启 {query}</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "num",
+            "description": "<p>人数 当调剂为1时必传 {query}</p>"
           }
         ]
       }

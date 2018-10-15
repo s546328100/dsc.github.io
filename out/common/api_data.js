@@ -295,5 +295,191 @@ define({ "api": [
         "url": "http://kyun.dusuchao.xin:7001/common/v1/google/speech"
       }
     ]
+  },
+  {
+    "type": "get",
+    "url": "/messages/count",
+    "title": "未读消息数",
+    "name": "count",
+    "group": "message",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>令牌 {header}</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "sender",
+            "description": "<p>发送人 {query}</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "receiver",
+            "description": "<p>接收人 {query}</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "ref",
+            "description": "<p>'order' {query}</p>"
+          }
+        ]
+      }
+    },
+    "filename": "app/controller/common/message.js",
+    "groupTitle": "message",
+    "sampleRequest": [
+      {
+        "url": "http://kyun.dusuchao.xin:7001/common/v1/messages/count"
+      }
+    ]
+  },
+  {
+    "type": "get",
+    "url": "/messages",
+    "title": "消息列表",
+    "name": "list",
+    "group": "message",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>令牌 {header}</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "sender",
+            "description": "<p>发送人 {query}</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "receiver",
+            "description": "<p>接收人 {query}</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "type",
+            "description": "<p>1订单，2服务，3系统 {query}</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "ref",
+            "description": "<p>'order' {query}</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "action",
+            "description": "<p>0自动发送，1主动发送 {query}</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "status",
+            "description": "<p>0未读，1已读，2不需要读 {query}</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "page",
+            "description": "<p>当前页 {query}</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "pageSize",
+            "description": "<p>条数 {query}</p>"
+          }
+        ]
+      }
+    },
+    "filename": "app/controller/common/message.js",
+    "groupTitle": "message",
+    "sampleRequest": [
+      {
+        "url": "http://kyun.dusuchao.xin:7001/common/v1/messages"
+      }
+    ]
+  },
+  {
+    "type": "patch",
+    "url": "/message/read/:id",
+    "title": "已读消息",
+    "name": "read",
+    "group": "message",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>令牌 {header}</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>消息id {path}</p>"
+          }
+        ]
+      }
+    },
+    "filename": "app/controller/common/message.js",
+    "groupTitle": "message",
+    "sampleRequest": [
+      {
+        "url": "http://kyun.dusuchao.xin:7001/common/v1/message/read/:id"
+      }
+    ]
   }
 ] });
