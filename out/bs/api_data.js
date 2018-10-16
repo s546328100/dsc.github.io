@@ -36,7 +36,7 @@ define({ "api": [
     "groupTitle": "appointment",
     "sampleRequest": [
       {
-        "url": "http://kyun.dusuchao.xin:7001/bs/v1/appointment/:id"
+        "url": "http://kyun.dusuchao.xin:7001/cs/v1/appointment/:id"
       }
     ]
   },
@@ -105,7 +105,7 @@ define({ "api": [
     "groupTitle": "appointment",
     "sampleRequest": [
       {
-        "url": "http://kyun.dusuchao.xin:7001/bs/v1/appointments"
+        "url": "http://kyun.dusuchao.xin:7001/cs/v1/appointments"
       }
     ]
   },
@@ -178,6 +178,20 @@ define({ "api": [
             "group": "Parameter",
             "type": "String",
             "optional": true,
+            "field": "share",
+            "description": "<p>0不拼桌，1拼桌 {form}</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "status",
+            "description": "<p>1已就坐，2已取消，3已超时 {form}</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
             "field": "remark",
             "description": "<p>备注 {form}</p>"
           }
@@ -188,7 +202,7 @@ define({ "api": [
     "groupTitle": "appointment",
     "sampleRequest": [
       {
-        "url": "http://kyun.dusuchao.xin:7001/bs/v1/appointment/:id"
+        "url": "http://kyun.dusuchao.xin:7001/cs/v1/appointment/:id"
       }
     ]
   },
@@ -253,6 +267,13 @@ define({ "api": [
           {
             "group": "Parameter",
             "type": "String",
+            "optional": false,
+            "field": "share",
+            "description": "<p>0不拼桌，1拼桌 {form}</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
             "optional": true,
             "field": "remark",
             "description": "<p>备注 {form}</p>"
@@ -264,7 +285,7 @@ define({ "api": [
     "groupTitle": "appointment",
     "sampleRequest": [
       {
-        "url": "http://kyun.dusuchao.xin:7001/bs/v1/appointment"
+        "url": "http://kyun.dusuchao.xin:7001/cs/v1/appointment"
       }
     ]
   },
@@ -349,7 +370,7 @@ define({ "api": [
     "groupTitle": "enqueue",
     "sampleRequest": [
       {
-        "url": "http://kyun.dusuchao.xin:7001/bs/v1/enqueues"
+        "url": "http://kyun.dusuchao.xin:7001/cs/v1/enqueues"
       }
     ]
   },
@@ -397,7 +418,7 @@ define({ "api": [
     "groupTitle": "enqueue",
     "sampleRequest": [
       {
-        "url": "http://kyun.dusuchao.xin:7001/bs/v1/enqueue/:id"
+        "url": "http://kyun.dusuchao.xin:7001/cs/v1/enqueue/:id"
       }
     ]
   },
@@ -466,7 +487,7 @@ define({ "api": [
     "groupTitle": "enqueue",
     "sampleRequest": [
       {
-        "url": "http://kyun.dusuchao.xin:7001/bs/v1/enqueue"
+        "url": "http://kyun.dusuchao.xin:7001/cs/v1/enqueue"
       }
     ]
   },
@@ -514,7 +535,7 @@ define({ "api": [
     "groupTitle": "order",
     "sampleRequest": [
       {
-        "url": "http://kyun.dusuchao.xin:7001/bs/v1/order/menu/price/:id"
+        "url": "http://kyun.dusuchao.xin:7001/cs/v1/order/menu/price/:id"
       }
     ]
   },
@@ -555,7 +576,7 @@ define({ "api": [
     "groupTitle": "order",
     "sampleRequest": [
       {
-        "url": "http://kyun.dusuchao.xin:7001/bs/v1/order/free/:id"
+        "url": "http://kyun.dusuchao.xin:7001/cs/v1/order/free/:id"
       }
     ]
   },
@@ -596,7 +617,7 @@ define({ "api": [
     "groupTitle": "order",
     "sampleRequest": [
       {
-        "url": "http://kyun.dusuchao.xin:7001/bs/v1/order/:id"
+        "url": "http://kyun.dusuchao.xin:7001/cs/v1/order/:id"
       }
     ]
   },
@@ -693,7 +714,7 @@ define({ "api": [
     "groupTitle": "order",
     "sampleRequest": [
       {
-        "url": "http://kyun.dusuchao.xin:7001/bs/v1/orders"
+        "url": "http://kyun.dusuchao.xin:7001/cs/v1/orders"
       }
     ]
   },
@@ -748,7 +769,7 @@ define({ "api": [
     "groupTitle": "order",
     "sampleRequest": [
       {
-        "url": "http://kyun.dusuchao.xin:7001/bs/v1/order/menu/status"
+        "url": "http://kyun.dusuchao.xin:7001/cs/v1/order/menu/status"
       }
     ]
   },
@@ -810,7 +831,69 @@ define({ "api": [
     "groupTitle": "order",
     "sampleRequest": [
       {
-        "url": "http://kyun.dusuchao.xin:7001/bs/v1/order/pay/:id"
+        "url": "http://kyun.dusuchao.xin:7001/cs/v1/order/pay/:id"
+      }
+    ]
+  },
+  {
+    "type": "patch",
+    "url": "/order/refund/:id",
+    "title": "订单退款-处理下单人",
+    "name": "orderRefund",
+    "group": "order",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>令牌 {header}</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>订单ID {path}</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "money",
+            "description": "<p>退款金额 {form}</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "method",
+            "description": "<p>支付方式 0现金，1VIP，2其他 {form}</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "remark",
+            "description": "<p>备注 {form}</p>"
+          }
+        ]
+      }
+    },
+    "filename": "app/controller/bs/order.js",
+    "groupTitle": "order",
+    "sampleRequest": [
+      {
+        "url": "http://kyun.dusuchao.xin:7001/cs/v1/order/refund/:id"
       }
     ]
   },
@@ -850,6 +933,13 @@ define({ "api": [
             "optional": true,
             "field": "remark",
             "description": "<p>备注 {form}</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "submenu",
+            "description": "<p>分单人数，默认1 {form}</p>"
           }
         ]
       }
@@ -858,7 +948,7 @@ define({ "api": [
     "groupTitle": "order",
     "sampleRequest": [
       {
-        "url": "http://kyun.dusuchao.xin:7001/bs/v1/order/:id"
+        "url": "http://kyun.dusuchao.xin:7001/cs/v1/order/:id"
       }
     ]
   },
@@ -913,7 +1003,7 @@ define({ "api": [
     "groupTitle": "order",
     "sampleRequest": [
       {
-        "url": "http://kyun.dusuchao.xin:7001/bs/v1/order/price/:id"
+        "url": "http://kyun.dusuchao.xin:7001/cs/v1/order/price/:id"
       }
     ]
   },
@@ -961,7 +1051,7 @@ define({ "api": [
     "groupTitle": "order",
     "sampleRequest": [
       {
-        "url": "http://kyun.dusuchao.xin:7001/bs/v1/order/status/:id"
+        "url": "http://kyun.dusuchao.xin:7001/cs/v1/order/status/:id"
       }
     ]
   },
@@ -1009,7 +1099,7 @@ define({ "api": [
     "groupTitle": "order",
     "sampleRequest": [
       {
-        "url": "http://kyun.dusuchao.xin:7001/bs/v1/order/table/:id"
+        "url": "http://kyun.dusuchao.xin:7001/cs/v1/order/table/:id"
       }
     ]
   },
@@ -1064,7 +1154,7 @@ define({ "api": [
     "groupTitle": "tableType",
     "sampleRequest": [
       {
-        "url": "http://kyun.dusuchao.xin:7001/bs/v1/table/types"
+        "url": "http://kyun.dusuchao.xin:7001/cs/v1/table/types"
       }
     ]
   },
@@ -1092,7 +1182,7 @@ define({ "api": [
     "groupTitle": "tableType",
     "sampleRequest": [
       {
-        "url": "http://kyun.dusuchao.xin:7001/bs/v1/table/types"
+        "url": "http://kyun.dusuchao.xin:7001/cs/v1/table/types"
       }
     ]
   },
@@ -1147,7 +1237,7 @@ define({ "api": [
     "groupTitle": "table",
     "sampleRequest": [
       {
-        "url": "http://kyun.dusuchao.xin:7001/bs/v1/tables"
+        "url": "http://kyun.dusuchao.xin:7001/cs/v1/tables"
       }
     ]
   },
@@ -1204,7 +1294,7 @@ define({ "api": [
     "groupTitle": "table",
     "sampleRequest": [
       {
-        "url": "http://kyun.dusuchao.xin:7001/bs/v1/table/:id"
+        "url": "http://kyun.dusuchao.xin:7001/cs/v1/table/:id"
       }
     ]
   },
@@ -1259,7 +1349,7 @@ define({ "api": [
     "groupTitle": "table",
     "sampleRequest": [
       {
-        "url": "http://kyun.dusuchao.xin:7001/bs/v1/table/orders"
+        "url": "http://kyun.dusuchao.xin:7001/cs/v1/table/orders"
       }
     ]
   },
@@ -1300,7 +1390,7 @@ define({ "api": [
     "groupTitle": "template",
     "sampleRequest": [
       {
-        "url": "http://kyun.dusuchao.xin:7001/bs/v1/template/:id"
+        "url": "http://kyun.dusuchao.xin:7001/cs/v1/template/:id"
       }
     ]
   },
@@ -1341,7 +1431,7 @@ define({ "api": [
     "groupTitle": "template",
     "sampleRequest": [
       {
-        "url": "http://kyun.dusuchao.xin:7001/bs/v1/templates"
+        "url": "http://kyun.dusuchao.xin:7001/cs/v1/templates"
       }
     ]
   },
@@ -1382,7 +1472,7 @@ define({ "api": [
     "groupTitle": "template",
     "sampleRequest": [
       {
-        "url": "http://kyun.dusuchao.xin:7001/bs/v1/templates"
+        "url": "http://kyun.dusuchao.xin:7001/cs/v1/templates"
       }
     ]
   },
@@ -1444,7 +1534,7 @@ define({ "api": [
     "groupTitle": "template",
     "sampleRequest": [
       {
-        "url": "http://kyun.dusuchao.xin:7001/bs/v1/template/:id"
+        "url": "http://kyun.dusuchao.xin:7001/cs/v1/template/:id"
       }
     ]
   },
@@ -1506,7 +1596,7 @@ define({ "api": [
     "groupTitle": "template",
     "sampleRequest": [
       {
-        "url": "http://kyun.dusuchao.xin:7001/bs/v1/template"
+        "url": "http://kyun.dusuchao.xin:7001/cs/v1/template"
       }
     ]
   },
@@ -1521,7 +1611,7 @@ define({ "api": [
     "groupTitle": "test",
     "sampleRequest": [
       {
-        "url": "http://kyun.dusuchao.xin:7001/bs/v1/test/create"
+        "url": "http://kyun.dusuchao.xin:7001/cs/v1/test/create"
       }
     ]
   },
@@ -1549,7 +1639,7 @@ define({ "api": [
     "groupTitle": "test",
     "sampleRequest": [
       {
-        "url": "http://kyun.dusuchao.xin:7001/bs/v1/test"
+        "url": "http://kyun.dusuchao.xin:7001/cs/v1/test"
       }
     ]
   },
@@ -1564,7 +1654,7 @@ define({ "api": [
     "groupTitle": "user",
     "sampleRequest": [
       {
-        "url": "http://kyun.dusuchao.xin:7001/bs/v1/user/login/image/verify"
+        "url": "http://kyun.dusuchao.xin:7001/cs/v1/user/login/image/verify"
       }
     ]
   },
@@ -1608,7 +1698,7 @@ define({ "api": [
     "groupTitle": "user",
     "sampleRequest": [
       {
-        "url": "http://kyun.dusuchao.xin:7001/bs/v1/user/login"
+        "url": "http://kyun.dusuchao.xin:7001/cs/v1/user/login"
       }
     ]
   },
@@ -1636,7 +1726,7 @@ define({ "api": [
     "groupTitle": "user",
     "sampleRequest": [
       {
-        "url": "http://kyun.dusuchao.xin:7001/bs/v1/user/logout"
+        "url": "http://kyun.dusuchao.xin:7001/cs/v1/user/logout"
       }
     ]
   },
@@ -1694,7 +1784,7 @@ define({ "api": [
     "groupTitle": "user",
     "sampleRequest": [
       {
-        "url": "http://kyun.dusuchao.xin:7001/bs/v1/user/password"
+        "url": "http://kyun.dusuchao.xin:7001/cs/v1/user/password"
       }
     ]
   },
@@ -1758,7 +1848,7 @@ define({ "api": [
     "groupTitle": "user",
     "sampleRequest": [
       {
-        "url": "http://kyun.dusuchao.xin:7001/bs/v1/user"
+        "url": "http://kyun.dusuchao.xin:7001/cs/v1/user"
       }
     ]
   },
@@ -1802,7 +1892,7 @@ define({ "api": [
     "groupTitle": "user",
     "sampleRequest": [
       {
-        "url": "http://kyun.dusuchao.xin:7001/bs/v1/user/phone/login"
+        "url": "http://kyun.dusuchao.xin:7001/cs/v1/user/phone/login"
       }
     ]
   },
@@ -1830,7 +1920,7 @@ define({ "api": [
     "groupTitle": "user",
     "sampleRequest": [
       {
-        "url": "http://kyun.dusuchao.xin:7001/bs/v1/user/verify/account"
+        "url": "http://kyun.dusuchao.xin:7001/cs/v1/user/verify/account"
       }
     ]
   },
@@ -1871,7 +1961,7 @@ define({ "api": [
     "groupTitle": "user",
     "sampleRequest": [
       {
-        "url": "http://kyun.dusuchao.xin:7001/bs/v1/user/verify/password"
+        "url": "http://kyun.dusuchao.xin:7001/cs/v1/user/verify/password"
       }
     ]
   }
