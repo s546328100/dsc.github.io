@@ -36,7 +36,7 @@
     "groupTitle": "appointment",
     "sampleRequest": [
       {
-        "url": "http://kyun.dusuchao.xin:7001/cs/v1/appointment/:id"
+        "url": "http://kyun.dusuchao.xin:7001/bs/v1/appointment/:id"
       }
     ]
   },
@@ -101,11 +101,12 @@
         ]
       }
     },
+    "description": "<p>超时后会进行推送 appointment_current_status 值为true，自行进行刷新</p>",
     "filename": "app/controller/bs/appointment.js",
     "groupTitle": "appointment",
     "sampleRequest": [
       {
-        "url": "http://kyun.dusuchao.xin:7001/cs/v1/appointments"
+        "url": "http://kyun.dusuchao.xin:7001/bs/v1/appointments"
       }
     ]
   },
@@ -202,7 +203,7 @@
     "groupTitle": "appointment",
     "sampleRequest": [
       {
-        "url": "http://kyun.dusuchao.xin:7001/cs/v1/appointment/:id"
+        "url": "http://kyun.dusuchao.xin:7001/bs/v1/appointment/:id"
       }
     ]
   },
@@ -285,7 +286,62 @@
     "groupTitle": "appointment",
     "sampleRequest": [
       {
-        "url": "http://kyun.dusuchao.xin:7001/cs/v1/appointment"
+        "url": "http://kyun.dusuchao.xin:7001/bs/v1/appointment"
+      }
+    ]
+  },
+  {
+    "type": "get",
+    "url": "/appointments/tables",
+    "title": "获取预约桌号列表",
+    "name": "table",
+    "group": "appointment",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>令牌 {header}</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "adjust",
+            "description": "<p>调剂 1开启，0不开启 {query}</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "num",
+            "description": "<p>人数 {query}</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "appointmentTime",
+            "description": "<p>预约时间（时间戳） {query}</p>"
+          }
+        ]
+      }
+    },
+    "filename": "app/controller/bs/appointment.js",
+    "groupTitle": "appointment",
+    "sampleRequest": [
+      {
+        "url": "http://kyun.dusuchao.xin:7001/bs/v1/appointments/tables"
       }
     ]
   },
@@ -370,7 +426,7 @@
     "groupTitle": "enqueue",
     "sampleRequest": [
       {
-        "url": "http://kyun.dusuchao.xin:7001/cs/v1/enqueues"
+        "url": "http://kyun.dusuchao.xin:7001/bs/v1/enqueues"
       }
     ]
   },
@@ -418,7 +474,7 @@
     "groupTitle": "enqueue",
     "sampleRequest": [
       {
-        "url": "http://kyun.dusuchao.xin:7001/cs/v1/enqueue/:id"
+        "url": "http://kyun.dusuchao.xin:7001/bs/v1/enqueue/:id"
       }
     ]
   },
@@ -487,7 +543,7 @@
     "groupTitle": "enqueue",
     "sampleRequest": [
       {
-        "url": "http://kyun.dusuchao.xin:7001/cs/v1/enqueue"
+        "url": "http://kyun.dusuchao.xin:7001/bs/v1/enqueue"
       }
     ]
   },
@@ -535,7 +591,7 @@
     "groupTitle": "order",
     "sampleRequest": [
       {
-        "url": "http://kyun.dusuchao.xin:7001/cs/v1/order/menu/price/:id"
+        "url": "http://kyun.dusuchao.xin:7001/bs/v1/order/menu/price/:id"
       }
     ]
   },
@@ -576,7 +632,7 @@
     "groupTitle": "order",
     "sampleRequest": [
       {
-        "url": "http://kyun.dusuchao.xin:7001/cs/v1/order/free/:id"
+        "url": "http://kyun.dusuchao.xin:7001/bs/v1/order/free/:id"
       }
     ]
   },
@@ -617,7 +673,7 @@
     "groupTitle": "order",
     "sampleRequest": [
       {
-        "url": "http://kyun.dusuchao.xin:7001/cs/v1/order/:id"
+        "url": "http://kyun.dusuchao.xin:7001/bs/v1/order/:id"
       }
     ]
   },
@@ -714,7 +770,7 @@
     "groupTitle": "order",
     "sampleRequest": [
       {
-        "url": "http://kyun.dusuchao.xin:7001/cs/v1/orders"
+        "url": "http://kyun.dusuchao.xin:7001/bs/v1/orders"
       }
     ]
   },
@@ -769,7 +825,7 @@
     "groupTitle": "order",
     "sampleRequest": [
       {
-        "url": "http://kyun.dusuchao.xin:7001/cs/v1/order/menu/status"
+        "url": "http://kyun.dusuchao.xin:7001/bs/v1/order/menu/status"
       }
     ]
   },
@@ -831,7 +887,7 @@
     "groupTitle": "order",
     "sampleRequest": [
       {
-        "url": "http://kyun.dusuchao.xin:7001/cs/v1/order/pay/:id"
+        "url": "http://kyun.dusuchao.xin:7001/bs/v1/order/pay/:id"
       }
     ]
   },
@@ -893,7 +949,7 @@
     "groupTitle": "order",
     "sampleRequest": [
       {
-        "url": "http://kyun.dusuchao.xin:7001/cs/v1/order/refund/:id"
+        "url": "http://kyun.dusuchao.xin:7001/bs/v1/order/refund/:id"
       }
     ]
   },
@@ -948,7 +1004,7 @@
     "groupTitle": "order",
     "sampleRequest": [
       {
-        "url": "http://kyun.dusuchao.xin:7001/cs/v1/order/:id"
+        "url": "http://kyun.dusuchao.xin:7001/bs/v1/order/:id"
       }
     ]
   },
@@ -1003,7 +1059,7 @@
     "groupTitle": "order",
     "sampleRequest": [
       {
-        "url": "http://kyun.dusuchao.xin:7001/cs/v1/order/price/:id"
+        "url": "http://kyun.dusuchao.xin:7001/bs/v1/order/price/:id"
       }
     ]
   },
@@ -1051,7 +1107,7 @@
     "groupTitle": "order",
     "sampleRequest": [
       {
-        "url": "http://kyun.dusuchao.xin:7001/cs/v1/order/status/:id"
+        "url": "http://kyun.dusuchao.xin:7001/bs/v1/order/status/:id"
       }
     ]
   },
@@ -1099,7 +1155,7 @@
     "groupTitle": "order",
     "sampleRequest": [
       {
-        "url": "http://kyun.dusuchao.xin:7001/cs/v1/order/table/:id"
+        "url": "http://kyun.dusuchao.xin:7001/bs/v1/order/table/:id"
       }
     ]
   },
@@ -1154,7 +1210,7 @@
     "groupTitle": "tableType",
     "sampleRequest": [
       {
-        "url": "http://kyun.dusuchao.xin:7001/cs/v1/table/types"
+        "url": "http://kyun.dusuchao.xin:7001/bs/v1/table/types"
       }
     ]
   },
@@ -1182,7 +1238,7 @@
     "groupTitle": "tableType",
     "sampleRequest": [
       {
-        "url": "http://kyun.dusuchao.xin:7001/cs/v1/table/types"
+        "url": "http://kyun.dusuchao.xin:7001/bs/v1/table/types"
       }
     ]
   },
@@ -1228,7 +1284,7 @@
             "type": "Number",
             "optional": true,
             "field": "num",
-            "description": "<p>人数 当调剂为1时必传 {query}</p>"
+            "description": "<p>人数 当调剂时必传 {query}</p>"
           }
         ]
       }
@@ -1237,7 +1293,7 @@
     "groupTitle": "table",
     "sampleRequest": [
       {
-        "url": "http://kyun.dusuchao.xin:7001/cs/v1/tables"
+        "url": "http://kyun.dusuchao.xin:7001/bs/v1/tables"
       }
     ]
   },
@@ -1294,7 +1350,7 @@
     "groupTitle": "table",
     "sampleRequest": [
       {
-        "url": "http://kyun.dusuchao.xin:7001/cs/v1/table/:id"
+        "url": "http://kyun.dusuchao.xin:7001/bs/v1/table/:id"
       }
     ]
   },
@@ -1349,7 +1405,7 @@
     "groupTitle": "table",
     "sampleRequest": [
       {
-        "url": "http://kyun.dusuchao.xin:7001/cs/v1/table/orders"
+        "url": "http://kyun.dusuchao.xin:7001/bs/v1/table/orders"
       }
     ]
   },
@@ -1390,7 +1446,7 @@
     "groupTitle": "template",
     "sampleRequest": [
       {
-        "url": "http://kyun.dusuchao.xin:7001/cs/v1/template/:id"
+        "url": "http://kyun.dusuchao.xin:7001/bs/v1/template/:id"
       }
     ]
   },
@@ -1431,7 +1487,7 @@
     "groupTitle": "template",
     "sampleRequest": [
       {
-        "url": "http://kyun.dusuchao.xin:7001/cs/v1/templates"
+        "url": "http://kyun.dusuchao.xin:7001/bs/v1/templates"
       }
     ]
   },
@@ -1472,7 +1528,7 @@
     "groupTitle": "template",
     "sampleRequest": [
       {
-        "url": "http://kyun.dusuchao.xin:7001/cs/v1/templates"
+        "url": "http://kyun.dusuchao.xin:7001/bs/v1/templates"
       }
     ]
   },
@@ -1534,7 +1590,7 @@
     "groupTitle": "template",
     "sampleRequest": [
       {
-        "url": "http://kyun.dusuchao.xin:7001/cs/v1/template/:id"
+        "url": "http://kyun.dusuchao.xin:7001/bs/v1/template/:id"
       }
     ]
   },
@@ -1596,7 +1652,7 @@
     "groupTitle": "template",
     "sampleRequest": [
       {
-        "url": "http://kyun.dusuchao.xin:7001/cs/v1/template"
+        "url": "http://kyun.dusuchao.xin:7001/bs/v1/template"
       }
     ]
   },
@@ -1611,7 +1667,7 @@
     "groupTitle": "test",
     "sampleRequest": [
       {
-        "url": "http://kyun.dusuchao.xin:7001/cs/v1/test/create"
+        "url": "http://kyun.dusuchao.xin:7001/bs/v1/test/create"
       }
     ]
   },
@@ -1639,7 +1695,7 @@
     "groupTitle": "test",
     "sampleRequest": [
       {
-        "url": "http://kyun.dusuchao.xin:7001/cs/v1/test"
+        "url": "http://kyun.dusuchao.xin:7001/bs/v1/test"
       }
     ]
   },
@@ -1654,7 +1710,7 @@
     "groupTitle": "user",
     "sampleRequest": [
       {
-        "url": "http://kyun.dusuchao.xin:7001/cs/v1/user/login/image/verify"
+        "url": "http://kyun.dusuchao.xin:7001/bs/v1/user/login/image/verify"
       }
     ]
   },
@@ -1698,7 +1754,7 @@
     "groupTitle": "user",
     "sampleRequest": [
       {
-        "url": "http://kyun.dusuchao.xin:7001/cs/v1/user/login"
+        "url": "http://kyun.dusuchao.xin:7001/bs/v1/user/login"
       }
     ]
   },
@@ -1726,7 +1782,7 @@
     "groupTitle": "user",
     "sampleRequest": [
       {
-        "url": "http://kyun.dusuchao.xin:7001/cs/v1/user/logout"
+        "url": "http://kyun.dusuchao.xin:7001/bs/v1/user/logout"
       }
     ]
   },
@@ -1784,7 +1840,7 @@
     "groupTitle": "user",
     "sampleRequest": [
       {
-        "url": "http://kyun.dusuchao.xin:7001/cs/v1/user/password"
+        "url": "http://kyun.dusuchao.xin:7001/bs/v1/user/password"
       }
     ]
   },
@@ -1848,7 +1904,7 @@
     "groupTitle": "user",
     "sampleRequest": [
       {
-        "url": "http://kyun.dusuchao.xin:7001/cs/v1/user"
+        "url": "http://kyun.dusuchao.xin:7001/bs/v1/user"
       }
     ]
   },
@@ -1892,7 +1948,7 @@
     "groupTitle": "user",
     "sampleRequest": [
       {
-        "url": "http://kyun.dusuchao.xin:7001/cs/v1/user/phone/login"
+        "url": "http://kyun.dusuchao.xin:7001/bs/v1/user/phone/login"
       }
     ]
   },
@@ -1920,7 +1976,7 @@
     "groupTitle": "user",
     "sampleRequest": [
       {
-        "url": "http://kyun.dusuchao.xin:7001/cs/v1/user/verify/account"
+        "url": "http://kyun.dusuchao.xin:7001/bs/v1/user/verify/account"
       }
     ]
   },
@@ -1961,7 +2017,7 @@
     "groupTitle": "user",
     "sampleRequest": [
       {
-        "url": "http://kyun.dusuchao.xin:7001/cs/v1/user/verify/password"
+        "url": "http://kyun.dusuchao.xin:7001/bs/v1/user/verify/password"
       }
     ]
   }
