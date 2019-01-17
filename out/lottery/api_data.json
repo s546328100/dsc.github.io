@@ -167,6 +167,89 @@
   },
   {
     "type": "post",
+    "url": "/v1/file/upload",
+    "title": "文件上传",
+    "name": "upload",
+    "group": "file",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "File",
+            "optional": false,
+            "field": "file",
+            "description": "<p>文件</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "name",
+            "description": "<p>文件名称</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "prefix",
+            "description": "<p>文件前缀</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "imageInfo",
+            "description": "<p>1，返回图片宽高</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "resize",
+            "description": "<p>1，开启图片缩放</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "width",
+            "description": "<p>如高度不传，根据宽度按比例缩放</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "height",
+            "description": "<p>如宽度不传，根据高度按比例缩放</p>"
+          }
+        ]
+      }
+    },
+    "filename": "src/controller/v1/file.ts",
+    "groupTitle": "file",
+    "sampleRequest": [
+      {
+        "url": "http://192.168.31.219:5761/lottery/v1/file/upload"
+      }
+    ]
+  },
+  {
+    "type": "post",
     "url": "/v1/form",
     "title": "添加FromId",
     "name": "create",
