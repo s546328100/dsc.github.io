@@ -126,6 +126,47 @@ define({ "api": [
   },
   {
     "type": "post",
+    "url": "/v1/form",
+    "title": "添加FromId",
+    "name": "create",
+    "group": "form",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Array",
+            "optional": true,
+            "field": "formIds",
+            "description": "<p>formIds</p>"
+          }
+        ]
+      }
+    },
+    "filename": "src/controller/v1/form.ts",
+    "groupTitle": "form",
+    "sampleRequest": [
+      {
+        "url": "http://192.168.31.219:5761/lottery/v1/form"
+      }
+    ]
+  },
+  {
+    "type": "post",
     "url": "/v1/user/login",
     "title": "用户授权登陆",
     "name": "userLogin",
