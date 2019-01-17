@@ -166,6 +166,63 @@
     ]
   },
   {
+    "type": "get",
+    "url": "/v1/common/wx/qrcode",
+    "title": "wx二维码",
+    "name": "getWXACodeUnlimit",
+    "group": "common",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "param",
+            "description": "<p>参数</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "width",
+            "defaultValue": "280",
+            "description": "<p>大小</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "path",
+            "defaultValue": "/pages/index/index",
+            "description": "<p>页面</p>"
+          }
+        ]
+      }
+    },
+    "filename": "src/controller/v1/common.ts",
+    "groupTitle": "common",
+    "sampleRequest": [
+      {
+        "url": "http://192.168.31.219:5761/lottery/v1/common/wx/qrcode"
+      }
+    ]
+  },
+  {
     "type": "post",
     "url": "/v1/file/upload",
     "title": "文件上传",
