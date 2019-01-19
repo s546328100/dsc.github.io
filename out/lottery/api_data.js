@@ -139,6 +139,47 @@ define({ "api": [
   },
   {
     "type": "post",
+    "url": "/v1/activity/join",
+    "title": "参加定时开奖",
+    "name": "join",
+    "group": "activity",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>活动id</p>"
+          }
+        ]
+      }
+    },
+    "filename": "src/controller/v1/activity.ts",
+    "groupTitle": "activity",
+    "sampleRequest": [
+      {
+        "url": "http://192.168.31.219:5761/lottery/v1/activity/join"
+      }
+    ]
+  },
+  {
+    "type": "post",
     "url": "/v1/activity/lottery",
     "title": "活动抽奖",
     "name": "lottery",
@@ -283,8 +324,16 @@ define({ "api": [
             "type": "String",
             "optional": true,
             "field": "path",
-            "defaultValue": "/pages/index/index",
+            "defaultValue": "pages/index/index",
             "description": "<p>页面</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Boolean",
+            "optional": true,
+            "field": "isHyaline",
+            "defaultValue": "false",
+            "description": "<p>是否透明</p>"
           }
         ]
       }
