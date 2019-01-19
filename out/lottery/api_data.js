@@ -125,6 +125,20 @@ define({ "api": [
             "optional": false,
             "field": "status",
             "description": "<p>1进行中 2已结束</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "joinUserNum",
+            "description": "<p>参加人数</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Boolean",
+            "optional": false,
+            "field": "isJoin",
+            "description": "<p>是否已参加</p>"
           }
         ]
       }
