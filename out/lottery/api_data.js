@@ -193,6 +193,47 @@ define({ "api": [
     ]
   },
   {
+    "type": "get",
+    "url": "/v1/activity/join",
+    "title": "活动参加人",
+    "name": "joinList",
+    "group": "activity",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>活动id</p>"
+          }
+        ]
+      }
+    },
+    "filename": "src/controller/v1/activity.ts",
+    "groupTitle": "activity",
+    "sampleRequest": [
+      {
+        "url": "http://192.168.31.219:5761/lottery/v1/activity/join"
+      }
+    ]
+  },
+  {
     "type": "post",
     "url": "/v1/activity/lottery",
     "title": "活动抽奖",
