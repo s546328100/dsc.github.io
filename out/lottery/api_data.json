@@ -79,6 +79,26 @@
             "optional": false,
             "field": "prizes",
             "description": "<p>奖品 <code>{money: Number, type: Number, name: String, number: Number, level: String, desc: String, images: [{sort: Number,url: String,width: Number,height: Number}], default: Array}</code></p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "prizes.type",
+            "description": "<p>1实物 2现金 3虚拟奖品（代金券）</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "payResult",
+            "description": "<p>支付结果</p>"
           }
         ]
       }
