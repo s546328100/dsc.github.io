@@ -79,13 +79,6 @@ define({ "api": [
             "optional": false,
             "field": "prizes",
             "description": "<p>奖品 <code>{money: Number, type: Number, name: String, number: Number, level: String, desc: String, images: [{sort: Number,url: String,width: Number,height: Number}], default: Array}</code></p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "Number",
-            "optional": true,
-            "field": "prizes.type",
-            "description": "<p>1实物 2现金 3虚拟奖品（代金券）</p>"
           }
         ]
       }
@@ -118,19 +111,6 @@ define({ "api": [
     "name": "info",
     "group": "activity",
     "version": "1.0.0",
-    "header": {
-      "fields": {
-        "Header": [
-          {
-            "group": "Header",
-            "type": "String",
-            "optional": false,
-            "field": "token",
-            "description": ""
-          }
-        ]
-      }
-    },
     "parameter": {
       "fields": {
         "Parameter": [
@@ -398,6 +378,54 @@ define({ "api": [
             "group": "Parameter",
             "type": "String",
             "optional": true,
+            "field": "pageSize",
+            "description": "<p>页数</p>"
+          }
+        ]
+      }
+    },
+    "filename": "src/controller/v1/activity.ts",
+    "groupTitle": "activity",
+    "sampleRequest": [
+      {
+        "url": "http://192.168.31.219:5761/lottery/v1/activity/win/user"
+      }
+    ]
+  },
+  {
+    "type": "get",
+    "url": "/v1/activity/win/users",
+    "title": "更多活动中奖用户",
+    "name": "winUsers",
+    "group": "activity",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "prizeId",
+            "description": "<p>奖品id</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
             "field": "page",
             "description": "<p>当前页</p>"
           },
@@ -422,7 +450,7 @@ define({ "api": [
     "groupTitle": "activity",
     "sampleRequest": [
       {
-        "url": "http://192.168.31.219:5761/lottery/v1/activity/win/user"
+        "url": "http://192.168.31.219:5761/lottery/v1/activity/win/users"
       }
     ]
   },
@@ -616,6 +644,61 @@ define({ "api": [
     ]
   },
   {
+    "type": "patch",
+    "url": "/v1/prize",
+    "title": "修改奖品",
+    "name": "patch",
+    "group": "prize",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>奖品id</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Object",
+            "optional": true,
+            "field": "delivery",
+            "description": "<p>配送信息 <code>name phone location</code></p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Object",
+            "optional": true,
+            "field": "logistics",
+            "description": "<p>物流信息 <code>name no</code></p>"
+          }
+        ]
+      }
+    },
+    "filename": "src/controller/v1/prize.ts",
+    "groupTitle": "prize",
+    "sampleRequest": [
+      {
+        "url": "http://192.168.31.219:5761/lottery/v1/prize"
+      }
+    ]
+  },
+  {
     "type": "post",
     "url": "/v1/prize/withdraw",
     "title": "奖品金钱提现",
@@ -653,6 +736,34 @@ define({ "api": [
     "sampleRequest": [
       {
         "url": "http://192.168.31.219:5761/lottery/v1/prize/withdraw"
+      }
+    ]
+  },
+  {
+    "type": "get",
+    "url": "/v1/test",
+    "title": "测试",
+    "name": "create",
+    "group": "test",
+    "version": "1.0.0",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "id",
+            "description": "<p>文件名称</p>"
+          }
+        ]
+      }
+    },
+    "filename": "src/controller/v1/test.ts",
+    "groupTitle": "test",
+    "sampleRequest": [
+      {
+        "url": "http://192.168.31.219:5761/lottery/v1/test"
       }
     ]
   },
