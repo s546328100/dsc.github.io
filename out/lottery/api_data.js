@@ -1,5 +1,67 @@
 define({ "api": [
   {
+    "type": "get",
+    "url": "/v1/activities",
+    "title": "活动列表",
+    "name": "activities",
+    "group": "activity",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "all",
+            "description": "<p>0公开的 1所有</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "page",
+            "description": "<p>当前页</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "pageSize",
+            "description": "<p>页数</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "sort",
+            "description": "<p>排序</p>"
+          }
+        ]
+      }
+    },
+    "filename": "src/controller/v1/activity.ts",
+    "groupTitle": "activity",
+    "sampleRequest": [
+      {
+        "url": "http://192.168.31.219:5761/lottery/v1/activities"
+      }
+    ]
+  },
+  {
     "type": "post",
     "url": "/v1/activity",
     "title": "添加活动",
@@ -919,6 +981,236 @@ define({ "api": [
     ]
   },
   {
+    "type": "post",
+    "url": "/v1/user/address",
+    "title": "新增地址",
+    "name": "addUserAddress",
+    "group": "user",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Object",
+            "optional": false,
+            "field": "address",
+            "description": "<p>地址 <code>name phone province city region location default</code></p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "address_name",
+            "description": "<p>名称</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "address_phone",
+            "description": "<p>电话</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "address_province",
+            "description": "<p>省</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "address_city",
+            "description": "<p>市</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "address_region",
+            "description": "<p>区</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "address_location",
+            "description": "<p>地址</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "address_default",
+            "defaultValue": "0",
+            "description": "<p>1 默认</p>"
+          }
+        ]
+      }
+    },
+    "filename": "src/controller/v1/user.ts",
+    "groupTitle": "user",
+    "sampleRequest": [
+      {
+        "url": "http://192.168.31.219:5761/lottery/v1/user/address"
+      }
+    ]
+  },
+  {
+    "type": "delete",
+    "url": "/v1/user/address",
+    "title": "删除地址",
+    "name": "delUserAddress",
+    "group": "user",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "addressId",
+            "description": "<p>地址id</p>"
+          }
+        ]
+      }
+    },
+    "filename": "src/controller/v1/user.ts",
+    "groupTitle": "user",
+    "sampleRequest": [
+      {
+        "url": "http://192.168.31.219:5761/lottery/v1/user/address"
+      }
+    ]
+  },
+  {
+    "type": "patch",
+    "url": "/v1/user/address",
+    "title": "修改地址",
+    "name": "patchUserAddress",
+    "group": "user",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Object",
+            "optional": false,
+            "field": "addressId",
+            "description": "<p>地址id</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Object",
+            "optional": false,
+            "field": "address",
+            "description": "<p>地址 <code>name phone province city region location default</code></p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "address_name",
+            "description": "<p>名称</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "address_phone",
+            "description": "<p>电话</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "address_province",
+            "description": "<p>省</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "address_city",
+            "description": "<p>市</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "address_region",
+            "description": "<p>区</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "address_location",
+            "description": "<p>地址</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "address_default",
+            "defaultValue": "0",
+            "description": "<p>1 默认</p>"
+          }
+        ]
+      }
+    },
+    "filename": "src/controller/v1/user.ts",
+    "groupTitle": "user",
+    "sampleRequest": [
+      {
+        "url": "http://192.168.31.219:5761/lottery/v1/user/address"
+      }
+    ]
+  },
+  {
     "type": "get",
     "url": "/v1/user/prize",
     "title": "我的奖品",
@@ -977,6 +1269,34 @@ define({ "api": [
     "sampleRequest": [
       {
         "url": "http://192.168.31.219:5761/lottery/v1/user/prize"
+      }
+    ]
+  },
+  {
+    "type": "get",
+    "url": "/v1/user/addresses",
+    "title": "地址列表",
+    "name": "userAddresses",
+    "group": "user",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "filename": "src/controller/v1/user.ts",
+    "groupTitle": "user",
+    "sampleRequest": [
+      {
+        "url": "http://192.168.31.219:5761/lottery/v1/user/addresses"
       }
     ]
   },
