@@ -436,6 +436,47 @@
   },
   {
     "type": "post",
+    "url": "/v1/activity/scratchcard",
+    "title": "刮卡",
+    "name": "postActivityScratchcard",
+    "group": "activity",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "prizeId",
+            "description": "<p>奖品id</p>"
+          }
+        ]
+      }
+    },
+    "filename": "src/controller/v1/activity.ts",
+    "groupTitle": "activity",
+    "sampleRequest": [
+      {
+        "url": "http://192.168.31.219:5761/lottery/v1/activity/scratchcard"
+      }
+    ]
+  },
+  {
+    "type": "post",
     "url": "/v1/activity/stop",
     "title": "结束活动",
     "name": "stop",
@@ -1137,6 +1178,47 @@
     "sampleRequest": [
       {
         "url": "http://192.168.31.219:5761/lottery/v1/user/address"
+      }
+    ]
+  },
+  {
+    "type": "patch",
+    "url": "/v1/user",
+    "title": "修改用户",
+    "name": "patchUser",
+    "group": "user",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "number",
+            "optional": true,
+            "field": "share",
+            "description": "<p>分享 <code>1即时 2定时 99刮刮卡</code></p>"
+          }
+        ]
+      }
+    },
+    "filename": "src/controller/v1/user.ts",
+    "groupTitle": "user",
+    "sampleRequest": [
+      {
+        "url": "http://192.168.31.219:5761/lottery/v1/user"
       }
     ]
   },
