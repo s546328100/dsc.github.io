@@ -62,6 +62,34 @@ define({ "api": [
     ]
   },
   {
+    "type": "get",
+    "url": "/v1/activity/scratchcard",
+    "title": "刮刮卡",
+    "name": "activityScratchcard",
+    "group": "activity",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "filename": "src/controller/v1/activity.ts",
+    "groupTitle": "activity",
+    "sampleRequest": [
+      {
+        "url": "http://192.168.31.219:5761/lottery/v1/activity/scratchcard"
+      }
+    ]
+  },
+  {
     "type": "post",
     "url": "/v1/activity",
     "title": "添加活动",
