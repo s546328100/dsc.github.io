@@ -27,7 +27,7 @@ define({ "api": [
             "type": "String",
             "optional": true,
             "field": "all",
-            "description": "<p>0公开的 1所有</p>"
+            "description": "<p>0公开的 1所有 2审核</p>"
           },
           {
             "group": "Parameter",
@@ -115,10 +115,10 @@ define({ "api": [
           {
             "group": "Parameter",
             "type": "Number",
-            "size": "1-2",
+            "size": "1-3",
             "optional": false,
             "field": "type",
-            "description": "<p>1.即时抽 2.定时抽</p>"
+            "description": "<p>1.即时抽 2.定时抽 3.语音抽</p>"
           },
           {
             "group": "Parameter",
@@ -169,6 +169,20 @@ define({ "api": [
             "optional": false,
             "field": "prizes",
             "description": "<p>奖品 <code>{money: Number, type: Number, name: String, number: Number, level: String, desc: String, images: [{sort: Number,url: String,width: Number,height: Number}], default: Array}</code></p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "pass",
+            "description": "<p>我要上首页 需传0</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Object",
+            "optional": true,
+            "field": "account",
+            "description": "<p>公众号信息</p>"
           }
         ]
       }
@@ -390,6 +404,54 @@ define({ "api": [
     "sampleRequest": [
       {
         "url": "http://192.168.31.219:5761/lottery/v1/activity/lottery"
+      }
+    ]
+  },
+  {
+    "type": "patch",
+    "url": "/v1/activity",
+    "title": "修改活动",
+    "name": "patch",
+    "group": "activity",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>活动id</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "pass",
+            "description": "<p>0不通过 1通过</p>"
+          }
+        ]
+      }
+    },
+    "filename": "src/controller/v1/activity.ts",
+    "groupTitle": "activity",
+    "sampleRequest": [
+      {
+        "url": "http://192.168.31.219:5761/lottery/v1/activity"
       }
     ]
   },
