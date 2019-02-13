@@ -408,54 +408,6 @@
     ]
   },
   {
-    "type": "patch",
-    "url": "/v1/activity",
-    "title": "修改活动",
-    "name": "patch",
-    "group": "activity",
-    "version": "1.0.0",
-    "header": {
-      "fields": {
-        "Header": [
-          {
-            "group": "Header",
-            "type": "String",
-            "optional": false,
-            "field": "token",
-            "description": ""
-          }
-        ]
-      }
-    },
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "id",
-            "description": "<p>活动id</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "Number",
-            "optional": true,
-            "field": "pass",
-            "description": "<p>0不通过 1通过</p>"
-          }
-        ]
-      }
-    },
-    "filename": "src/controller/v1/activity.ts",
-    "groupTitle": "activity",
-    "sampleRequest": [
-      {
-        "url": "http://192.168.31.219:5761/lottery/v1/activity"
-      }
-    ]
-  },
-  {
     "type": "post",
     "url": "/v1/activity/pay",
     "title": "活动支付",
@@ -534,6 +486,102 @@
     "sampleRequest": [
       {
         "url": "http://192.168.31.219:5761/lottery/v1/activity/scratchcard"
+      }
+    ]
+  },
+  {
+    "type": "put",
+    "url": "/v1/activity",
+    "title": "修改活动",
+    "name": "put",
+    "group": "activity",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>活动id</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "pass",
+            "description": "<p>0不通过 1通过</p>"
+          }
+        ]
+      }
+    },
+    "filename": "src/controller/v1/activity.ts",
+    "groupTitle": "activity",
+    "sampleRequest": [
+      {
+        "url": "http://192.168.31.219:5761/lottery/v1/activity"
+      }
+    ]
+  },
+  {
+    "type": "put",
+    "url": "/v1/activity/user",
+    "title": "修改活动参加（助力）",
+    "name": "putActivityUser",
+    "group": "activity",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>活动id</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "user",
+            "description": "<p>userId</p>"
+          }
+        ]
+      }
+    },
+    "filename": "src/controller/v1/activity.ts",
+    "groupTitle": "activity",
+    "sampleRequest": [
+      {
+        "url": "http://192.168.31.219:5761/lottery/v1/activity/user"
       }
     ]
   },
@@ -878,10 +926,10 @@
     ]
   },
   {
-    "type": "patch",
+    "type": "put",
     "url": "/v1/prize",
     "title": "修改奖品",
-    "name": "patch",
+    "name": "put",
     "group": "prize",
     "version": "1.0.0",
     "header": {
@@ -1026,6 +1074,13 @@
         "Parameter": [
           {
             "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "status",
+            "description": "<p>状态</p>"
+          },
+          {
+            "group": "Parameter",
             "type": "String",
             "optional": true,
             "field": "page",
@@ -1079,6 +1134,13 @@
     "parameter": {
       "fields": {
         "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "status",
+            "description": "<p>状态</p>"
+          },
           {
             "group": "Parameter",
             "type": "String",
@@ -1244,10 +1306,72 @@
     ]
   },
   {
-    "type": "patch",
+    "type": "get",
+    "url": "/v1/user/prize",
+    "title": "我的奖品",
+    "name": "prize",
+    "group": "user",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "status",
+            "description": "<p><code>1待领取 2已领取 3已过期</code> (暂不用)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "page",
+            "description": "<p>当前页</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "pageSize",
+            "description": "<p>页数</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "sort",
+            "description": "<p>排序</p>"
+          }
+        ]
+      }
+    },
+    "filename": "src/controller/v1/user.ts",
+    "groupTitle": "user",
+    "sampleRequest": [
+      {
+        "url": "http://192.168.31.219:5761/lottery/v1/user/prize"
+      }
+    ]
+  },
+  {
+    "type": "put",
     "url": "/v1/user",
     "title": "修改用户",
-    "name": "patchUser",
+    "name": "putUser",
     "group": "user",
     "version": "1.0.0",
     "header": {
@@ -1270,7 +1394,7 @@
             "group": "Parameter",
             "type": "number",
             "optional": true,
-            "field": "share",
+            "field": "type",
             "description": "<p>分享 <code>1即时 2定时 99刮刮卡</code></p>"
           }
         ]
@@ -1285,10 +1409,10 @@
     ]
   },
   {
-    "type": "patch",
+    "type": "put",
     "url": "/v1/user/address",
     "title": "修改地址",
-    "name": "patchUserAddress",
+    "name": "putUserAddress",
     "group": "user",
     "version": "1.0.0",
     "header": {
@@ -1379,68 +1503,6 @@
     "sampleRequest": [
       {
         "url": "http://192.168.31.219:5761/lottery/v1/user/address"
-      }
-    ]
-  },
-  {
-    "type": "get",
-    "url": "/v1/user/prize",
-    "title": "我的奖品",
-    "name": "prize",
-    "group": "user",
-    "version": "1.0.0",
-    "header": {
-      "fields": {
-        "Header": [
-          {
-            "group": "Header",
-            "type": "String",
-            "optional": false,
-            "field": "token",
-            "description": ""
-          }
-        ]
-      }
-    },
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": true,
-            "field": "status",
-            "description": "<p><code>1待领取 2已领取 3已过期</code> (暂不用)</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": true,
-            "field": "page",
-            "description": "<p>当前页</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": true,
-            "field": "pageSize",
-            "description": "<p>页数</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": true,
-            "field": "sort",
-            "description": "<p>排序</p>"
-          }
-        ]
-      }
-    },
-    "filename": "src/controller/v1/user.ts",
-    "groupTitle": "user",
-    "sampleRequest": [
-      {
-        "url": "http://192.168.31.219:5761/lottery/v1/user/prize"
       }
     ]
   },
