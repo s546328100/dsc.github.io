@@ -183,6 +183,22 @@
             "optional": true,
             "field": "account",
             "description": "<p>公众号信息</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "isHelp",
+            "defaultValue": "0",
+            "description": "<p>是否助力</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "isExpiry",
+            "defaultValue": "0",
+            "description": "<p>是否兑奖码</p>"
           }
         ]
       }
@@ -922,6 +938,88 @@
     "sampleRequest": [
       {
         "url": "http://192.168.31.219:5761/lottery/v1/form"
+      }
+    ]
+  },
+  {
+    "type": "post",
+    "url": "/v1/prize/expiry",
+    "title": "奖品兑奖",
+    "name": "expiry",
+    "group": "prize",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>中奖id</p>"
+          }
+        ]
+      }
+    },
+    "filename": "src/controller/v1/prize.ts",
+    "groupTitle": "prize",
+    "sampleRequest": [
+      {
+        "url": "http://192.168.31.219:5761/lottery/v1/prize/expiry"
+      }
+    ]
+  },
+  {
+    "type": "get",
+    "url": "/v1/prize",
+    "title": "中奖信息",
+    "name": "info",
+    "group": "prize",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>中奖id</p>"
+          }
+        ]
+      }
+    },
+    "filename": "src/controller/v1/prize.ts",
+    "groupTitle": "prize",
+    "sampleRequest": [
+      {
+        "url": "http://192.168.31.219:5761/lottery/v1/prize"
       }
     ]
   },
