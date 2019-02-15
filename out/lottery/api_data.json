@@ -753,6 +753,102 @@
     ]
   },
   {
+    "type": "delete",
+    "url": "/v1/admin/activity",
+    "title": "管理员删除活动 (真删除，慎用)",
+    "name": "activityDelete",
+    "group": "admin",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>活动id</p>"
+          }
+        ]
+      }
+    },
+    "filename": "src/controller/v1/admin.ts",
+    "groupTitle": "admin",
+    "sampleRequest": [
+      {
+        "url": "http://192.168.31.219:5761/lottery/v1/admin/activity"
+      }
+    ]
+  },
+  {
+    "type": "put",
+    "url": "/v1/admin/activity",
+    "title": "管理员修改活动",
+    "name": "activityPut",
+    "group": "admin",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>活动id</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "hasDefault",
+            "description": "<p>0不 1内</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Array",
+            "optional": true,
+            "field": "defaults",
+            "description": "<p>格式 <code>[['id1', 'id2'], ['id3']]</code></p>"
+          }
+        ]
+      }
+    },
+    "filename": "src/controller/v1/admin.ts",
+    "groupTitle": "admin",
+    "sampleRequest": [
+      {
+        "url": "http://192.168.31.219:5761/lottery/v1/admin/activity"
+      }
+    ]
+  },
+  {
     "type": "get",
     "url": "/v1/common/wx/qrcode",
     "title": "wx二维码",
@@ -989,19 +1085,6 @@
     "name": "info",
     "group": "prize",
     "version": "1.0.0",
-    "header": {
-      "fields": {
-        "Header": [
-          {
-            "group": "Header",
-            "type": "String",
-            "optional": false,
-            "field": "token",
-            "description": ""
-          }
-        ]
-      }
-    },
     "parameter": {
       "fields": {
         "Parameter": [
