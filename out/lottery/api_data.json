@@ -832,10 +832,25 @@
           },
           {
             "group": "Parameter",
-            "type": "Array",
+            "type": "String",
             "optional": true,
-            "field": "defaults",
-            "description": "<p>格式 <code>[['id1', 'id2'], ['id3']]</code></p>"
+            "field": "prizeId",
+            "description": "<p>奖品id</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "user",
+            "description": "<p>用户id</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "type",
+            "defaultValue": "0",
+            "description": "<p>0添加 1删除</p>"
           }
         ]
       }
@@ -845,6 +860,68 @@
     "sampleRequest": [
       {
         "url": "http://192.168.31.219:5761/lottery/v1/admin/activity"
+      }
+    ]
+  },
+  {
+    "type": "post",
+    "url": "/v1/admin/activity/user",
+    "title": "活动设置假用户",
+    "name": "activityUserPost",
+    "group": "admin",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>活动id</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "prizeId",
+            "description": "<p>奖品id</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "avatarUrl",
+            "description": "<p>头像</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "nickName",
+            "description": "<p>名称</p>"
+          }
+        ]
+      }
+    },
+    "filename": "src/controller/v1/admin.ts",
+    "groupTitle": "admin",
+    "sampleRequest": [
+      {
+        "url": "http://192.168.31.219:5761/lottery/v1/admin/activity/user"
       }
     ]
   },
@@ -1209,6 +1286,19 @@
     "name": "create",
     "group": "test",
     "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": ""
+          }
+        ]
+      }
+    },
     "parameter": {
       "fields": {
         "Parameter": [
@@ -1216,8 +1306,29 @@
             "group": "Parameter",
             "type": "String",
             "optional": true,
+            "field": "type",
+            "description": "<p>type</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
             "field": "id",
-            "description": "<p>文件名称</p>"
+            "description": "<p>id</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "num",
+            "description": "<p>num</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "activity",
+            "description": "<p>activity</p>"
           }
         ]
       }
