@@ -1074,6 +1074,47 @@ define({ "api": [
     ]
   },
   {
+    "type": "get",
+    "url": "/v1/form/count",
+    "title": "可发formid数",
+    "name": "count",
+    "group": "form",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>活动id</p>"
+          }
+        ]
+      }
+    },
+    "filename": "src/controller/v1/form.ts",
+    "groupTitle": "form",
+    "sampleRequest": [
+      {
+        "url": "http://192.168.31.219:5761/lottery/v1/form/count"
+      }
+    ]
+  },
+  {
     "type": "post",
     "url": "/v1/form",
     "title": "添加FromId",
@@ -1111,6 +1152,47 @@ define({ "api": [
     "sampleRequest": [
       {
         "url": "http://192.168.31.219:5761/lottery/v1/form"
+      }
+    ]
+  },
+  {
+    "type": "post",
+    "url": "/v1/form/send",
+    "title": "新活动推送",
+    "name": "send",
+    "group": "form",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>活动id</p>"
+          }
+        ]
+      }
+    },
+    "filename": "src/controller/v1/form.ts",
+    "groupTitle": "form",
+    "sampleRequest": [
+      {
+        "url": "http://192.168.31.219:5761/lottery/v1/form/send"
       }
     ]
   },
