@@ -238,6 +238,19 @@ define({ "api": [
     "name": "info",
     "group": "activity",
     "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": ""
+          }
+        ]
+      }
+    },
     "parameter": {
       "fields": {
         "Parameter": [
@@ -1724,6 +1737,34 @@ define({ "api": [
     "sampleRequest": [
       {
         "url": "http://192.168.31.219:5761/lottery/v1/user/address"
+      }
+    ]
+  },
+  {
+    "type": "get",
+    "url": "/v1/user",
+    "title": "我的信息",
+    "name": "info",
+    "group": "user",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "filename": "src/controller/v1/user.ts",
+    "groupTitle": "user",
+    "sampleRequest": [
+      {
+        "url": "http://192.168.31.219:5761/lottery/v1/user"
       }
     ]
   },
