@@ -27,7 +27,7 @@
             "type": "String",
             "optional": true,
             "field": "all",
-            "description": "<p>0公开的 1所有 2审核</p>"
+            "description": "<p>0公开的 1未通过 2 所有-进行中 3 所有-已结束</p>"
           },
           {
             "group": "Parameter",
@@ -115,10 +115,10 @@
           {
             "group": "Parameter",
             "type": "Number",
-            "size": "1-3",
+            "size": "1-4",
             "optional": false,
             "field": "type",
-            "description": "<p>1.即时抽 2.定时抽 3.语音抽</p>"
+            "description": "<p>1.即时抽 2.定时抽 3.人数抽 4.手动抽</p>"
           },
           {
             "group": "Parameter",
@@ -151,7 +151,7 @@
           {
             "group": "Parameter",
             "type": "String",
-            "optional": false,
+            "optional": true,
             "field": "endTime",
             "description": "<p>结束时间</p>"
           },
@@ -199,6 +199,13 @@
             "field": "isExpiry",
             "defaultValue": "0",
             "description": "<p>是否兑奖码</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "num",
+            "description": "<p>3.人数抽 人数</p>"
           }
         ]
       }
