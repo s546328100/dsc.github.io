@@ -966,19 +966,6 @@
     "name": "getWXACodeUnlimit",
     "group": "common",
     "version": "1.0.0",
-    "header": {
-      "fields": {
-        "Header": [
-          {
-            "group": "Header",
-            "type": "String",
-            "optional": false,
-            "field": "token",
-            "description": ""
-          }
-        ]
-      }
-    },
     "parameter": {
       "fields": {
         "Parameter": [
@@ -1031,19 +1018,6 @@
     "name": "qrcode",
     "group": "common",
     "version": "1.0.0",
-    "header": {
-      "fields": {
-        "Header": [
-          {
-            "group": "Header",
-            "type": "String",
-            "optional": false,
-            "field": "token",
-            "description": ""
-          }
-        ]
-      }
-    },
     "parameter": {
       "fields": {
         "Parameter": [
@@ -1400,6 +1374,68 @@
     "sampleRequest": [
       {
         "url": "http://192.168.31.219:5761/lottery/v1/prize"
+      }
+    ]
+  },
+  {
+    "type": "get",
+    "url": "/v1/prizes",
+    "title": "中奖列表",
+    "name": "list",
+    "group": "prize",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "activity",
+            "description": "<p>活动id</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "page",
+            "description": "<p>当前页</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "pageSize",
+            "description": "<p>页数</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "sort",
+            "description": "<p>排序</p>"
+          }
+        ]
+      }
+    },
+    "filename": "src/controller/v1/prize.ts",
+    "groupTitle": "prize",
+    "sampleRequest": [
+      {
+        "url": "http://192.168.31.219:5761/lottery/v1/prizes"
       }
     ]
   },
