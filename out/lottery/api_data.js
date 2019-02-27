@@ -157,11 +157,11 @@ define({ "api": [
           },
           {
             "group": "Parameter",
-            "type": "Boolean",
+            "type": "Number",
             "optional": true,
             "field": "isPrivate",
-            "defaultValue": "true",
-            "description": "<p>是否私有</p>"
+            "defaultValue": "0",
+            "description": "<p>0不公开 1首页 2自助</p>"
           },
           {
             "group": "Parameter",
@@ -206,6 +206,20 @@ define({ "api": [
             "optional": true,
             "field": "num",
             "description": "<p>3.人数抽 人数</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Object",
+            "optional": true,
+            "field": "location",
+            "description": "<p>定位</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Array",
+            "optional": true,
+            "field": "detailImages",
+            "description": "<p>多图</p>"
           }
         ]
       }
@@ -1011,6 +1025,55 @@ define({ "api": [
     ]
   },
   {
+    "type": "get",
+    "url": "/v1/common/qrcode",
+    "title": "二维码",
+    "name": "qrcode",
+    "group": "common",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "text",
+            "description": "<p>文本</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "size",
+            "defaultValue": "5",
+            "description": "<p>大小</p>"
+          }
+        ]
+      }
+    },
+    "filename": "src/controller/v1/common.ts",
+    "groupTitle": "common",
+    "sampleRequest": [
+      {
+        "url": "http://192.168.31.219:5761/lottery/v1/common/qrcode"
+      }
+    ]
+  },
+  {
     "type": "post",
     "url": "/v1/file/upload",
     "title": "文件上传",
@@ -1486,6 +1549,20 @@ define({ "api": [
             "optional": true,
             "field": "activity",
             "description": "<p>activity</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "content",
+            "description": "<p>content</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "user",
+            "description": "<p>user</p>"
           }
         ]
       }
