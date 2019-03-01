@@ -171,47 +171,6 @@ define({ "api": [
     ]
   },
   {
-    "type": "get",
-    "url": "/v1/form/count",
-    "title": "可发formid数",
-    "name": "count",
-    "group": "form",
-    "version": "1.0.0",
-    "header": {
-      "fields": {
-        "Header": [
-          {
-            "group": "Header",
-            "type": "String",
-            "optional": false,
-            "field": "token",
-            "description": ""
-          }
-        ]
-      }
-    },
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "id",
-            "description": "<p>活动id</p>"
-          }
-        ]
-      }
-    },
-    "filename": "src/controller/v1/form.ts",
-    "groupTitle": "form",
-    "sampleRequest": [
-      {
-        "url": "http://192.168.31.219:5762/shop/v1/form/count"
-      }
-    ]
-  },
-  {
     "type": "post",
     "url": "/v1/form",
     "title": "添加FromId",
@@ -254,10 +213,10 @@ define({ "api": [
   },
   {
     "type": "get",
-    "url": "/v1/form/activities",
-    "title": "获取发送from数据",
-    "name": "formActivities",
-    "group": "form",
+    "url": "/v1/good/spec",
+    "title": "商品规格",
+    "name": "goodSpec",
+    "group": "good",
     "version": "1.0.0",
     "header": {
       "fields": {
@@ -280,25 +239,25 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "id",
-            "description": "<p>活动id</p>"
+            "description": "<p>商品id</p>"
           }
         ]
       }
     },
-    "filename": "src/controller/v1/form.ts",
-    "groupTitle": "form",
+    "filename": "src/controller/v1/good.ts",
+    "groupTitle": "good",
     "sampleRequest": [
       {
-        "url": "http://192.168.31.219:5762/shop/v1/form/activities"
+        "url": "http://192.168.31.219:5762/shop/v1/good/spec"
       }
     ]
   },
   {
-    "type": "post",
-    "url": "/v1/form/send",
-    "title": "新活动推送",
-    "name": "send",
-    "group": "form",
+    "type": "get",
+    "url": "/v1/goods",
+    "title": "商品列表",
+    "name": "goods",
+    "group": "good",
     "version": "1.0.0",
     "header": {
       "fields": {
@@ -319,32 +278,32 @@ define({ "api": [
           {
             "group": "Parameter",
             "type": "String",
-            "optional": false,
-            "field": "id",
-            "description": "<p>活动id</p>"
+            "optional": true,
+            "field": "page",
+            "description": "<p>当前页</p>"
           },
           {
             "group": "Parameter",
             "type": "String",
-            "optional": false,
-            "field": "tips",
-            "description": "<p>温馨提示</p>"
+            "optional": true,
+            "field": "pageSize",
+            "description": "<p>页数</p>"
           },
           {
             "group": "Parameter",
             "type": "String",
-            "optional": false,
-            "field": "remark",
-            "description": "<p>备注</p>"
+            "optional": true,
+            "field": "sort",
+            "description": "<p>排序</p>"
           }
         ]
       }
     },
-    "filename": "src/controller/v1/form.ts",
-    "groupTitle": "form",
+    "filename": "src/controller/v1/good.ts",
+    "groupTitle": "good",
     "sampleRequest": [
       {
-        "url": "http://192.168.31.219:5762/shop/v1/form/send"
+        "url": "http://192.168.31.219:5762/shop/v1/goods"
       }
     ]
   },
