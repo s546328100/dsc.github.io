@@ -213,6 +213,47 @@ define({ "api": [
   },
   {
     "type": "get",
+    "url": "/v1/good",
+    "title": "商品详情",
+    "name": "good",
+    "group": "good",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>商品id</p>"
+          }
+        ]
+      }
+    },
+    "filename": "src/controller/v1/good.ts",
+    "groupTitle": "good",
+    "sampleRequest": [
+      {
+        "url": "http://192.168.31.219:5762/shop/v1/good"
+      }
+    ]
+  },
+  {
+    "type": "get",
     "url": "/v1/good/spec",
     "title": "商品规格",
     "name": "goodSpec",
