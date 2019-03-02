@@ -1,6 +1,117 @@
 define({ "api": [
   {
     "type": "get",
+    "url": "/v1/cart/num",
+    "title": "购物车数",
+    "name": "cartNum",
+    "group": "cart",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "filename": "src/controller/v1/cart.ts",
+    "groupTitle": "cart",
+    "sampleRequest": [
+      {
+        "url": "http://192.168.31.219:5762/shop/v1/cart/num"
+      }
+    ]
+  },
+  {
+    "type": "get",
+    "url": "/v1/carts",
+    "title": "购物车列表",
+    "name": "carts",
+    "group": "cart",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "filename": "src/controller/v1/cart.ts",
+    "groupTitle": "cart",
+    "sampleRequest": [
+      {
+        "url": "http://192.168.31.219:5762/shop/v1/carts"
+      }
+    ]
+  },
+  {
+    "type": "post",
+    "url": "/v1/cart",
+    "title": "加入购物车",
+    "name": "postCart",
+    "group": "cart",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "good",
+            "description": "<p>商品id</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "spec",
+            "description": "<p>规格id</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "num",
+            "description": "<p>数量</p>"
+          }
+        ]
+      }
+    },
+    "filename": "src/controller/v1/cart.ts",
+    "groupTitle": "cart",
+    "sampleRequest": [
+      {
+        "url": "http://192.168.31.219:5762/shop/v1/cart"
+      }
+    ]
+  },
+  {
+    "type": "get",
     "url": "/v1/common/wx/qrcode",
     "title": "wx二维码",
     "name": "getWXACodeUnlimit",
@@ -249,47 +360,6 @@ define({ "api": [
     "sampleRequest": [
       {
         "url": "http://192.168.31.219:5762/shop/v1/good"
-      }
-    ]
-  },
-  {
-    "type": "get",
-    "url": "/v1/good/spec",
-    "title": "商品规格",
-    "name": "goodSpec",
-    "group": "good",
-    "version": "1.0.0",
-    "header": {
-      "fields": {
-        "Header": [
-          {
-            "group": "Header",
-            "type": "String",
-            "optional": false,
-            "field": "token",
-            "description": ""
-          }
-        ]
-      }
-    },
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "id",
-            "description": "<p>商品id</p>"
-          }
-        ]
-      }
-    },
-    "filename": "src/controller/v1/good.ts",
-    "groupTitle": "good",
-    "sampleRequest": [
-      {
-        "url": "http://192.168.31.219:5762/shop/v1/good/spec"
       }
     ]
   },
