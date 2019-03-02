@@ -111,6 +111,61 @@ define({ "api": [
     ]
   },
   {
+    "type": "put",
+    "url": "/v1/cart",
+    "title": "修改购物车",
+    "name": "putCart",
+    "group": "cart",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>购物车id</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "spec",
+            "description": "<p>规格id</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "num",
+            "description": "<p>数量 所有的量</p>"
+          }
+        ]
+      }
+    },
+    "filename": "src/controller/v1/cart.ts",
+    "groupTitle": "cart",
+    "sampleRequest": [
+      {
+        "url": "http://192.168.31.219:5762/shop/v1/cart"
+      }
+    ]
+  },
+  {
     "type": "get",
     "url": "/v1/common/wx/qrcode",
     "title": "wx二维码",
