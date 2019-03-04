@@ -56,6 +56,47 @@ define({ "api": [
     ]
   },
   {
+    "type": "delete",
+    "url": "/v1/cart",
+    "title": "删除购物车",
+    "name": "delCart",
+    "group": "cart",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "ids",
+            "description": "<p>多个用,隔开</p>"
+          }
+        ]
+      }
+    },
+    "filename": "src/controller/v1/cart.ts",
+    "groupTitle": "cart",
+    "sampleRequest": [
+      {
+        "url": "http://192.168.31.219:5762/shop/v1/cart"
+      }
+    ]
+  },
+  {
     "type": "post",
     "url": "/v1/cart",
     "title": "加入购物车",
@@ -470,6 +511,116 @@ define({ "api": [
     "sampleRequest": [
       {
         "url": "http://192.168.31.219:5762/shop/v1/goods"
+      }
+    ]
+  },
+  {
+    "type": "post",
+    "url": "/v1/order",
+    "title": "创建订单-立即购买",
+    "name": "postOrder",
+    "group": "order",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "good",
+            "description": "<p>商品id</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "spec",
+            "description": "<p>规格id</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "num",
+            "description": "<p>数量</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Object",
+            "optional": false,
+            "field": "delivery",
+            "description": "<p>收货地址 <code>name phone location</code></p>"
+          }
+        ]
+      }
+    },
+    "filename": "src/controller/v1/order.ts",
+    "groupTitle": "order",
+    "sampleRequest": [
+      {
+        "url": "http://192.168.31.219:5762/shop/v1/order"
+      }
+    ]
+  },
+  {
+    "type": "post",
+    "url": "/v1/order/cart",
+    "title": "创建订单-购物车",
+    "name": "postOrderCart",
+    "group": "order",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Array",
+            "optional": false,
+            "field": "cartIds",
+            "description": "<p>购物车id</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Object",
+            "optional": false,
+            "field": "delivery",
+            "description": "<p>收货地址 <code>name phone location</code></p>"
+          }
+        ]
+      }
+    },
+    "filename": "src/controller/v1/order.ts",
+    "groupTitle": "order",
+    "sampleRequest": [
+      {
+        "url": "http://192.168.31.219:5762/shop/v1/order/cart"
       }
     ]
   },
