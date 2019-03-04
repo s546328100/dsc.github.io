@@ -425,19 +425,6 @@ define({ "api": [
     "name": "good",
     "group": "good",
     "version": "1.0.0",
-    "header": {
-      "fields": {
-        "Header": [
-          {
-            "group": "Header",
-            "type": "String",
-            "optional": false,
-            "field": "token",
-            "description": ""
-          }
-        ]
-      }
-    },
     "parameter": {
       "fields": {
         "Parameter": [
@@ -466,19 +453,6 @@ define({ "api": [
     "name": "goods",
     "group": "good",
     "version": "1.0.0",
-    "header": {
-      "fields": {
-        "Header": [
-          {
-            "group": "Header",
-            "type": "String",
-            "optional": false,
-            "field": "token",
-            "description": ""
-          }
-        ]
-      }
-    },
     "parameter": {
       "fields": {
         "Parameter": [
@@ -511,6 +485,47 @@ define({ "api": [
     "sampleRequest": [
       {
         "url": "http://192.168.31.219:5762/shop/v1/goods"
+      }
+    ]
+  },
+  {
+    "type": "post",
+    "url": "/v1/order/cancel",
+    "title": "取消订单",
+    "name": "orderCancel",
+    "group": "order",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>订单id</p>"
+          }
+        ]
+      }
+    },
+    "filename": "src/controller/v1/order.ts",
+    "groupTitle": "order",
+    "sampleRequest": [
+      {
+        "url": "http://192.168.31.219:5762/shop/v1/order/cancel"
       }
     ]
   },
