@@ -82,5 +82,53 @@ define({ "api": [
         "url": "http://192.168.31.219:5762/shop/admin/coupon"
       }
     ]
+  },
+  {
+    "type": "post",
+    "url": "/admin/order/deliver",
+    "title": "订单发货",
+    "name": "orderDeliver",
+    "group": "order",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>订单id</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "logistics",
+            "description": "<p>物流信息 <code>name no</code></p>"
+          }
+        ]
+      }
+    },
+    "filename": "src/controller/admin/order.ts",
+    "groupTitle": "order",
+    "sampleRequest": [
+      {
+        "url": "http://192.168.31.219:5762/shop/admin/order/deliver"
+      }
+    ]
   }
 ] });
