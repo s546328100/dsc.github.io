@@ -208,6 +208,21 @@ define({ "api": [
   },
   {
     "type": "get",
+    "url": "/v1/categories",
+    "title": "类别列表",
+    "name": "categories",
+    "group": "category",
+    "version": "1.0.0",
+    "filename": "src/controller/v1/category.ts",
+    "groupTitle": "category",
+    "sampleRequest": [
+      {
+        "url": "http://192.168.31.219:5762/shop/v1/categories"
+      }
+    ]
+  },
+  {
+    "type": "get",
     "url": "/v1/common/wx/qrcode",
     "title": "wx二维码",
     "name": "getWXACodeUnlimit",
@@ -560,6 +575,13 @@ define({ "api": [
     "parameter": {
       "fields": {
         "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "category",
+            "description": "<p>类别id</p>"
+          },
           {
             "group": "Parameter",
             "type": "String",
