@@ -1,6 +1,47 @@
 define({ "api": [
   {
     "type": "post",
+    "url": "/admin/category",
+    "title": "创建类别",
+    "name": "adminPostCategory",
+    "group": "category",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "name",
+            "description": "<p>名称</p>"
+          }
+        ]
+      }
+    },
+    "filename": "src/controller/admin/category.ts",
+    "groupTitle": "category",
+    "sampleRequest": [
+      {
+        "url": "http://192.168.31.219:5762/shop/admin/category"
+      }
+    ]
+  },
+  {
+    "type": "post",
     "url": "/admin/coupon",
     "title": "创建优惠劵",
     "name": "adminPostCoupon",
@@ -80,6 +121,195 @@ define({ "api": [
     "sampleRequest": [
       {
         "url": "http://192.168.31.219:5762/shop/admin/coupon"
+      }
+    ]
+  },
+  {
+    "type": "post",
+    "url": "/admin/good",
+    "title": "创建商品",
+    "name": "adminPostGood",
+    "group": "good",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "name",
+            "description": "<p>名称</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Array",
+            "optional": false,
+            "field": "specType",
+            "description": "<p>规格类型 <code>title values</code> 需要生成values._id</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Array",
+            "optional": false,
+            "field": "specInfo",
+            "description": "<p>规格信息 <code>keys money integral stock</code> keys值为生成values._id</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Array",
+            "optional": false,
+            "field": "images",
+            "description": "<p>图片</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Array",
+            "optional": true,
+            "field": "groups",
+            "description": "<p>分组 类别id</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "desc",
+            "description": "<p>描述</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "freight",
+            "defaultValue": "0",
+            "description": "<p>邮费</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Array",
+            "optional": true,
+            "field": "detailImages",
+            "description": "<p>图片详情</p>"
+          }
+        ]
+      }
+    },
+    "filename": "src/controller/admin/good.ts",
+    "groupTitle": "good",
+    "sampleRequest": [
+      {
+        "url": "http://192.168.31.219:5762/shop/admin/good"
+      }
+    ]
+  },
+  {
+    "type": "put",
+    "url": "/admin/good",
+    "title": "修改商品",
+    "name": "adminPutGood",
+    "group": "good",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>商品Id</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Array",
+            "optional": true,
+            "field": "specType",
+            "description": "<p>规格类型 <code>title values</code></p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Array",
+            "optional": true,
+            "field": "specInfo",
+            "description": "<p>规格信息 <code>keys money integral stock</code> keys值为生成values._id</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "name",
+            "description": "<p>名称</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "desc",
+            "description": "<p>描述</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "freight",
+            "defaultValue": "0",
+            "description": "<p>邮费</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Array",
+            "optional": true,
+            "field": "images",
+            "description": "<p>图片</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Array",
+            "optional": true,
+            "field": "detailImages",
+            "description": "<p>图片详情</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Array",
+            "optional": true,
+            "field": "groups",
+            "description": "<p>分组 类别id</p>"
+          }
+        ]
+      }
+    },
+    "filename": "src/controller/admin/good.ts",
+    "groupTitle": "good",
+    "sampleRequest": [
+      {
+        "url": "http://192.168.31.219:5762/shop/admin/good"
       }
     ]
   },
