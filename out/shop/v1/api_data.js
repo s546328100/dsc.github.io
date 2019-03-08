@@ -724,7 +724,7 @@ define({ "api": [
             "type": "String",
             "optional": true,
             "field": "status",
-            "description": "<p>状态 全部不传 0待付款 1待发货 2待收货 3已完成 4已取消</p>"
+            "description": "<p>状态 全部不传 0待付款 1待发货 2待收货 3已完成 4已取消 5退款中</p>"
           }
         ]
       }

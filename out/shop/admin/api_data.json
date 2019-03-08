@@ -301,6 +301,13 @@
             "optional": true,
             "field": "groups",
             "description": "<p>分组 类别id</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "status",
+            "description": "<p>1上架 2下架 3售罄</p>"
           }
         ]
       }
@@ -462,6 +469,34 @@
     "sampleRequest": [
       {
         "url": "http://192.168.31.219:5762/shop/admin/orders"
+      }
+    ]
+  },
+  {
+    "type": "get",
+    "url": "/admin/user/goods",
+    "title": "我的货架信息",
+    "name": "userGoods",
+    "group": "order",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "filename": "src/controller/admin/user.ts",
+    "groupTitle": "order",
+    "sampleRequest": [
+      {
+        "url": "http://192.168.31.219:5762/shop/admin/user/goods"
       }
     ]
   }
