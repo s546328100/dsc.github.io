@@ -314,6 +314,69 @@
     ]
   },
   {
+    "type": "get",
+    "url": "/admin/goods",
+    "title": "商品列表",
+    "name": "goods",
+    "group": "good",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "status",
+            "defaultValue": "1",
+            "description": "<p>1上架 2下架</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "page",
+            "description": "<p>当前页</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "pageSize",
+            "description": "<p>页数</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "sort",
+            "description": "<p>排序</p>"
+          }
+        ]
+      }
+    },
+    "filename": "src/controller/admin/good.ts",
+    "groupTitle": "good",
+    "sampleRequest": [
+      {
+        "url": "http://192.168.31.219:5762/shop/admin/goods"
+      }
+    ]
+  },
+  {
     "type": "post",
     "url": "/admin/order/deliver",
     "title": "订单发货",
@@ -358,6 +421,47 @@
     "sampleRequest": [
       {
         "url": "http://192.168.31.219:5762/shop/admin/order/deliver"
+      }
+    ]
+  },
+  {
+    "type": "get",
+    "url": "/admin/orders",
+    "title": "订单列表",
+    "name": "orders",
+    "group": "order",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "status",
+            "description": "<p>状态 全部不传 0待付款 1待发货 2待收货 3已完成 4已取消 5退款中</p>"
+          }
+        ]
+      }
+    },
+    "filename": "src/controller/admin/order.ts",
+    "groupTitle": "order",
+    "sampleRequest": [
+      {
+        "url": "http://192.168.31.219:5762/shop/admin/orders"
       }
     ]
   }
