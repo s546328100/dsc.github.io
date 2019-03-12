@@ -213,6 +213,19 @@
     "name": "categories",
     "group": "category",
     "version": "1.0.0",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "id",
+            "description": "<p>类别ID 查子类别</p>"
+          }
+        ]
+      }
+    },
     "filename": "src/controller/v1/category.ts",
     "groupTitle": "category",
     "sampleRequest": [
@@ -234,7 +247,7 @@
           {
             "group": "Parameter",
             "type": "String",
-            "optional": true,
+            "optional": false,
             "field": "id",
             "description": "<p>类别ID 查子类别</p>"
           }
