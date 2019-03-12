@@ -779,6 +779,47 @@ define({ "api": [
     ]
   },
   {
+    "type": "post",
+    "url": "/admin/order/refund",
+    "title": "订单退款",
+    "name": "orderRefund",
+    "group": "order",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>订单id</p>"
+          }
+        ]
+      }
+    },
+    "filename": "src/controller/admin/order.ts",
+    "groupTitle": "order",
+    "sampleRequest": [
+      {
+        "url": "http://192.168.31.219:5762/shop/admin/order/refund"
+      }
+    ]
+  },
+  {
     "type": "get",
     "url": "/admin/orders",
     "title": "订单列表",
