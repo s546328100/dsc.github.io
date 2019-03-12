@@ -65,24 +65,17 @@
         "Parameter": [
           {
             "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "type",
+            "description": "<p>1纯积分 2纯现金 3现金+积分</p>"
+          },
+          {
+            "group": "Parameter",
             "type": "String",
             "optional": false,
             "field": "name",
             "description": "<p>名称</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "Number",
-            "optional": false,
-            "field": "money",
-            "description": "<p>金额</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "Number",
-            "optional": false,
-            "field": "status",
-            "description": "<p>状态 0下架 1上架</p>"
           },
           {
             "group": "Parameter",
@@ -94,9 +87,157 @@
           {
             "group": "Parameter",
             "type": "Number",
+            "optional": false,
+            "field": "status",
+            "description": "<p>状态 0下架 1上架</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "isPrivate",
+            "defaultValue": "1",
+            "description": "<p>// 0公开领取 1优惠码兑换</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "integral",
+            "description": "<p>积分</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "integralOff",
+            "defaultValue": "0",
+            "description": "<p>满xx积分使用</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "money",
+            "description": "<p>金额</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
             "optional": true,
             "field": "moneyOff",
             "defaultValue": "0",
+            "description": "<p>满xx元使用</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "startTime",
+            "description": "<p>能开始领取/使用时间</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "endTime",
+            "description": "<p>失效时间</p>"
+          }
+        ]
+      }
+    },
+    "filename": "src/controller/admin/coupon.ts",
+    "groupTitle": "coupon",
+    "sampleRequest": [
+      {
+        "url": "http://192.168.31.219:5762/shop/admin/coupon"
+      }
+    ]
+  },
+  {
+    "type": "put",
+    "url": "/admin/coupon",
+    "title": "修改优惠劵",
+    "name": "adminPutCoupon",
+    "group": "coupon",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>优惠券ID</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "name",
+            "description": "<p>名称</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "num",
+            "description": "<p>数量</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "status",
+            "description": "<p>状态 0下架 1上架</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "isPrivate",
+            "description": "<p>0公开领取 1优惠码兑换</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "integral",
+            "description": "<p>积分</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "integralOff",
+            "description": "<p>满xx积分使用</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "money",
+            "description": "<p>金额</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "moneyOff",
             "description": "<p>满xx元使用</p>"
           },
           {
