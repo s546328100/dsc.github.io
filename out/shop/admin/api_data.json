@@ -28,6 +28,27 @@
             "optional": false,
             "field": "name",
             "description": "<p>名称</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "title",
+            "description": "<p>二级标题</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Object",
+            "optional": true,
+            "field": "image",
+            "description": "<p>图片</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "extend",
+            "description": "<p>父id 二级</p>"
           }
         ]
       }
@@ -83,6 +104,20 @@
             "optional": true,
             "field": "status",
             "description": "<p>状态</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "title",
+            "description": "<p>二级标题</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Object",
+            "optional": true,
+            "field": "image",
+            "description": "<p>图片</p>"
           }
         ]
       }
@@ -111,6 +146,19 @@
             "optional": false,
             "field": "token",
             "description": ""
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "id",
+            "description": "<p>类别ID 查子类别</p>"
           }
         ]
       }
