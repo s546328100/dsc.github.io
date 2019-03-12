@@ -223,6 +223,34 @@ define({ "api": [
   },
   {
     "type": "get",
+    "url": "/v1/categories/child",
+    "title": "子类别列表",
+    "name": "childCategories",
+    "group": "category",
+    "version": "1.0.0",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "id",
+            "description": "<p>类别ID 查子类别</p>"
+          }
+        ]
+      }
+    },
+    "filename": "src/controller/v1/category.ts",
+    "groupTitle": "category",
+    "sampleRequest": [
+      {
+        "url": "http://192.168.31.219:5762/shop/v1/categories/child"
+      }
+    ]
+  },
+  {
+    "type": "get",
     "url": "/v1/common/wx/qrcode",
     "title": "wx二维码",
     "name": "getWXACodeUnlimit",
