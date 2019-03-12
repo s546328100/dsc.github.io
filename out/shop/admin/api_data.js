@@ -41,6 +41,89 @@ define({ "api": [
     ]
   },
   {
+    "type": "put",
+    "url": "/admin/category",
+    "title": "修改类别",
+    "name": "adminPutCategory",
+    "group": "category",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>类别ID</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "name",
+            "description": "<p>名称</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "status",
+            "description": "<p>状态</p>"
+          }
+        ]
+      }
+    },
+    "filename": "src/controller/admin/category.ts",
+    "groupTitle": "category",
+    "sampleRequest": [
+      {
+        "url": "http://192.168.31.219:5762/shop/admin/category"
+      }
+    ]
+  },
+  {
+    "type": "get",
+    "url": "/admin/categories",
+    "title": "类别列表",
+    "name": "categories",
+    "group": "category",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "filename": "src/controller/admin/category.ts",
+    "groupTitle": "category",
+    "sampleRequest": [
+      {
+        "url": "http://192.168.31.219:5762/shop/admin/categories"
+      }
+    ]
+  },
+  {
     "type": "post",
     "url": "/admin/coupon",
     "title": "创建优惠劵",
@@ -209,6 +292,13 @@ define({ "api": [
             "group": "Parameter",
             "type": "Number",
             "optional": true,
+            "field": "type",
+            "description": "<p>1纯积分 2纯现金 3现金+积分</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
             "field": "isPrivate",
             "description": "<p>0公开领取 1优惠码兑换</p>"
           },
@@ -262,6 +352,74 @@ define({ "api": [
     "sampleRequest": [
       {
         "url": "http://192.168.31.219:5762/shop/admin/coupon"
+      }
+    ]
+  },
+  {
+    "type": "get",
+    "url": "/admin/coupons",
+    "title": "优惠劵列表",
+    "name": "coupons",
+    "group": "coupon",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "page",
+            "description": "<p>当前页</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "pageSize",
+            "description": "<p>页数</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "sort",
+            "description": "<p>排序</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "status",
+            "description": "<p>-1下架 0上架</p>"
+          }
+        ]
+      }
+    },
+    "filename": "src/controller/admin/coupon.ts",
+    "groupTitle": "coupon",
+    "sampleRequest": [
+      {
+        "url": "http://192.168.31.219:5762/shop/admin/coupons"
       }
     ]
   },
