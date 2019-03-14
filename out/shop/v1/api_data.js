@@ -370,6 +370,26 @@ define({ "api": [
         ]
       }
     },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "money",
+            "description": "<p>金额 判断是否可以使用</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "integral",
+            "description": "<p>积分 判断是否可以使用</p>"
+          }
+        ]
+      }
+    },
     "filename": "src/controller/v1/coupon.ts",
     "groupTitle": "coupon",
     "sampleRequest": [
@@ -917,6 +937,20 @@ define({ "api": [
             "optional": false,
             "field": "delivery",
             "description": "<p>收货地址 <code>name phone location</code></p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "remark",
+            "description": "<p>备注</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "couponId",
+            "description": "<p>优惠券id</p>"
           }
         ]
       }
@@ -965,6 +999,20 @@ define({ "api": [
             "optional": false,
             "field": "delivery",
             "description": "<p>收货地址 <code>name phone location</code></p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "remark",
+            "description": "<p>备注</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "couponId",
+            "description": "<p>优惠券id</p>"
           }
         ]
       }
