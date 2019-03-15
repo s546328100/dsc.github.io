@@ -2220,5 +2220,60 @@ define({ "api": [
         "url": "http://192.168.31.219:5761/lottery/v1/user/login"
       }
     ]
+  },
+  {
+    "type": "get",
+    "url": "/v1/user/use/integral",
+    "title": "我使用的积分列表",
+    "name": "userUseIntegral",
+    "group": "user",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "page",
+            "description": "<p>当前页</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "pageSize",
+            "description": "<p>页数</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "sort",
+            "description": "<p>排序</p>"
+          }
+        ]
+      }
+    },
+    "filename": "src/controller/v1/user.ts",
+    "groupTitle": "user",
+    "sampleRequest": [
+      {
+        "url": "http://192.168.31.219:5761/lottery/v1/user/use/integral"
+      }
+    ]
   }
 ] });
